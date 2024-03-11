@@ -35,7 +35,7 @@ I will lay me down
 Like a bridge over troubled water 
 I will lay me down
 
-	<!-- hr태그 : 선을 표시하는 태그 -->
+	<!-- hr태그 : 선을 표시하는 태그(한 줄) -->
 <hr>
 <hr/>
 
@@ -51,7 +51,7 @@ Like a bridge over troubled water <br />
 I will lay me down <br />
 Like a bridge over troubled water <br />
 I will lay me down <br />
-
+<hr>
 
 
 	<!-- 
@@ -63,15 +63,28 @@ I will lay me down <br />
 		&emsp;  >  세칸 띄어쓰기
 	
 	 -->
-
-
+	I            will           lay         me          down <br>
+	I &nbsp;will &nbsp;lay &nbsp;me &nbsp;dowm <br>
+	I &ensp;will &ensp;lay &ensp;me &ensp;dowm <br>
+	I &emsp;will &emsp;lay &emsp;me &emsp;dowm <br>
+	<hr>
 
 	<!-- 헤딩(heading)은 웹페이지에서 머리기사 역할을 한다. -->
+	<h1> heading 1입니다. </h1>	<!-- br을 쓰지 않아도 밑에 칸으로 내림-->
+	<h2> heading 2입니다. </h2>
+	<h3> heading 3입니다. </h3>
+	<h4> heading 4입니다. </h4>
+	<h5> heading 5입니다. </h5>
+	<h6> heading 6입니다. </h6>
+	<hr>
 
+	<!-- 단락(paragraph)은 하나의 토막을 의미하며, 웹브라우저가 <p>태그 앞뒤에 빈줄을 추가한다.(간격이 생기게 함) -->
+	<p>하나의 단락입니다</p>	<!-- br을 쓰지 않아도 밑에 칸으로 내림-->
+	<p>
+		하나의 단락입니다	<!-- 같이 쓰이는 경우는 밑에 칸으로 가지 않고 연결되게 나옴 -->
+		하나의 단락입니다
+		하나의 단락입니다
+	</p>
 	
-
-	<!-- 단락(paragraph)은 하나의 토막을 의미하며, 웹브라우저가 <p>태그 앞뒤에 빈줄을 추가한다. -->
-	
-
 </body>
 </html>
