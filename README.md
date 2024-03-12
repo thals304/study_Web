@@ -226,3 +226,247 @@
     </body>
     </html>
     ```
+
+- **이미지 & 비디오**
+    - **이미지(image) 태그**
+        - img 태그는 이미지를 웹페이지에 표시할 때 사용한다.
+        - **src속성**은 이미지 파일 이름을 지정한다.
+        - **alt 속성**은 브라우저가 화면에 표시하지 못했을 경우에 표시되는 대체 텍스트(alternate text)이다.		
+        alt 속성의 대체 텍스트값은 이미지와 동등한 정보를 제공해야 한다.
+        - **width , height 속성**은 각각 이미지의 가로 , 세로 크기를 나타낸다.
+        - width , height 속성을 지정하지 않을 경우 기본 이미지의 크기로 브라우저에 이미지가 적재된다.
+        - width , height 속성의 기본적인 단위는 픽셀이다. %단위를 사용하여 브라우저의 크기에 비례하여 상대적으로 이미지의 크기를 지정할 수 있다.
+        
+        ```html
+        <!DOCTYPE html>
+        <html>
+        <head>
+        <meta charset="UTF-8">
+        <title>이미지 태그</title>
+        </head>
+        <body>
+        
+            <h2>애플</h2>
+        	<img src="apple.jpg" width="200" height="200">
+        	<img src="apple.jpgㅋㅋ" alt= "애플이미지" width="200" height="200">
+        	<img src="apple.jpg" width="10%" height="10%">
+             
+        </body>
+        </html>
+        ```
+        
+    - **이미지 경로**
+        - **절대경로**
+            - 웹서비스를 이용할수 있는 웹서비스의 절대경로를 모두 작성한다.
+            - C 드라이브로 들어오는 것이 아닌 웹으로 들어오는 걸 의미
+                
+                예시) [http://도메인명](http://xn--hq1bm8jhe834c/):포트번호/폴더명/이미지명 
+                
+        - **상대경로**
+            - 현재 위치한 html파일을 기준으로 파일의 경로를 작성한다.
+            - 현재 위치 html파일과 같은 폴더에 있을 경우 아래의 두 방법 중 1가지를 선택하여 이미지의 경로를 작성한다.
+            - 현재 html보다 **상위경로**에 위치했을 경우 아래와 같이 이미지의 경로를 작성한다.
+        
+        ```html
+        <!DOCTYPE html>
+        <html>
+        <head>
+        <meta charset="UTF-8">
+        <title>이미지의 경로</title>
+        </head>
+        <body>
+        	
+        	<h3>클라이언트가 요청하는 이미지의 절대 경로</h3>
+        	<img src="http://localhost:8080/11_web_basic/01_HTML5/chapter04_image/apple.jpg">
+        	
+        	<h3>클라이언트가 요청하는 이미지의 상대 경로</h3>
+        	<img src="apple.jpg">
+        	<img src="./apple.jpg">
+        	<img src="apple.jpg">
+        </body>
+        </html>
+        ```
+        
+    
+    - **비디오 (video)**
+        - 비디오 파일의 위치는 src속성으로 지정한다. 위치 경로지정방식은 이미지,오디오와 동일하다.
+        - 비디오 태그는 브라우저별로 속성 및 기능 동작의 차이가 크다.
+        - 브라우저가 해당 비디오를 지정하는지 반드시 확인해야 한다. 여러 가지 파일형식을 동시에 제공하면 된다
+        - **[ 비디오 속성 ]**
+            
+            **autoplay** : 비디오를 자동적으로 재생
+            
+            **controls** : 비디오 재생을 제어하는 제어기를 표시
+            
+            **loop**     : 비디오를 반복하여 재생
+            
+            **preload**  : 사용자가 사용할 생각이 없더라도 비디오를 미리 다운로드한다.
+            
+            **poster**   : 비디오를 다운로드 하는 중일 때 표시되는 이미지.
+            
+            **muted**    : 비디오의 오디오 출력을 중지한다.
+            
+            **src**      : 재생할 오디오가 존재하는 URL을 지정한다.
+            
+            **width**    : 비디오 재생기의 너비를 나타낸다.
+            
+            **height**   : 비디오 재생기의 높이를 나타낸다.	
+            
+        
+        ```html
+        <!DOCTYPE html>
+        <html>
+        <head>
+        <meta charset="UTF-8">
+        <title>비디오</title>
+        </head>
+        <body>
+        
+          	<h3>기본 모델 예시</h3>
+        	<video src="asset/media/trailer.mp4" controls width = "100%"></video> <!--비디오를 실행하려면 controls를 넣어줘야함  -->
+        	<video src="./asset/media/trailer.mp4" controls width = "100%"></video>
+        	
+        	<h3>poster속성 적용 예시</h3> <!-- 썸네일 느낌 -->
+        	<video src="asset/media/trailer.mp4" poster="apple.jpg" controls width = "500"></video>
+        
+        </body>
+        </html>
+        ```
+        
+
+- **링크 (link)**
+    - 하이퍼 링크(링크)는 다른 문서로 점프할 수 있는 단어 혹은 이미지이다.
+    - **<a>태그**가 하이퍼 링크를 정의한다.
+    - <a>요소의 가장 중요한 속성은 **href 속성**이다. href 속성은 링크의 목적지를 나타낸다.
+    - 사용자가 커서를 웹 페이지의 링크 위에 올려 놓으면 커서의 모양이 화살표에서 손모양으로 변한다.
+    - **링크의 경로**
+        
+        **1) 절대 경로** href="http://www.google.com/" **다른 웹 사이트의 페이지** 
+        
+        **2) 상대경로**  href="../doc/info.html"                **웹 사이트 안에서의 다른 페이지**
+        
+        **3) 내부 파일** href="#anchor1"			  **현재 페이지 안의 다른 위치**
+        
+    - **target 속성**
+        
+       **_blank**  : 새로운 윈도우에서 새로운 페이지를 연다.
+        
+        **_self**   : 현재 윈도우에 새로운 페이지를 적재한다. [기본값으로 생략 가능하다.]
+        
+        **_parent** : 부모 프레임에 새로운 페이지를 적재한다.
+        
+        **_top**    : 최상위 프레임에 새로운 페이지를 적재한다.
+        
+    
+    ```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="UTF-8">
+    <title>링크</title>
+    </head>
+    <body>
+    	
+    	<p><a href="http://www.google.com/" target="_self">구글로 이동1</a></p>
+    	<p><a href="http://www.google.com/" target="_blank">구글</a>로 이동2</p>
+    	
+    	<p><a href="../chapter04_image/imageEx01.html">imageEx01.html로 이동</a></p>
+    	
+    	<a href="https://www.apple.com"><img src="../chapter04_image/apple.jpg" width="200"></a>
+    	
+    </body>
+    </html>
+    ```
+    
+    **+) 링크(link) 메뉴**
+    
+    - <a>태그를 사용해 사용자를 현재 페이지의 다른 위치로 이동 시킬 수 있다.
+    - 웹 문서가 너무 길 경우 필요한 곳마다 문서 안에 이름을 붙여 놓고  그 위치로 이동하는 링크를 만들 수 있는데 이 기능을 **앵커**(anchor)라고 한다.
+    
+    ```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="UTF-8">
+    <title>링크2</title>
+    </head>
+    <body>
+    	
+    	<h1>앵커 만들기</h1>
+    	
+    	<ul id ="menu">
+    		<li><a href="#content1">메뉴1</a></li> 	<!-- 클릭이 되면 문서 내의 id가 content1인 곳으로 화면이 이동한다. (#을 써주기)-->
+    		<li><a href="#content2">메뉴2</a></li>
+    		<li><a href="#content">메뉴3</a></li>
+    		<li><a href="linkEx02_메뉴.html#content4">메뉴4</a></li> <!-- 클릭이 되면 문서 LinkEx02_메뉴.html파일의 id가content4인 곳으로 이동한다. -->
+    		<li><a href="linkEx02_메뉴.html#content5">메뉴5</a></li>
+    	</ul>
+    	
+    	
+    	<h2 id="content1">내용1</h2>	<!-- content1의 위치를 id를 사용해 정의한다. -->
+    	<p>웹 문서가 너무 길 경우 필요한 곳마다 문서 안에 이름을 붙여놓고 그 위치로 한번에 이동하는 링크를 만들 수
+    		있는데, 이 기능을 앵커(anchor)라고 합니다.</p>
+    	<p>웹 문서가 너무 길 경우 필요한 곳마다 문서 안에 이름을 붙여놓고 그 위치로 한번에 이동하는 링크를 만들 수
+    		있는데, 이 기능을 앵커(anchor)라고 합니다.</p>
+    	<p>웹 문서가 너무 길 경우 필요한 곳마다 문서 안에 이름을 붙여놓고 그 위치로 한번에 이동하는 링크를 만들 수
+    		있는데, 이 기능을 앵커(anchor)라고 합니다.</p>
+    	
+    	<p><a href="#menu">[메뉴로]</a></p>
+    	
+    	
+    	<h2 id="content2">내용2</h2>	<!-- content2의 위치를 정의한다. -->
+    	<p>웹 문서가 너무 길 경우 필요한 곳마다 문서 안에 이름을 붙여놓고 그 위치로 한번에 이동하는 링크를 만들 수
+    		있는데, 이 기능을 앵커(anchor)라고 합니다.</p>
+    	<p>웹 문서가 너무 길 경우 필요한 곳마다 문서 안에 이름을 붙여놓고 그 위치로 한번에 이동하는 링크를 만들 수
+    		있는데, 이 기능을 앵커(anchor)라고 합니다.</p>
+    	<p>웹 문서가 너무 길 경우 필요한 곳마다 문서 안에 이름을 붙여놓고 그 위치로 한번에 이동하는 링크를 만들 수
+    		있는데, 이 기능을 앵커(anchor)라고 합니다.</p>
+    	
+    	<p><a href="#menu">[메뉴로]</a></p>
+    	
+    	
+    	<h2 id="content3" >내용3</h2>
+    	<p>웹 문서가 너무 길 경우 필요한 곳마다 문서 안에 이름을 붙여놓고 그 위치로 한번에 이동하는 링크를 만들 수
+    		있는데, 이 기능을 앵커(anchor)라고 합니다.</p>
+    	<p>웹 문서가 너무 길 경우 필요한 곳마다 문서 안에 이름을 붙여놓고 그 위치로 한번에 이동하는 링크를 만들 수
+    		있는데, 이 기능을 앵커(anchor)라고 합니다.</p>
+    	<p>웹 문서가 너무 길 경우 필요한 곳마다 문서 안에 이름을 붙여놓고 그 위치로 한번에 이동하는 링크를 만들 수
+    		있는데, 이 기능을 앵커(anchor)라고 합니다.</p>
+    	
+    	<p><a href="#menu">[메뉴로]</a></p>
+    	
+    </body>
+    </html>
+    ```
+    
+    ```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="UTF-8">
+    <title>링크2_메뉴</title>
+    </head>
+    <body>
+    
+    	<h2 id="content4">내용4</h2>
+    	<p>웹 문서가 너무 길 경우 필요한 곳마다 문서 안에 이름을 붙여놓고 그 위치로 한번에 이동하는 링크를 만들 수
+    		있는데, 이 기능을 앵커(anchor)라고 합니다.</p>
+    	<p>웹 문서가 너무 길 경우 필요한 곳마다 문서 안에 이름을 붙여놓고 그 위치로 한번에 이동하는 링크를 만들 수
+    		있는데, 이 기능을 앵커(anchor)라고 합니다.</p>
+    	<p>웹 문서가 너무 길 경우 필요한 곳마다 문서 안에 이름을 붙여놓고 그 위치로 한번에 이동하는 링크를 만들 수
+    		있는데, 이 기능을 앵커(anchor)라고 합니다.</p>
+    	
+    	<p><a href="linkEx02.html#menu">[메뉴로]</a></p>
+    	
+    	<h2 id="content5">내용5</h2>
+    	<p>웹 문서가 너무 길 경우 필요한 곳마다 문서 안에 이름을 붙여놓고 그 위치로 한번에 이동하는 링크를 만들 수
+    		있는데, 이 기능을 앵커(anchor)라고 합니다.</p>
+    	<p>웹 문서가 너무 길 경우 필요한 곳마다 문서 안에 이름을 붙여놓고 그 위치로 한번에 이동하는 링크를 만들 수
+    		있는데, 이 기능을 앵커(anchor)라고 합니다.</p>
+    	<p>웹 문서가 너무 길 경우 필요한 곳마다 문서 안에 이름을 붙여놓고 그 위치로 한번에 이동하는 링크를 만들 수
+    		있는데, 이 기능을 앵커(anchor)라고 합니다.</p>
+    	
+    	<p><a href="linkEx02.html#menu">[메뉴로]</a></p>
+    </body>
+    </html>
+    ```
