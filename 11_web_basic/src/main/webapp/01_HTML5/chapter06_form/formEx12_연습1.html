@@ -1,10 +1,28 @@
 <!DOCTYPE html>
+<!-- 24.03.13 time 17:03-17:07
+	today 소감문
+	text 타입에서 filedset과 legend를 쓰는 문제가 나왔는데
+	형태만 알면 다 쓸 수 있기 때문에 어렵지 않았다.
+	근데 submit의 이름을  전송으로 어떻게 비꿔야 되는지 고민을 했는데
+	앞에 button에서 value를 통해 버튼 이름을 새길 수 있는 것을 보고 얘도
+	바로 적용했는데 내 생각이 맞았던 것 같다.
+	근데 정답예시와 달리 내 코드는 왜 이렇게 복잡하냐는 p가 아닌 br을 써서 그런 것 같다.
+	다시 p로 고쳐놓겠다.
+ -->
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Ex11_연습1</title>
 </head>
 <body>
-
+	<form>
+			<fieldset>
+				<legend>회원정보 입력</legend>
+				<p>아이디 : <input type="text"></p>
+				<p>비밀번호 : <input type="text"></p>
+				<p>이메일 : <input type="text"></p>
+				<p><input type="submit" value="전송"></p>
+			</fieldset>
+	</form>
 </body>
 </html>

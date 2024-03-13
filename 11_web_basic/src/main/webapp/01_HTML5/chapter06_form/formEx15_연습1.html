@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--24.03.13 time 17:44-17:53
+	today 소감문
+	이미지 링크는 별로 어렵지는 않았는데 그림과 파일 파일과 버튼과의 간격이 
+	문제였다 emsp&를 써서 3칸 띄어쓰기를 하려고 했는데 글자로 인식한 것 같다.
+	알고보니 &emsp;라고 써야했던 것이다. 오마이갓
+	그리고 그림 사이즈가 가장 짜증났는데 이건 디자이너에게 맡기겠다.
+ -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex15_연습1</title>
+</head>
+<body>
+	<form>
+		<fieldset>
+			<legend>상품이미지</legend>
+			<p>
+			<img src="../images/programmer.png" width="70" height="70" >&emsp;&emsp;
+			 	메인 이미지&emsp;&emsp;
+				<input type="file">&emsp;&emsp;
+				<input type="reset" value="수정">
+				<input type="button" value="삭제">
+			</p>
+			<p>
+			<img src="../images/spring.PNG" width="70" height="70" >&emsp;&emsp;
+			 	상세 이미지1&emsp; 
+				<input type="file">&emsp;&emsp;
+				<input type="reset" value="수정">
+				<input type="button" value="삭제">
+			</p>
+			<p>
+			<img src="../images/americano.jpg" width="70" height="70" >&emsp;&emsp;
+			 	상세 이미지2&emsp;&emsp;
+				<input type="file">&emsp;&emsp; 
+				<input type="button" value="수정">
+				<input type="button" value="삭제">
+			</p>
+		</fieldset>
+	</form>
+</body>
+</html>

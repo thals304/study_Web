@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--24.03.13 time 22:00-22:14
+	today 소감문
+	value에는 보이는 글자 그대로 써주면 되는데 아직 name에는
+	어떤 걸로 써야 잘 쓴 코드가 되는지 잘 모르겠다. 
+ -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex17_연습1
+</title>
+</head>
+<body>
+	<form>
+		<fieldset>
+			<legend>회원 가입 화면</legend>
+			<p>이름 : <input type="text"></p>
+			<p>아이디 : <input type="text" maxlength="12"> 
+			( 아이디는 12자 이내로 입력하세요 <input type="button" value="아이디중복확인"> )
+			</p>
+			<p>비밀번호 : <input type="password"></p>
+			<p>성별 : <input type="radio" name="gender" value="M">남
+					 <input type="radio" name="gender" value="W">여
+			</p>
+			<p>
+				사는 지역 : 
+				<select>
+					<option value="서울" selected>서울</option>
+					<option value="수원">수원</option>
+					<option value="부산">부산</option>
+					<option value="대구">대구</option>
+					<option value="대전">대전</option>
+					<option></option>
+				</select>
+			</p>
+			<p>
+				이메일주소 :
+				<input type="text"> @ <input type="text"> 
+				(이메일수신허용 <input type="radio" name="email" value="허용" checked>허용
+				<input type="radio" name="email" value="거부">거부)
+			</p>
+			<p>
+				직업 :
+				<select>
+					<option value="학생">학생</option>
+					<option value="근로자">근로자</option>
+					<option value="기타">기타</option>
+				</select>
+			</p>
+			<p>
+				자기소개<br>
+				<textarea rows="5" cols="60"></textarea>
+			</p>
+			<p>
+				<input type="submit">
+				<input type="button" value="취소">
+			</p>
+		</fieldset>
+	</form>
+</body>
+</html>

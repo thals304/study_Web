@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!--24.03.13 time 22:17-22:38
+	today 소감문
+	이 문제에서 가장 큰 문제는 우편번호검색이었다
+	분명 link를 사용하면 될 것 같았는데 link의 <a href=""></a>를 사용하면될거라 생각했는데
+	내가 생각한대로 결과가 나오지 않아 심각해진 것 같았다.
+	보니까 문제는 <a href="#">우편번호검색</a> <a></a>사이에 글자를 넣어야 하는데
+	나는 우편번호검색<a href="#"></a> 이렇게 쓰고 있었던 것이다.
+ -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex18_연습1</title>
+</head>
+<body>
+	<form>
+		<fieldset>
+			<legend>배송지 정보</legend>
+			<p> 배송방법
+				<input type="radio" name="method" value="일반택배" checked>일반택배 &emsp;
+				<input type="radio" name="method" value="편의점택배">편의점택배 &emsp;
+				<input type="radio" name="method" value="해외배송">해외배송 &emsp;
+			</p>
+			<p> 배송지 선택
+				<input type="radio" name="choose" value="기본배송지" checked>기본배송지 &emsp;
+				<input type="radio" name="choose" value="새로입력">새로입력 &emsp;
+				<input type="radio" name="choose" value="최근배송지">최근배송지 
+			</p>
+			<p>받으실 분 <input type="text" size="50"></p>
+			<p>휴대폰 번호
+				<select>
+					<option value="010" selected>010</option>
+					<option value="011">011</option>
+					<option value="016">016</option>
+					<option value="017">017</option>
+					<option value="018">018</option>
+					<option value="019">019</option>
+				</select>
+				-
+				<input type="text" max="4" size="6">
+				-
+				<input type="text" max="4" size="6">
+			</p>
+			<p> 유선전화(선택)
+				<select>
+					<option value="02" selected>02</option>
+					<option value="031">031</option>
+					<option value="033">033</option>
+					<option value="041">041</option>
+					<option value="042">042</option>
+					<option value="043">043</option>
+					<option value="044">044</option>
+					<option value="051">051</option>
+					<option value="052">052</option>
+					<option value="053">053</option>
+					<option value="054">054</option>
+					<option value="055">055</option>
+					<option value="061">061</option>
+					<option value="062">062</option>
+					<option value="063">063</option>
+					<option value="064">064</option>
+					<option value="0502">0502</option>
+					<option value="0503">0503</option>
+					<option value="0505">0505</option>
+					<option value="0506">0506</option>
+					<option value="0507">0507</option>
+					<option value="0508">0508</option>
+					<option value="070">070</option>
+				</select>
+				-
+				<input type="text" size="6">
+				-
+				<input type="text" size="6">
+			</p> 
+			<p> 주소
+				<input type="text" size="6">
+				<a href="#">우편번호검색</a>
+			</p>
+			<p>지번 주소 : <input type="text"size="50"></p>
+			<p>도로명 주소 : <input type="text" size="50"></p>
+			<p>나머지 주소 : <input type="text" size="50"></p>
+			<p> 배송 메시지
+				<input type="radio" name="message" value="yes">예
+				<input type="radio" name="message" value="no" checked >아니요
+			</p>
+			<p><input type="text" value="택배 기사님께 전달할 메시지를 남겨주세요." size="50"></p>
+		</fieldset>
+	</form>
+</body>
+</html>

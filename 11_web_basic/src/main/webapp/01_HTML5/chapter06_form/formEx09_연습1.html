@@ -1,10 +1,33 @@
 <!DOCTYPE html>
+<!--24.03.13 time 14:35-14:38
+	today 소감문
+	select는 진짜 예외인 것 같다. 다른 타입들은 name이 있어야 value를 사용할 수 있는데
+	select은 태그라 그런가 option 안에 value라는 속성이 있다는 이런 차별점은 꼭 외워야겠다고
+	생각했다.
+ -->
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Ex09_연습1</title>
 </head>
 <body>
-
+	<form>
+		<input type="radio" name="결제" value="카드">신용카드
+		<input type="radio" name="결제" value="휴대폰">휴대폰 결제
+	</form>
+	<form>
+		<p>
+			<select>
+				<option value="010">010</option>
+				<option value="017">017</option>
+				<option value="018">018</option>
+				<option value="019">019</option>
+			</select>
+			-
+			<input type="text">
+			-
+			<input type="text">
+		</p>
+	</form>
 </body>
 </html>
