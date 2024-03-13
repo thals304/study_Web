@@ -470,3 +470,218 @@
     </body>
     </html>
     ```
+
+- **form**
+    - **form 태그**
+        - 입력양식은 <form>태그로 시작 하고 </form>태그로 마무리 한다.
+        - **action속성**에 입력을 처리하는 서버의 경로(목적지)를 적어준다.
+        - **method속성**에 입력 데이터가 서버로 전송되는 방법(어떻게 보낼지 방법)을 기술한다. GET과 POST 방식이 있고 default(생략)방식은 GET방식이다.
+        - name속성은 입력 데이터의 이름으로 서버로 전송된다.
+            
+            **1) GET방식** : URL주소 뒤에 파라미터를 붙여서 데이터를 전달하는 방식.
+            
+                           ? 기호 앞은 URL주소가 되고
+            
+                           ? 기호 뒤에 오는 값들이 서버로 전달되는 파라미터 값이 된다.
+            
+            **2) POST방식** : 사용자가 입력한 데이터를 URL 주소에 붙이지 않고
+            
+                             HTTP Request 헤더에 포함 시켜서 전송하는 방식이다.
+            
+        - **submit 타입**
+            - 제출 버튼은 데이터를 서버로 전송하는데 사용된다.
+            - 데이터는 name1=Value1&name2=value2형태로 action속성에 지정된 url로 전송된다.
+            - (참고) reset 타입 : form태그에 속해 있는 태그의 값을 초기화 한다.
+    
+    ```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="UTF-8">
+    <title>form 태그</title>
+    </head>
+    <body>
+    
+    	<form action="#" method="post">	<!-- #은 실제로 아무것도 하지 않음 -->
+    		<h3>로그인</h3>
+    		<p> 아이디  : <input type="text"></p>
+    		<p> 패스워드 : <input type="password" ></p>
+    		<p><input type="submit"></p>
+    	</form>
+    	
+    </body>
+    </html>
+    ```
+    
+    - **form 기초**
+        - **fieldset**
+            - 입력요소를 그룹핑하는데 사용되는 태그이다.
+            - fieldset 요소 안에는 다양한 입력 요소를 넣을 수 있으며 그룹의 경계에 선을 그려준다.
+            - <legend> 태그를 사용하면 그룹에 제목을 붙일 수 있다.
+        - **label**
+            - label태그는 <input>요소를 위한 레이블을 정의한다.
+            - label태그의 속성 for를 사용하면 레이블과 input 요소를 서로 연결 할 수 있다.
+            - 마우스로 label을 클릭해도 input요소를 클릭한 것과 똑같은 효과를 낸다.
+            - 명시적 레이블과 암묵적 레이블로 구현 가능하다.
+    
+    ```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="UTF-8">
+    <title>form 기초</title>
+    <body>
+    
+        <form>
+    		<fieldset>
+    			<legend>개인정보 입력</legend>
+    			<!--명시적 레이블-->
+    			<p><label for="userId">아이디 :</label> <input type="text" id="userId"></p>
+    			<p><label for="userName">이름 :</label> <input type="text" id="userName"></p>
+    			<!--암묵적 레이블-->
+    			<p><label>주소 : <input type="text"></label> </p>
+    			<p><label>연락처 : <input type="text"></label></p>
+    			
+    		</fieldset>
+    	</form>
+    </body>
+    </html>
+    ```
+    
+    - **input 타입 및 태그**
+        - **text 타입**
+            - 가장 일반적이며 많이 사용되어지는 입력 요소의 유형이다.
+            - 기본 길이는 20글자이며 **size 속성으로 필드의 크기를 변경**할 수 있다.
+            
+            **[ 추가 속성 ]**
+            
+            **autocomplete** : 자동으로 입력을 완성한다.
+            
+            **autofocus**        : 페이지가 로드 되면 자동으로 입력 포커스를 갖는다.
+            
+            **placeholder**     : 입력 힌트를 필드에 희미하게 보여준다.
+            
+            **readonly**          : 읽기 전용 필드
+            
+            **required**          : 입력양식을 제출하기 전에 반드시 채워져 있어야 함을 나타낸다.
+            
+            **pattern**            : 허용하는 입력의 형태를 정규식으로 지정한다.
+            
+            **maxlength**	: 입력값의 최대 자리수 지정
+            
+            **disabled**          : 데이터 전송 불가 지정 필드
+            
+        
+        ```html
+        <!DOCTYPE html>
+        <html>
+        <head>
+        <meta charset="UTF-8">
+        <title>input 타입 및 태그</title>
+        </head>
+        <body>
+        
+        	<h3>text type</h3>
+        	<form>
+        		<p>상품코드 : <input type="text" required></p>
+        		<p>상품이름 : <input type="text" required autofocus></p>
+        		<p>상품수량 : <input type="text" maxlength="3" size="3"></p>
+        		<p>상품정보 : <input type="text" placeholder="선택사항입니다."></p>
+        		<p>담당자코드 : <input type="text" value="manager1" disabled></p>
+        		<p>담당자이름 : <input type="text" value="000부장" readonly></p>
+        		<p><input type="submit"></p>
+        	</form>
+        	
+        </body>
+        </html>
+        ```
+        
+        - **password 타입**
+            - 패스워드 필드를 정의한다.
+            - 사용자가 입력한 글자는 보이지 않는다.
+        
+        ```html
+        <!DOCTYPE html>
+        <html>
+        <head>
+        <meta charset="UTF-8">
+        <title>input 타입 및 태그</title>
+        </head>
+        <body>
+        
+        	<h3>password type</h3>
+        	<form>
+        		<p>패스워드 : <input type="password"></p>
+        		<p><input type="submit"></p>
+        	</form>
+        	
+        </body>
+        </html>
+        ```
+        
+        - **radio 타입**
+            - 여러 항목 중에서 **하나만** 선택할 수 있다.
+            - **name이 같아야** **동일한 그룹**으로 취급이 된다.
+            
+            → name을 다르게 정해주면 여러개 항목 선택 가능
+            
+            - 선택된 라디오 버튼의 value값이 name=value 형태로 전달이 된다.
+            
+            **→ name이 있어야 value를 사용할 수 있음**
+            
+            - **checked 속성**을 이용해 엘리먼트를 직접 선택할 수 있다.
+        
+        ```html
+        <!DOCTYPE html>
+        <html>
+        <head>
+        <meta charset="UTF-8">
+        <title>input 타입 및 태그</title>
+        </head>
+        <body>
+        
+        	 <h3>radio type</h3>
+        	<form>
+        		<input type="radio" name="month" value="1"> 1개월
+        		<input type="radio" name="month" value="2"> 2개월
+        		<input type="radio" name="month" value="3" checked> 3개월
+        		<input type="radio" name="year" value="4"> 4개월
+        		<input type="radio" name="year" value="5"> 5개월
+        		<input type="radio" name="year" value="6"> 6개월
+        		<p><input type="submit"></p>
+        	</form>
+        	
+        </body>
+        </html>
+        ```
+        
+        - **checkbox 타입**
+            - 체크박스는 사용자가 여러 항목을 동시에 선택할 수 있다.
+            - **radio type과 같이 name 속성이 동일**해야 된다.
+            - radio type과 같이 **checked 속성**을 지정할 수 있다.
+            - radio type과 같이 name=value형태로 데이터가 전송된다.
+        
+        ```html
+        <!DOCTYPE html>
+        <html>
+        <head>
+        <meta charset="UTF-8">
+        <title>input 타입 및 태그</title>
+        </head>
+        <body>
+        	<h3>checkbox type</h3>
+        	<form>
+        		<input type="checkbox" name="month" value="1" checked> 1개월
+        		<input type="checkbox" name="month" value="2"> 2개월
+        		<input type="checkbox" name="month" value="3" checked> 3개월
+        		<input type="checkbox" name="year" value="4"> 4개월
+        		<input type="checkbox" name="year" value="5"> 5개월
+        		<input type="checkbox" name="year" value="6"> 6개월
+        		<p><input type="submit"></p>
+        	</form>
+        	
+        </body>
+        </html>
+        ```
+        
+       
