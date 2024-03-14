@@ -684,7 +684,182 @@
         </html>
         ```
 
-        - **select 태그**
-            - 메뉴를 표시하고 사용자로 선택하게 한다.
-            - <select>요소는 **항상 <option>요소**와 함께 사용된다.
-         
+        - **button 타입 & 태그**
+            - 일반적인 버튼은 input type="button"으로 생성하는 방법과 button태그로 생성하는 방법이 있다.
+            - 버튼과 같이 자주 사용되는 onclick()함수는 버튼이 클릭되면 동작하는 함수이다.
+        
+        ```html
+        <!DOCTYPE html>
+        <html>
+        <head>
+        <meta charset="UTF-8">
+        <title>input 타입 및 태그</title>
+        </head>
+        <body>
+        	<h3>button type & tag </h3>
+        	<form>
+        		<p><input type="button" value="로그인"></p>
+        		<p><button>로그인</button></p>
+        		<p><input type="submit"></p>
+        	</form>
+        	
+        </body>
+        </html>
+        ```
+        
+        - **textarea 태그**
+            - 여러 줄의 텍스트를 입력 받을 때 사용하는 태그.
+            - 영역의 크기는 **rows와 cols**로 설정한다.
+            - 사용자가 초기 공간보다 더 많은 텍스트를 입력하면 자동으로 스크롤바가 생성된다.
+        
+        ```html
+        <!DOCTYPE html>
+        <html>
+        <head>
+        <body>
+        <meta charset="UTF-8">
+        <title>input 타입 및 태그</title>
+        </head>
+        	<h3>textarea tag</h3>
+        		<form>
+        			<textarea rows="10" cols="30" name="textarea1"></textarea>
+        			<textarea rows="10" cols="30" name="textarea2">초기값은 이곳에 작성</textarea>
+        			<textarea rows="10" cols="30" name="textarea3" placeholder="100자 이내로 작성하세요." maxlength="100">초기값은 이곳에 작성</textarea>
+        			<p><input type="submit"></p>
+        		</form>
+        		
+        </body>
+        </html>
+        ```
+        
+        - **file 타입**
+            - 사용자가 파일을 선택해서 서버로 업로드해야 하는 경우 사용한다.
+            - 웹 브라우저마다 다르게 구현되고 있다.
+            - form의 메서드 전송 방식이 반드시 post이어야 하며 enctype="multipart/form-data" 속성을 반드시 지정해야 한다.
+            - multiple 속성을 지정하면 여러 개의 파일을 업로드 할 수 있다.
+        
+        ```html
+        <!DOCTYPE html>
+        <html>
+        <head>
+        <meta charset="UTF-8">
+        <title>input 타입 및 태그</title>
+        </head>
+        <body>
+         <h3>file type</h3>
+        
+        	<form method="post" enctype="multipart/form-data">
+        		<p>파일1 : <input type="file"></p>
+        		<p>파일2 : <input type="file" ></p>
+        		<p>파일 멀티플 : <input type="file" multiple name="files"></p>
+        		<p><input type="submit"></p>
+        	</form>
+        	
+        </body>
+        </html>
+        ```
+        
+        - **hidden 타입**
+            - 사용자는 볼 수 없고 서버로 데이터를 전송하고 싶을 때 사용 한다.
+            - hidden 요소의 name과 value값이 서버로 전달된다.
+        
+        ```html
+        <!DOCTYPE html>
+        <html>
+        <head>
+        <meta charset="UTF-8">
+        <title>input 타입 및 태그</title>
+        </head>
+        <body>
+         <h3>hidden type</h3>
+        	<form>
+        		<p>아이디 : <input type="text" name="userId"></p>
+        		<input type="hidden" name="isPC" value="true">
+        		<input type="hidden" name="iTime" value="2024-03-13">
+        		<input type="hidden" name="bowserCd" value="chrome">
+        		<p><input type="submit"></p>
+        	</form>
+        	
+        </body>
+        </html>
+        ```
+        
+        - **date 타입**
+            - 사용자로 하여금 날짜를 선택하게 한다.
+            - **min,max속성**을 사용해 특정 기간에서만 날짜를 선택하도록 할 수 있다.
+            - 전송되는 데이터의 타입은 Date 타입이 아니라 **String 타입으로 전송된다!!**
+        
+        ```html
+        <!DOCTYPE html>
+        <html>
+        <head>
+        <meta charset="UTF-8">
+        <title>input 타입 및 태그</title>
+        </head>
+        <body>
+         <h3>date type</h3>
+        	<form>
+        		<p>예약일1 : <input type="date" name="date1"></p>
+        		<p>예약일2 : <input type="date" name="date2" value="2024-03-13"></p>
+        		<p>예약일3 : <input type="date" name="date3" value="2024-03-13" min="2024-03-13" max="2024-03-31"></p>
+        		<p><input type="submit"></p>
+        	</form>
+        	
+        </body>
+        </html>
+        ```
+        
+        - **number 타입**
+            - 정수를 입력받을 수 있다.
+            - 브라우저에 따라서 다르게 표시된다.
+            
+            **[ 속성 ]**
+            
+            value     : 초깃값
+            
+            step	  : 증감 숫자
+            
+            min , max : 최소값, 최대값
+            
+        
+        ```html
+        <!DOCTYPE html>
+        <html>
+        <head>
+        <meta charset="UTF-8">
+        <title>input 타입 및 태그</title>
+        </head>
+        <body>
+         <h3>number type</h3>
+        	<form>
+        		<p>주문수량 : <input type="number" name="orderQty"></p>
+        		<p>신발사이즈 선택1 : <input type="number" name="size1" value="230" step="5"></p>
+        		<p>신발사이즈 선택2 : <input type="number" name="size1" value="230" step="10" min="220" max="270"></p>
+        		<p><input type="submit"></p>
+        	</form>
+        	
+        </body>
+        </html>
+        ```
+        
+        - **email 타입**
+            - 모습은 text타입과 비슷하지만 이메일에 유효한 주소를 검사한다.
+            - 유효값 확인은 submit을 클릭할 경우에 진행된다.
+        
+        ```html
+        <!DOCTYPE html>
+        <html>
+        <head>
+        <meta charset="UTF-8">
+        <title>input 타입 및 태그</title>
+        </head>
+        <body>
+         <h3>email type</h3>
+        	<form>
+        		<p><input type="email" name="email"></p>
+        		<p><input type="submit"></p
+        	</form>
+        	
+        </body>
+        </html>
+        ```
