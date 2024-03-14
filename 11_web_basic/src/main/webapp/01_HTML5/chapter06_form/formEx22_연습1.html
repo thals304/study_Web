@@ -1,11 +1,51 @@
 <!DOCTYPE html>
-<!--24.03.13 time -->
+<!--24.03.13 time 23:55-24:03
+	today 소감문
+	여태까지 typr="text"에서 placeholder를 value로 착각하고 계속 쓰고 있었다.
+	앞에 이런 부분들 다시 고쳐야겠다. 지금이라도 알아서 너무 다행이다.
+-->
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Ex22_연습1</title>
 </head>
 <body>
-
+	<h1>회원가입</h1>
+	<h4>정보입력</h4>
+	<p>
+		<input type="checkbox" name="information_agree" value="개인정보 수집 및 이용안내(필수)">"개인정보 수집 및 이용안내(필수)
+		<a href="#content1">내용보기</a>
+	</p>
+	<p id="content1">
+		입력하신 정보는 회원 유무 확인용으로 수집/이용되며,<br>
+		가입 회원에 한해 입력하신 모든 정보가 저장되는데<br>
+		동의합니다.
+	</p>
+	<h4>인증정보</h4>
+	<form>
+		<fieldset>
+			<legend>인증 정보 입력</legend>
+			<p> 이름
+				<input type="text" placeholder="10자리 내 입력">
+			</p>
+			<p> 생년월일/성별
+				<input type="text" placeholder="8자리 입력(ex.19850101)"> <br>
+				성별 : 
+				<select>
+					<option value="noSelect" selected>성별</option>
+					<option value="남자">남자</option>
+					<option value="여자">여자</option>
+				</select>
+			</p>
+			<p>
+				휴대폰 번호
+				<a href="#">휴대폰이 없는 해외거주자?</a><br>
+				<input type="text" placeholder="숫자만입력(ex.01012345678)" size="25"><br>
+				<input type="button" value="인증번호 요청">
+			</p>
+			<p><input type="button" value="동의 및 인증 확인"></p>
+			약관 동의를 진행해주세요
+		</fieldset>
+	</form>
 </body>
 </html>

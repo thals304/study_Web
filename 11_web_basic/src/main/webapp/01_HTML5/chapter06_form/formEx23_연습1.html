@@ -1,10 +1,73 @@
 <!DOCTYPE html>
+<!--24.03.14 11:50-12:08 time
+	today 소감문 
+	일단 체크하는 것에서 필수라고 쓰여져 있는 것들에 required를 써야되는지 모르겠다
+	정답예시에는 안쓰여져 있는 것 같은데 난 일단 그냥 썼다.
+	오랜만에 ul li를 하다보니 까먹고 헷갈리는 내 모습을 보고 배운지 얼마 안지났는데
+	나의 복습에 대해 다시 한 번 중요성을 갖게 해준 것 같다.
+ -->
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Ex23_연습1</title>
 </head>
 <body>
-
+	<h1>약관동의</h1>
+	<p><input type="checkbox" name="agree" value="전체동의">전체동의</p>
+	<ul>
+		<p>
+			<li>
+				<input type="checkbox" name="agree" value="교보문고 이용약관" required>교보문고 이용약관(필수)
+				<a href="#">내용보기</a>
+			</li>
+			<li>
+				<input type="checkbox" name="agree" value="개인정보 수집" required>개인정보 수집 및 이용안내(필수)
+				<a href="#">내용보기</a>
+			</li>
+			<li>
+				<input type="checkbox" name="agree" value="개인정보 수집 선택">개인정보 수집 및 이용(선택)
+				<a href="#">내용보기</a>
+			</li>
+			<li>
+				<input type="checkbox" name="agree" value="제3자 정보제공 동의,꾸밍">제3자 정보제공 동의 교보핫트랙스,꾸밍(선택)
+			<a href="#">내용보기</a>
+			</li>
+			<li>
+				<input type="checkbox" name="agree" value="제3자 정보제공 동의">제3자 정보제공 동의<br>
+				교보라이프플래닉 생명보험(선택)
+				<a href="#">내용보기</a>
+			</li>
+			<li>
+				<input type="checkbox" name="agree" value="마케팅(광고) 동의">마케팅(광고) 수신여부 동의(선택)
+				<ul>
+					<li><input type="checkbox" name="advertisement" value="SMS">SMS</li>
+					<li><input type="checkbox" name="advertisement" value="이메일">이메일</li>
+				</ul>
+			</li>
+		</p>
+	</ul>
+	<p> * 회원가입, 주문배송, 약관안내, 회사 주요정책 관련 내용은 수신동의여부와 관계없이 발송됩니다.</p>
+	<ul>
+		<li>개인정보 유효기간제</li>
+		<ul>
+			<li>
+				<input type="radio" name="year" value="1">1년
+			</li>
+			<li>
+				<input type="radio" name="year" value="3">3년
+			</li>
+			<li>
+				<input type="radio" name="year" value="5">5년
+			</li>
+			<li>
+				<input type="radio" name="year" value="break">탈퇴시까지
+			</li>
+		</ul>
+		<li>개인정보 위탁안내(고지)
+			<a href="#">내용보기</a>
+		</li>
+	</ul>
+	<p><input type="button" value="동의하기"></p>
+	약관동의 완료되었습니다. 아래 정보를 입력해 주세요.
 </body>
 </html>
