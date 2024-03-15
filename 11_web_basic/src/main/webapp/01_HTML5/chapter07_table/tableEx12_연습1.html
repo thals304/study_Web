@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--24.03.14 time 20:46-20:57
+	today
+	전화번호 select의 option은 정답예시처럼 너무 많이 하기에는 내가 체력이 안될거 같아서
+	그냥 4개 정도만 했다.
+-->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ex12_연습1</title>
+</head>
+<body>
+	<h1>2.배송지 정보</h1>
+	<table border="1">
+		<tr>
+			<td>배송방법</td>
+			<td>
+				<input type="radio" name="delivery_mathod" value="일반" checked>일반택배
+				<input type="radio" name="delivery_mathod" value="편의점">편의점택배
+				<input type="radio" name="delivery_mathod" value="해외">해외택배
+			</td>
+		</tr>
+		<tr>
+			<td>배송지 선택</td>
+			<td>
+				<input type="radio" name="delivery" value="기본" checked>기본배송지
+				<input type="radio" name="delivery" value="새로입력">새로입력
+				<input type="radio" name="delivery" value="최근배송지">최근배송지
+			</td>
+		</tr>
+		<tr>
+			<td>받으실 분</td>
+			<td><input type="text"></td>
+		</tr>
+		<tr height="30" width="50">
+			<td>휴대폰 번호</td>
+			<td>
+				<select>
+					<option value="010">010</option>
+					<option value="011">011</option>
+					<option value="017">017</option>
+					<option value="070">070</option>
+				</select>
+				-
+				<input type="text" size="6">
+				-
+				<input type="text" size="6">
+			</td>
+		</tr>
+		<tr>
+			<td>유선전화(선택)</td>
+			<td>
+				<select>
+					<option value="02">02</option>
+					<option value="05">05</option>
+					<option value="07">07</option>
+					<option value="11">11</option>
+				</select>
+				-
+				<input type="text" size="6">
+				-
+				<input type="text" size="6">
+			</td>
+		</tr>
+		<tr>
+			<td>주소</td>
+			<td>
+				<p><input type="text"> <a href="#">우편번호검색</a></p>
+				<p>지번 주소 : <input type="text"></p>
+				<p>도로명 주소 : <input type="text"></p>
+				<p>나머지 주소 : <input type="text"></p>
+			</td>
+		</tr>
+		<tr>
+			<td>배송 메시지</td>
+			<td><input type="text" placeholder="택배 기사님께 전달할 메시지"></td>
+		</tr>
+		<tr>
+			<td>선물 포장</td>
+			<td>
+				<input type="radio" name="present_packing" value="yes">예
+				<input type="radio" name="present_packing" value="no" checked>아니요
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
