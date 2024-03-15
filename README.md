@@ -863,3 +863,261 @@
         </body>
         </html>
         ```
+
+- **테이블(table)**
+    - **테이블**
+        - 표를 만들어주는 HTML태그
+        - 테이블의 기본적인 구성 요소로 table , tr(table row) , td(table data) 태그가 있다.
+            
+            **table**	: 테이블을 생성하는 태그
+            **tr**    : 하나의 행을 나타내며 행과 열의 수는 제한이 없다.
+            **td**    : 행 안에 속한 열 태그
+            
+        
+        ```html
+        <!DOCTYPE html>
+        <html>
+        <head>
+        <meta charset="UTF-8">
+        <title>테이블 기초</title>
+        </head>
+        <body>
+        
+        		<h3>표 만들기 (1행 1열)</h3>
+        		<table border="1">
+        			<tr>
+        				<td>1행 1열</td>
+        			</tr>
+        		</table>
+        		
+        		<hr>
+        		
+        		<h3>표 만들기(1행 2열)</h3>
+        		<table border="1">
+        			<tr>
+        				<td>1행 1열</td>
+        				<td>1행 2열</td>
+        			</tr>
+        		</table>
+        		
+        		<hr>
+        		
+        		<h3>표 만들기(2행 1열)</h3>
+        		<table border="1">
+        			<tr>
+        				<td>1행 1열</td>
+        			</tr>
+        			<tr>
+        				<td>2행 1열</td>
+        			</tr>
+        		</table>
+        		
+        		<h3>표 만들기(2행 2열)</h3>
+        		<table border="1">
+        			<tr>
+        				<td>1행 1열</td>
+        				<td>1행 2열</td>
+        			</tr>
+        			<tr>
+        				<td>2행 1열</td>
+        				<td>2행 2열</td>
+        			</tr>
+        		</table>
+        </body>
+        </html>
+        ```
+        
+    - **테이블 관련 태그 및 속성**
+        
+        **[ 태그 ]**
+        
+        **caption :** 테이블에 제목을 중앙 정렬로 표시한다.
+        
+        **th :** 헤더 효과(글자크기, 진하게, 가운데정렬)의 기능을 한다.
+        
+        **thead , tbody , tfoot : 관리 문법**
+        
+        thead : 표의 머리
+        tbody : 표의 본문
+        tfoot : 표의 바닥
+        
+        - sementic tag : 문서의 의미를 만들어 주는 구조
+        - CSS , Javascript , Jquery로 타겟을 지정하는 부분에 용이하다.
+        - thead요소에는 관용적으로 <th>태그를 사용한다.
+        
+        **colgroup , col** : 열의 구조적인 그룹화를 하기 위해 사용한다.
+        
+        **[ 속성 ]**
+        
+        **border** 		: 테이블의 테두리
+        
+        **bordercolor**     : 테이블의 테두리 색상 
+        
+        **width** 		: 테이블 가로 크기
+        
+        **height**  	        : 테이블 세로 크기
+        
+        **align** 		: 정렬
+        
+        **bgcolor** 	        : 배경색
+        
+        **colspan** 	        : 가로 합병(열 합병)
+        
+        **rowspan** 	        : 세로 합병(행 합병)
+        
+      
+        
+        ```html
+        <!DOCTYPE html>
+        <html>
+        <head>
+        <meta charset="UTF-8">
+        <title>테이블 관련 태그 및 속성</title>
+        </head>
+        <body>
+        	
+        	<table border="1">
+        		<caption>거래처 리스트</caption>
+        		<colgroup>
+        			<col style="background-color:springgreen">
+        			<col style="background-color: yellow">
+        			<col style="background-color: pink">
+        		</colgroup>
+        		<thead>
+        			<tr>
+        				<th>코드</th>
+        				<th>거래처명</th>
+        				<th>사업자(주민)번호</th>
+        			</tr>
+        		</thead>
+        		<tbody align="center">
+        			<tr>
+        				<td>0000102</td>
+        				<td>광산산업</td>
+        				<td>129-44-00510</td>
+        			</tr>
+        			<tr>
+        				<td>0000157</td>
+        				<td>법원</td>
+        				<td></td>
+        			</tr>
+        			<tr>
+        				<td>0000182</td>
+        				<td>일월산업</td>
+        				<td>120-01-11111</td>
+        			</tr>
+        		</tbody>
+        		<tfoot align="right">
+        			<tr>
+        				<td>폐업 0</td>
+        				<td>휴업 14</td>
+        				<td>오류 2</td>
+        			</tr>
+        		</tfoot>
+        	</table>
+        	
+        </body>
+        </html>
+        ```
+        
+    - **테이블 셀 병합**
+        - **colspan :** 컬럼(열)들을 병합한다.
+        - **rowspan** : 로우(행)들을 병합한다.
+        
+       
+        
+        ```html
+        <!DOCTYPE html>
+        <html>
+        <head>
+        <meta charset="UTF-8">
+        <title>테이블 셀 병합</title>
+        </head>
+        <body>
+        
+        	<h3>열 합치기</h3>
+        	<table border="1">
+        		<tr>
+        			<td colspan="3" align="center">부가세 유형별 요약</td>
+        			
+        		</tr>
+        		<tr>
+        			<td>부가세유형코드</td>
+        			<td>금액</td>
+        			<td>세액</td>
+        		</tr>
+        		<tr>
+        			<td>10152</td>
+        			<td>70,000,000</td>
+        			<td>7,000,000</td>
+        		</tr>
+        		<tr>
+        			<td colspan="2">합계</td>
+        		</tr>
+        	</table>
+        	
+        	<hr>
+        	
+        	<h3>행 합치기</h3>
+        	<table border="1">
+        		<tr>
+        			<td rowspan="3">과세</td>
+        			<td>세금계산서발급분</td>
+        		</tr>
+        		<tr>
+        			<td>신용카드</td>   
+        		</tr>
+        		<tr>
+        			<td>현금영수증</td>   
+        		</tr>
+        		<tr>
+        			<td>기타</td>   
+        			<td></td>   
+        		</tr>
+        	</table>
+        	
+        </body>
+        </html>
+        ```
+        
+    - **테이블 안의 엘리먼트**
+        - 테이블 셀 안의 요소에는 다른 HTML요소를 넣을 수 있다.
+        Ex) 리스트 , 이미지 , 파일 , 등등
+    - **테이블 크기 조절**
+        - height , width , align 옵션을 이용하여 크기를 조절할 수 있고 데이터를 정렬 할 수 있다.
+        - align에는 center right left가 있음
+        - CSS를 사용하면 중복되는 코드를 줄여 훨씬 간단하고 효율적으로 구현할 수 있다.
+        
+       
+        
+        ```html
+        <!DOCTYPE html>
+        <html>
+        <head>
+        <meta charset="UTF-8">
+        <title>테이블 크기 조절</title>
+        </head>
+        <body>
+        
+        	<table border="1">
+        		<tr height="80">
+        			<td colspan="2" align="center" width="400">자금출납장</td>
+        		</tr>
+        		<tr height="40" align="center">
+        			<td>거래처</td>
+        			<td>(주)한국통신</td>
+        		</tr>
+        		<tr height="40">
+        			<td align="center">입금</td>
+        			<td align="right">1,000,000</td>
+        		</tr>
+        		<tr height="40">
+        			<td align="center">출금</td>
+        			<td align="right">330,000</td>
+        		</tr>
+        	</table>
+        	
+        	
+        </body>
+        </html>
+        ```
