@@ -1199,3 +1199,482 @@
         ```
 
 ### CSS (Style Sheet) > 디자인 적용 
+
+- **기초**
+    - **인라인 스타일시트**
+        - 각각의 요소마다 스타일을 지정하는 것
+    
+    ```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="UTF-8">
+    <title>인라인 스타일 시트</title>
+    </head>
+    <body>
+    
+    	<h1 style="color: red">This is a headline1</h1>
+    	<p style="color: blue">This is a paragraph1</p>
+    	
+    	<h1 style="color: red">This is a headline2</h1>
+    	<p style="color: blue">This is a paragraph2</p>
+    	
+    	<h1 style="color: red">This is a headline3</h1>
+    	<p style="color: blue">This is a paragraph3</p>
+    	
+    </body>
+    </html>
+    ```
+    
+    - **내부 스타일시트**
+        - 한 페이지의 전체 스타일을 지정하는 법
+        - head 내부에 style이라는 태그를 통해 지정할 수 있음
+    
+    ```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="UTF-8">
+    <title>내부스타일 시트</title>
+    <style>
+    	h1 {color :green;}
+    	p  {color :purple;}
+    </style>
+    </head>
+    <body>
+    
+    	<h1>This is a headline1</h1>
+    	<p>This is a paragraph1</p>
+    	
+    	<h1>This is a headline2</h1>
+    	<p>This is a paragraph2</p>
+    	
+    	<h1>This is a headline3</h1>
+    	<p>This is a paragraph3</p>
+    	
+    </body>
+    </html>
+    ```
+    
+    - **외부 스타일시트**
+        - 전체 웹 페이지의 스타일을 하나의 스타일 파일로 변경할 수 있다.
+        - css 파일을 만들어 그곳에서 스타일 설정을 해주고 head에서 링크로 연결해 줘야함
+    
+    ```html
+    @charset "EUC-KR";
+    
+    h1 { color:deeppink;}
+    p  { color:chartreuse;}
+    ```
+    
+    ```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="UTF-8">
+    <title>외부스타일 시트</title>
+    <link href="myStyle.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+    
+    	<h1>This is a headline1</h1>
+    	<p>This is a paragraph1</p>
+    	
+    	<h1>This is a headline2</h1>
+    	<p>This is a paragraph2</p>
+    	
+    	<h1>This is a headline3</h1>
+    	<p>This is a paragraph3</p>
+    	
+    </body>
+    </html>
+    ```
+    
+    >+) CSS(스타일시트)의 우선순위**
+    >
+    >1) 인라인 시트**
+    >   
+    >2) 내부스타일 시트**
+    >   
+    >3) 외부스타일 시트**
+    
+- **선택자 ( Selector )**
+    - **Tag selector ( 태그 선택자 )**
+        - html tag를 작성하여 선택한다.
+        - **,** 를 이용하여 **복수의 태그**를 동시에 지정할 수 있다.
+        
+        **[ 선택자 형식 ]**
+        
+        **선택자 {
+                    속성 : 값;
+        }**
+        
+    
+    ```html
+    <!doctype html>
+    <html>
+    <head>
+    <meta charset="utf-8">
+    <title>태그 선택자</title>
+    <style>
+    
+    	p {
+    		background-color: blue;
+    	}
+    	h1 {
+    		background-color: yellow;
+    	}
+    	
+    	h2 , h3 {
+    		background-color: red;
+    	}
+    	h4 , h5 , h6 {
+    		background-color: green;
+    	}
+    	
+    </style>
+    </head>
+    <body>
+    
+    	<p>This is a paragraph.</p>
+    	<h1>This is a heading1.</h1>
+    	<h2>This is a heading2.</h2>
+    	<h3>This is a heading3.</h3>
+    	<h4>This is a heading4.</h4>
+    	<h5>This is a heading5.</h5>
+    	<h6>This is a heading6.</h6>
+    	
+    </body>
+    </html>
+    ```
+    
+    - **Id selector**
+        - html 태그 속성에 **id속성을 추가**한다.
+        - css의 요소의 앞에 **#을 붙여서 id를 선택**한다.
+        - 주로 자바스크립트 , 제이쿼리 선택자로 사용한다.
+    
+    ```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="utf-8">
+    <title>ID 선택자</title>
+    <style>
+    
+    	#special1 {
+    		background-color: deeppink;
+    	}
+    	#special2 , #special3{
+    		background-color: skyblue;
+    	}
+    </style>
+    </head>
+    <body>
+    
+    	<p id="special1">id가 special1인 단락1입니다.</p>
+    	<p id="special2">id가 special2인 단락2입니다.</p>
+    	<p id="special3">id가 special3인 단락3입니다.</p>
+    	
+    </body>
+    </html>
+    ```
+    
+    - **Class selector**
+        - 클래스 선택자는 css요소 앞에 **.을 이용해서 정의**된다.
+        - id선택자는 하나의 요소만을 선택할 때 사용하며 클래스 선택자는 **추가로 여러 개의 요소를 한꺼번에 선택하여 사용**한다.
+        - 주로 CSS 선택자로 사용한다.
+    
+    ```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="utf-8">
+    <title>Class 선택자</title>
+    <style>
+    
+    	.type1 {
+    		background-color: greenyellow;
+    	}
+    	.type2 , .type3 , .type4 {
+    		background-color: lightpink;
+    	}
+    	
+    	.add1 {
+    		color:white;
+    	}
+    	.add2 {
+    		font-family: cursive;
+    	}
+    	
+    </style>
+    </head>
+    <body>
+    
+    	<h1 class="type1">class가 type1인 헤딩입니다.</h1>
+    	<h1 class="type1">class가 type1인 헤딩입니다.</h1>
+    	<h1 class="type1">class가 type1인 헤딩입니다.</h1>
+    	<p class="type1">class가 type1인 단락입니다</p>
+    	<p class="type2">class가 type2인 단락입니다</p>
+    	<!-- 띄어쓰기를 사용하여 복수의 class를 적용할 수 있다. -->
+    	<p class="type3 add1" >class가 type3인 단락입니다</p>
+    	<p class="type4 add1 add2">class가 type4인 단락입니다</p>
+    	
+    </body>
+    </html>
+    
+    ```
+    
+    - **속성 선택자 (attributes)**
+        - 각각의 요소는 속성(attribute)를 가질 수 있으므로 속성 값을 이용하여 관련된 엘리먼트에 접근이 가능하다.
+        
+        
+        ```html
+        <!doctype html>
+        <html>
+        <head>
+        <meta charset="utf-8">
+        <title>속성 선택자(attributes)</title>
+        <style>
+        	
+        	[type="text"] {
+        		background-color: lightcoral;
+        	}
+        	[name="pwd"]{
+        		background-color: green;
+        	}
+        	select[name="skillSelect"]{
+        		background-color: wheat;
+        	}
+        	/*
+        		[cols="30"]
+        		[name="content"]으로 해도 가능/ rows, cols은 나중의 수정할 때 위험성이 큼
+        	*/
+        	[rows="10"]{
+        		background-color: yellow;
+        	}
+        	
+        </style>
+        </head>
+        <body>
+        
+        	<form>
+        		<fieldset>
+        			<p>id : <input type="text" name="id"></p>
+        			<p>password : <input type="password" name="pwd"></p>
+        			<p>skill select:
+        				<select name="skillSelect">
+        					<option>html</option>
+        					<option>css</option>
+        					<option>javascript</option>
+        				</select>
+        			</p>
+        			<p>content:<br>
+        				<textarea rows="10" cols="30" name="content"></textarea>
+        			</p>
+        		</fieldset>
+        	</form>
+        </body>
+        </html>
+        ```
+        
+    - **자식, 자손 선택자**
+        - **자식 선택자**
+            - **>**를 사용하여 선택한다.
+            - 계층 구조의 바로 아래 속해 있는 자식요소를 선택한다.
+            
+            예시) s1 > s2 	:  s1의 직계자식 요소인 s2를 선택한다.
+            
+        - **자식 + 자손 선택자**
+            - **띄어쓰기**를 사용하여 선택한다.
+            - 계층 구조 하위에 있는 모든 요소를 선택한다.
+            
+            예시) s1 s2 	:  s1하위에 포함된 s2요소를 선택한다.
+            
+            - vs .type2 , p :는 class="type2"와 <p> 요소 선택
+        
+       
+        
+        ```html
+        <!DOCTYPE html>
+        <html>
+        <head>
+        <meta charset="utf-8">
+        <title>자식 , 자손 선택자</title>
+        <style>
+        	
+        	/* '>'을 사용한 예시 */
+        	.type1 > p {
+        		color: gold;
+        	}
+        	.type1-2 > p {
+        		color: red;
+        	}
+        	
+        	.type2 {
+        		color: green;
+        	}	
+        	.type2 p {
+        		color: blue;
+        	} 
+        </style>
+        </head>
+        <body>
+        	<div class="type1">
+        		<div class="type1-1">
+        			<h1>type1-1스타일의 h1태그</h1>
+        		</div>
+        		<div class="type1-2">
+        			<p>type1-2스타일의 p태그</p>
+        		</div>	
+        		<div class="type1-3">
+        			<p>type1-3스타일의 p태그</p>
+        			<div class="type1-3-1">
+        				<p>type1-3-1의 p태그</p>
+        			</div>
+        		</div>
+        	</div>
+        	
+        	<hr>
+        	
+        	<div class="type2">
+        		<div class="type2-1">
+        			<h1>type2-1스타일의 h1태그</h1>
+        		</div>
+        		<div class="type2-2">
+        			<p>type2-2스타일의 p태그</p>
+        		</div>	
+        		<div class="type2-3">
+        			<p>type2-3스타일의 p태그</p>
+        			<div class="type2-3-1">
+        				<p>type2-3-1의 p태그</p>
+        			</div>
+        			<div class="type2-3-2">
+        				<p>type2-3-2의 p태그</p>
+        				<div class="type2-3-2-1">
+        					<p>type2-3-2-1의 p태그</p>
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        </body>
+        </html>
+        ```
+        
+    - **가상(의사) 클래스 ( Pseudo-Class )**
+        - 선택자 뒤에 **:**(콜론)이 붙여 가상(의사)클래스로 사용한다.
+        - 요소의 특정 상태나 위치에 따라 스타일을 정의하는 데 사용한다.
+        - 가상(의사) 클래스를 사용하여 프런트앤드 코드 작성을 효과적으로 할 수 있다.
+        - 가상(의사) 클래스의 선택자의 종류는 필요에 따라 구글링하여 학습한다.
+        
+        [예시]
+        
+        :active
+      
+        :hover
+      
+        :checked
+      
+        :focus
+      
+        :nth-child
+        
+        
+        ```html
+         <!doctype html>
+        <html>
+        <head>
+        <meta charset="utf-8">
+        <title>가상클래스</title>
+        <style>
+        
+        	/* 사용 예시1 */
+        	/* 리스트의 첫번째 요소*/	 li:first-child  {color :red;} /* first-child : 첫번째 요소 선택*/
+        	/* 리스트의 두번째 요소*/	 li:nth-child(2) {color :blue;} /* nth-child() : n번째 요소 선택*/
+        	/* 리스트의 세번째 요소*/	 li:nth-child(3) {color :orange;}
+        	/* 리스트의 두번째 요소*/	 li:nth-child(4) {color :yellow;}
+        	/* 리스트의 마지막 요소 */	 li:last-child   {color :greenyellow;} /* last-child : 마지막 요소 선택*/
+        	
+        	
+        	/* 사용 예시 2 */
+        	/* 테이블의 첫번째 tr */ 	tr:first-child  {background-color: lightyellow;}
+        	/* 테이블의 3번째 tr */ 	tr:nth-child(3) {background-color: pink;}
+        	/* 테이블의 5번째 tr */	tr:nth-child(5) {background-color: lightgreen;}	
+        	/* 테이블의 7번째 tr */	tr:nth-child(7) {background-color: cornflowerblue;}	
+        	/* 테이블의 마지막 tr */	tr:last-child   {background-color: plum;}
+        	 	
+        	 	
+        	 /* 사용 예시 3 */
+        	 /* 방문되지 않은 링크의 스타일 */ a:link      {color: red;}		
+           /* 방문된 링크의 스타일 */		 a:visited     {color: green;}		
+           /* 마우스가 위에 있을 때의 스타일 */	a:hover  {color: blue;}
+           /* 마우스로 클릭되는 때의 스타일 */	a:active {color: yellow;}
+        
+        </style>
+        </head>
+        <body>
+        
+        	<ul>
+        		<li>a</li>
+        		<li>b</li>
+        		<li>c</li>
+        		<li>d</li>
+        		<li>e</li>
+        	</ul>
+        	
+        	<hr>
+        	
+        	<table border="1">
+        		<tbody align="center">
+        			<tr>
+        				<td>정가</td>
+        				<td>50,000원</td>
+        			</tr>
+        			<tr>
+        				<td>판매가</td>
+        				<td>45,000(10%할인)</td>
+        			</tr>
+        			<tr>
+        				<td>포인트적립</td>
+        				<td>3P 적립</td>
+        			</tr>
+        			<tr>
+        				<td>포인트 추가적립</td>
+        				<td>만원 이상 구매시 1,000P 추가 적립<br>5만원 이상 구매시 2,000P 추가 적립<br>편의점 배송 이용시 300P 추가 적립</td>
+        			</tr>
+        			<tr>
+        				<td>발행일</td>
+        				<td>2021-01-01</td>
+        			</tr>
+        			<tr>
+        				<td>페이지 수</td>
+        				<td>350쪽</td>
+        			</tr>
+        			<tr>
+        				<td>ISBN</td>
+        				<td>1234567-1234567</td>
+        			</tr>
+        			<tr>
+        				<td>배송료</td>
+        				<td>2,000원</td>
+        			</tr>
+        			<tr>
+        				<td>배송안내</td>
+        				<td>
+        					[당일배송] 당일배송 서비스 시작!<br> 
+        					[휴일배송] 휴일에도 배송받는 Bookshop
+        				</td>
+        			</tr>
+        			<tr>
+        				<td>도착예정일</td>
+        				<td>지금 주문 시 내일 도착 예정</td>
+        			</tr>
+        		</tbody>
+        	</table>
+        		
+        	<hr>
+        	
+        	<a href="http://www.naver.com" >마우스를 올려보세요</a>
+        	
+        </body>
+        </html>
+        ```
