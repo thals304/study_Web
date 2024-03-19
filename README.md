@@ -1678,3 +1678,185 @@
         </body>
         </html>
         ```
+
+### Java Script(JS) + jQuery
+
+- **자바 스크립트 생성 방법 (1) → 백앤드에서는 방법 (1) 사용!**
+    - 자바 스크립트의 문법은 **<script> 태그** **사이**에서 작성한다.
+    - <script>태그는 명령어가 실행되는 순서에 따라서 <head> 또는 <body>부분에 위치한다. (위치는 load와 관련됨)
+    - 과거에는 <script type="text/javascript">로 태그를 생성하지만 html5에서는 기술하지 않아도 된다.
+    - **[중요]**
+        
+        1) 자바스크립트의 오류는 화면에 별도의 오류 메세지가 출력 되지 않는다.
+        
+        2) 자바스크립트의 오류는 '웹 브라우저의 개발자 도구 console'에서 확인할 수 있으므로
+        자바스크립트 코드 작성 시에는 항상 console화면을 확인하면서 개발한다.
+        
+    - 스크립트 코드가 웹 브라우저에 제대로 반영이 되지 않을 경우에는 웹브라우저에서 
+    ctrl + f5 (캐쉬제거 새로고침)를 입력하여 변경된 결과를 확인한다.
+    - **데이터 출력 함수**
+        - **document.write() : 데이터를 브라우저 화면에 출력하는 함수**
+        - **console.log() : 데이터를 F12 ‘브라우저 콘솔’에 출력하는 함수**
+        - **alert() : 데이터를 ‘브라우저 안내창’으로 출력하는 함수**
+    
+    ```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="UTF-8">
+    <title>자바스크립트 생성방법1</title>
+    <script type="text/javascript">
+    	
+    	// 출력문 1) document.write() : 데이터를 브라우저 화면에 출력하는 함수(html)
+    	document.write("<h1>데이터 출력</h1>");
+    	document.write("<img src='../images/pic_1.jpg' width='300' height='300'>") // ()안에 기본적으로 ""를 사용하므로 "" 안에서는 ''을 사용
+    	document.write("개행기능이 없습니다.<br>"); // 한 줄 내리는 기능이 없음 -> <br> 사용하기
+    	document.write("복수의 데이터를 " , "출력할 수 " , "있습니다");
+    	
+    	// 출력문 2) console.log() : 데이터를 F12 '브라우저(browser) 콘솔'에 출력하는 함수
+    	console.log("(1)테스트 용도로 사용합니다.");
+    	console.log("(2)테스트 용도로 사용합니다.");
+    	console.log("(3)테스트 용도로 사용합니다.");
+    	
+    	// 출력문 3) alert() : 데이터를 '브라우저 안내창'으로 출력하는 함수 -> sweetalert2라는 사이트 참고
+    	alert("결제 되었습니다.");
+    </script>
+    </head>
+    <body>
+    </body>
+    </html>
+    ```
+    
+- **자바 스크립트 생성 방법 (2)**
+    - 외부에 스크립트 파일(.js)을 만들어 참조하여 자바스크립트를 사용할 수 있다.
+    - <script src="경로">형식으로 외부 스크립트 파일을 참조한다.
+    - 참조 경로는 css파일 및 이미지 경로와 작성 방법이 같다.
+    - 공통 스크립트 및 무거운 파일을 주로 외부로 분류하여 사용한다.
+
+- **변수**
+    - 자바스크립트에서의 변수는 데이터의 타입을 따로 명시하지 않고 **var , let**으로 사용한다.
+    - 자바스크립트에서의 **상수는 const**를 사용한다.
+    - 변수의 역할, 명명규칙 , 활용등은 다른 언어와 같다.
+    - **자바스크립트의 데이터 타입**
+        
+        **1) 숫자 (number)**
+        
+        **2) 문자열 (string)**
+        
+        **3) 불리언 (boolean)**
+        
+        **4) undefined**
+        
+        **5) 객체(object) -> JSON**
+        
+    
+    ```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="UTF-8">
+    <title>자바스크립트의 변수</title>
+    <script>
+    		
+    	// 변수명 앞에 var(variable) , let 키워드를 붙여서 변수를 생성한다.
+    	// 자바스크립트에서는 정수, 실수 모두 number 타입
+    	var v1 = 1;		
+    	var v2 = 1.5;	
+    	
+    	// 자바스크립트에서는 '', "" 모두 string 타입
+    	var v3 = '@';   
+    	var v4 = "data";
+    	
+    	// let이 좀 더 요즘 사용하는 것
+    	let v5 = true;
+    	
+    	// 초기화 하지 않은 변수나 존재하지 않는 데이터는 undefined 타입 
+    	let v6;
+    	
+    	// 객체(object) 타입 	// HashMap과 비슷함	
+    	let v7 = {
+    		"pdCd" : "0x1234",
+    		"pdNm" : "스마트 TV",
+    		"qty" : 1,
+    		"isMobile" : true
+    	};
+    
+    	console.log("---데이터 출력---");
+    	console.log("v1 : " , v1);
+    	console.log("v2 : " , v2);
+    	console.log("v3 : " , v3);
+    	console.log("v4 : " , v4);
+    	console.log("v5 : " , v5);
+    	console.log("v6 : " , v6);
+    	console.log("v7 : " , v7);
+    	console.log("");
+    
+    	// typeof : 데이터의 타입을 반환하는 연산자
+    	console.log("---데이터 타입 출력---");
+    	console.log("v1 : " , typeof v1);
+    	console.log("v2 : " , typeof v2);
+    	console.log("v3 : " , typeof v3);
+    	console.log("v4 : " , typeof v4);
+    	console.log("v5 : " , typeof v5);
+    	console.log("v6 : " , typeof v6);
+    	console.log("v7 : " , typeof v7);
+    	console.log("");
+    
+    	// const로 저장된 데이터는 수정이 불가능하다.
+    	const v8 ="데이터";
+    	// v8 = "수정데이터"; // error 발생
+    	console.log("v8" , v8);
+    	
+    </script>
+    </head>
+    <body>
+    
+    </body>
+    </html>
+    ```
+    
+    
+- **데이터 형변환**
+    
+    ```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="UTF-8">
+    <title>데이터의 형변환(casting)</title>
+    <script>
+    
+    	// 1) String(숫자) : 숫자 > 문자열 형변환 (2가지 방법)
+    	let var1 = 10000;
+    	// 방법 1
+    	let strVar1 = var1 + "";
+    	// 방법 2
+    	let strVar2 = String(var1);
+    
+    	console.log(var1 ,typeof var1);
+    	console.log(strVar1 , typeof strVar1);
+    	console.log(strVar2 , typeof strVar2);
+    	console.log("");
+    
+    	// 2) Number(문자열) : 문자열 > 숫자 형변환
+    	let var2 = "27000";
+    	let nVar2 = Number(var2);
+    
+    	console.log(var2, typeof var2);
+    	console.log(nVar2, typeof nVar2);
+    	console.log("");
+    
+    	// 3) parseInt(실수) : 실수 > 정수 (소수점 버림)
+    	let var3 = 10 / 3;
+    	console.log(var3, typeof var3);
+    	
+    	var nVar3 = parseInt(var3);
+    	console.log(nVar3, typeof nVar3);
+    	
+    </script>
+    </head>
+    <body>
+    
+    </body>
+    </html>
+    ```
