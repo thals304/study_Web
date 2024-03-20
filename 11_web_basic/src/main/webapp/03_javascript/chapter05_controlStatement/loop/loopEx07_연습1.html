@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--24.03.20 time 13:49-13:53
+	today 소감문
+	역시 반복문 초반이 문제도 잘 풀리고 재밌는 것 같다.
+ -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>연습예시</title>
+<script>
+
+	// 문제1) 1 ~ 10까지 반복해 3미만 7이상만 출력
+	// 정답1) 1 2 7 8 9 10
+	for(let i = 1; i <= 10; i++){
+		if(i < 3 || i >= 7 ){
+			document.write(i + " ");
+		}
+	}
+	document.write("<br>");
+	// 문제2) 문제1의 조건에 맞는 수들의 합 출력
+	// 정답2) 37
+	let total = 0;
+	for(let i = 1; i <= 10; i++){
+		if(i < 3 || i >= 7){
+			total += i;
+		}
+	}
+	document.write("합 : " + total + "<br>");
+	
+	// 문제3) 문제1의 조건에 맞는 수들의 개수 출력
+	// 정답3) 6
+	let count = 0;
+	for(let i = 1; i <= 10; i++){
+		if(i < 3 || i >= 7){
+			count++;
+		}
+	}
+	document.write("개수 : " + count + "<br>");
+	
+	// 문제4) 1~5까지의 합 출력
+	// 정답4) 15
+	total = 0;
+	for (let i = 0; i <= 5; i++){
+		total+= i;
+	}
+	document.write(total);
+	
+</script>
+</head>
+<body>
+</body>
+</html>

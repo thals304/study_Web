@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--24.03.20 time 13:21-13:24
+	today 소감문
+	일단 prompt 안에 "" 문자열만 쓸 수 있는지 알아서 
+	문제로 3 x 7 = ? 이라는 걸 어떻게 보여줄지 고민했는데
+	console.log 처럼 변수나 + 등등 다 쓸 수 있어서 이 고민이 다 해결된 것 같다. 
+ -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>연습예시</title>
+<script>
+	
+	/*
+	 * # 구구단 게임[1단계]
+	 * 
+	 * 1. 구구단 문제를 출제하기 위해, 숫자 2개를 입력받는다.
+	 * 2. 입력받은 숫자를 토대로 구구단 문제를 출력한다.
+	 * 예)	3 x 7 = ?
+	 * 3. 문제에 해당하는 정답을 입력받는다.
+	 * 4. 정답을 비교 "정답!" 또는 "땡!"을 출력한다.
+	 */
+
+	 let x = prompt("숫자1 입력 : ");
+	 let y = prompt("숫자2 입력 : ");
+	 let multiply = Number(x) * Number(y);
+	 
+	 let answer = prompt(x +" x " + y + " = ?");
+	 
+	 if (multiply == Number(answer)) document.write("정답!");
+	 else document.write("땡!");
+</script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset = "UTF-8">
+<title>변수의 생명주기</title>
+<script>
+	let data = "전역데이터";	// 전역변수 : 함수 밖에 변수
+	
+	function func1(){
+		let local1 = "지역데이터1";	// 지역변수 : 함수 안의 변수 
+		console.log(data);
+		console.log(local1);	
+		// console.log(local2); // local2 is not defined
+		console.log("");
+	}
+	
+	function func2(){
+		let local2 = "지역데이터2";	// 지역변수 : 함수 안의 변수 
+		console.log(data);
+		// console.log(local1);	// local1 is not defined
+		console.log(local2); 
+		console.log("");
+	}
+	
+	
+	console.log(data);
+	//console.log(local1);	// local1 is not defined
+	//console.log(local2);
+	console.log("");
+	
+	func1();
+	func2();
+	
+	let idx1 = 1;	// 전역변수
+	function func3() {
+		
+		let idx2 = 1; // 지역변수
+		console.log("idx1 : " + idx1); 
+		console.log("idx2 : " + idx2);
+		console.log("");
+		
+		idx1++; // 전역은 계속 숫자가 증가함
+		idx2++; // 지역은 함수가 호출 될 때 증가하는데 위에서 다시 초기화 되므로 계속 1
+	}
+	
+</script>
+</head>
+<body>
+
+	<h3>Test Element</h3>
+	<input type="button" value="테스트" onclick="func3();" >
+
+</body>
+</html>

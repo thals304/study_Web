@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--24.03.20 time 13:33- 13:37
+	today 소감문
+	내가 실수 할뻔 했던 이유가 문자열 비교에서 == 가 아니라 =를
+	쓴 것이다. 그런데도 불구하고 if문이 실행되는 것을 보고
+	자바와 다르게 문법 틀린 걸 바로 체크를 못하고 웹 브라우저의 콘솔을 통해서 확인을
+	해야하는 번거로움이 있는 것 같다고 느꼈다
+ -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>연습예시</title>
+<script>
+
+	/*
+	 * # ATM[1단계] : 이체하기
+	 * 
+	 * 1. 이체할 계좌번호를 입력받는다.
+	 * 2. 계좌번호가 일치하면,
+	 * 3. 이체할 금액을 입력받는다.
+	 * 4. 이체할 금액 <= myMoney	: 이체가능
+	 * 			myMoney   - 이체할 금액
+	 * 			yourMoney + 이체할 금액
+	 *    이체할 금액  > myMoney 	: 이체불가
+	 */
+
+	let myMoney = 8700;
+	
+	let yourAcc = "4321";
+	let yourMoney = 12000;
+	
+	let acc = prompt("이체할 계좌번호를 입력하세요 : ");
+	
+	if(acc == yourAcc){
+		let money = prompt("이체할 금액 입력 : ");
+		if (money <= myMoney){
+			myMoney -= money;
+			yourMoney += money;
+			document.write("이체 완료");
+		}
+		else {
+			document.write("잔액 부족. 이체 불가");
+		}
+	}
+	else document.write("계좌번호를 다시 확인해 주세요.");
+	
+	
+		
+</script>
+</head>
+<body>
+</body>
+</html>

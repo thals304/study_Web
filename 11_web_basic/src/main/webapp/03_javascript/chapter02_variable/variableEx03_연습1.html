@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--24.03.20 time 12:10-12:18
+	today 소감문
+	일단 자바로만 하다가 갑자기 int, double 형 등등이 없이
+	식을 쓰려고 하다보니 아직은 어색했던 것 같다.
+	그리고 생각보다 실수 > 정수 로 바꾸는 걸 많이 하는 것 같아서
+	parseInt가 필수이고 꼭 외워둬야겠다고 생각했다.
+	그리고 console.log()에서 자바처럼 +를 통해 문장을 만드는 것이 같다는 점이 놀랐다.
+	왜냐하면 ,로 여러 값을 쓸 수 있다고 했는데 내가 잘못이해하고 , 만 써야된다고 생각한거 같다.
+ -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>연습예시</title>
+<script>
+
+	//예) 현금이 1000원있다. 200원짜리 과자 구입 후, 잔돈 출력 
+	var cash = 1000;
+	var snack = 200;
+	var change = cash - snack;
+	console.log("잔돈 = " + change + "원");
+	console.log("");
+	
+	//문제1) 월급이 100원이다. 연봉은? (조건 : 세금 10% 제외)
+	var salary = 100;
+	var yearSalary = 100*12 - 100*12*(0.01);
+	console.log("연봉 = "+ yearSalary + "원");
+	console.log("");
+	
+	//문제2) 시험점수를 30, 50, 4점 을 받았다. 평균은?
+	var score1 = 30;
+	var score2 = 50;
+	var score3 = 4;
+	var avg = ( score1 + score2 + score3 ) / 3;
+	console.log("평균 = " + avg);
+	console.log("");
+	
+	//문제3) 가로가 3이고 세로가 6인 삼각형 넓이 출력
+	var width = 3;
+	var height = 6;
+	var total = ( width * height ) / 2;
+	console.log("삼각형 넓이 = "+ total);
+	console.log("");
+	
+	//문제4) 100초를 1분 40초로 출력
+	var minute = parseInt(100 / 60);
+	var second = 100 % 60;
+	console.log(minute + "분"+ second + "초");
+	console.log("");
+	
+	//문제5) 800원에서 500원짜리 개수 , 100원짜리 개수
+	//정답5) 500원의 개수 = 1개 
+	//       100원의 개수 = 3개 
+	var num500 = parseInt(800 / 500);
+	var num100 = 800 / 100;
+	console.log("500원의 개수 = " + num500 + "개");
+	console.log("100원의 개수 = " + num100 + "개");
+	
+</script>
+</head>
+<body>
+</body>
+</html>

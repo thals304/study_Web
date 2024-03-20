@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!-- 24.03.20 time 12:50-12:56
+	today 소감문
+	web에서는 입력 받아 오는 건 전부 문자열 취급을 하므로
+	문자열을 숫자로 바꿔야 하는데 그래서 전체 값을 Number(문자열)로 묶어서 해보았으나
+	정답이 아니었다. 결론적으로 각각의 값을 Number로 묶어야 했던 것이었다. 
+	그리고 답을 출력할 때는 "<br>" 도 같이 써주는게 더 좋은 것 같다.
+ -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>연습예시</title>
+<script>
+
+	// 문제 1) 숫자 2개를 입력받아, 합 출력 (문자열 입력 받은 걸 숫자로 바꿔야함)
+	let num1 = prompt("숫자1");
+	let num2 = prompt("숫자2");
+	
+	let total = Number(num1) + Number(num2) ;
+	document.write( "합 : " + total ,"<br>");
+	
+	
+	// 문제 2) 숫자 1개를 입력받아, 홀수이면 true 출력
+	let num = prompt("숫자 입력");
+	if (Number(num) % 2 != 0) document.write(true , "<br>");
+	else document.write(false , "<br>");
+	
+	// 문제 3) 성적을 입력받아, 60점 이상이고 100점 이하이면 true 출력
+	let score = prompt("성적 입력");
+	if (Number(score) >= 60 && score <= 100) document.write(true , "<br>");
+	else document.write(false , "<br>");
+</script>
+</head>
+<body>
+
+</body>
+</html>

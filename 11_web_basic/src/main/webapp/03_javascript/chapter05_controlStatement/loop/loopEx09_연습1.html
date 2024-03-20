@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--24.03.20 time 14:00-14:05 15:42-15:49
+	today 소감문
+	내가 369 게임에 취약한 편인데 앞에 if문 369도 헤매다가 정답을 보고
+	이해를 했다. 이 문제도 for문 안에 if문 369처럼 코드를 써주면 되는거라
+	처음 고민하던 나와 달리 지금은 엄청 빠르게 푼 것 같다.
+ -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>연습예시</title>
+<script>
+
+	/*
+	 * # 369게임[2단계]
+	 * 
+	 * 1. 1~50까지 반복을 한다.
+	 * 2. 그 안에서 해당 숫자의 369게임의 결과를 출력한다.
+	 * 예) 1 2 짝 4 5 짝 7 8 짝 10 11 12 짝 ...
+	 * 
+	 */
+	let count = 0;
+	for(let i = 1; i <= 50; i++){
+		count = 0;
+		
+		location10 = parseInt(i / 10);
+		location1 = i % 10;
+		if (location10 == 3 || location10 == 6  || location10 == 9 ) count++;
+		if (location1 == 3  || location1 == 6  || location1 == 9 ) count++;
+		
+		if (count == 2) document.write("짝짝" + " ");
+		else if (count == 1) document.write("짝" + " ");
+		else if (count == 0) document.write(i + " ");
+	}
+	
+</script>
+</head>
+<body>
+</body>
+</html>
