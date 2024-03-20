@@ -1860,3 +1860,484 @@
     </body>
     </html>
     ```
+
+- **연산자**
+    - **산술 연산자**
+        - **[ 자바의 산술연산자와의 차이점 ]**
+            
+            자바의 나눗셈(/) 연산자의 결과              >  **정수** 형식
+            
+            자바스크립트의 나눗셈(/)연산자의 결과 >  **실수** 형식
+            
+        - / 연산을 제외한 산술 연산자는 자바의 산술 연산자와 같다.
+        
+        ```html
+        <!DOCTYPE html>
+        <html>
+        <head>
+        <meta charset="UTF-8">
+        <title> 산술 연산자 </title>
+        <script>
+        
+        	let num1 = 15;
+        	let num2 = 2;
+        	let result = 0;
+        	
+        	result = num1 + num2;
+        	console.log(result); 	// 17
+        	
+        	result = num1 - num2;
+        	console.log(result); 	// 13
+        	
+        	result = num1 * num2;
+        	console.log(result); 	// 30
+        	
+        	result = num1 / num2;
+        	console.log(result); 	// 7.5
+        	
+        	result = num1 % num2;
+        	console.log(result); 	// 1
+        	
+        </script>
+        </head>
+        <body>
+        </body>
+        </html>
+        ```
+        
+    - **복합 대입 연산자**
+        - 자바의 복합 대입 연산자와 같다.
+        
+        ```html
+        <!DOCTYPE html>
+        <html>
+        <head>
+        <meta charset="UTF-8">
+        <title> 복합 대입 연산자 </title>
+        <script>
+        
+        	let num1 = 10;
+        	let num2 = 3;
+        	
+        	num1 += num2;
+        	console.log(num1); 	// 13
+        	 
+        	num1 -= num2;
+        	console.log(num1); 	// 10 (num1이 누적되고 있음)
+        	 
+        	num1 *= num2;
+        	console.log(num1); 	// 30
+        	 
+        	num1 %= num2;
+        	console.log(num1); 	// 0 
+        	
+        </script>
+        </head>
+        <body>
+        </body>
+        </html>
+        ```
+        
+    - **증감 연산자**
+        - 자바의 증감 연산자와 같다.
+        
+        ```html
+        <!DOCTYPE html>
+        <html>
+        <head>
+        <meta charset="UTF-8">
+        <title> 증감 연산자 </title>
+        <script>
+        
+        	let num1 = 10;
+        	let num2 = 20;
+        	let result = 0;
+        	 
+        	num1--;							 // 9
+        	console.log(num1);
+        
+        	num1++; 						// 10
+        	console.log(num1);    
+        
+        	result = num2++;  				// result: 20 , num2: 21  
+        	console.log(result); 
+        
+        	result = ++num2;  				// result: 22 , num2: 22  
+        	console.log(result); 
+        	
+        </script>
+        </head>
+        <body>
+        </body>
+        </html>
+        ```
+        
+    - **비교 연산자**
+        - **[ 자바의 비교연산자와의 차이점 ]**
+            
+            자바의 **문자열** **비교(==) 연산자**의 결과  >  **비교 불가** (.equals()메서드 사용)
+            
+            자바스크립트의 **문자열 비교(==) 연산자**의 결과  >  **비교 가능** 
+            
+        - "==" 연산을 제외한 비교 연산자는 자바의 비교 연산자와 같다.
+        
+        ```html
+        <!DOCTYPE html>
+        <html>
+        <head>
+        <meta charset="UTF-8">
+        <title> 비교 연산자 </title>
+        <script>
+        	
+        	let num1 = 10;
+        	let num2 = 20;
+        
+        	console.log(num1 > num2);	// false
+        	console.log(num1 < num2);	// true
+        	
+        	console.log(num1 <= num2);	// true
+        	console.log(num1 >= num2); 	// false
+        	
+        	console.log(num1 == num2);	// false
+        	console.log(num1 != num2);	// true
+        	
+        	
+        	// 자바스크립트에서는 문자열데이터끼리 '==' 연산자로 비교가 가능하다.
+        	let strData1 = "qwer1234";
+        	let strData2 = "qwer1234";
+        	
+        	console.log(strData1 == strData2);		// true
+        	console.log(strData1 != strData2);		// false
+        	
+        	
+        </script>
+        </head>
+        <body>
+        </body>
+        </html>
+        ```
+        
+    - **논리 연산자**
+        - 자바의 논리 연산자와 같다.
+        
+        ```html
+        <!DOCTYPE html>
+        <html>
+        <head>
+        <meta charset="UTF-8">
+        <title> 논리연산자 </title>
+        <script>
+        
+        	let num1 = 10;
+        	let num2 = 20;
+        	let num3 = 0;
+        
+        	console.log(num1 > num2 || num2 < num3);	// false
+        	console.log(num1 < num2 || num2 < num3);	// true	
+        
+        	console.log(num1 < num2 && num2 > num3);	// true
+        	console.log(num1 > num2 && num2 > num3);	// false
+        
+        	console.log(num1 > num2);					// false
+        	console.log(!(num1 > num2));				// true
+        	
+        </script>
+        </head>
+        <body>
+        </body>
+        </html>
+        ```
+        
+    - **삼항 연산자**
+        - 자바의 삼항 연산자와 같다.
+        
+        ```html
+        <!DOCTYPE html>
+        <html>
+        <head>
+        <meta charset="UTF-8">
+        <title> 삼항 연산자 </title>
+        <script>
+        
+        	let data1 = 10;
+        	let data2 = 3;
+        
+        	let result = data1 > data2 ? "JVASCRIPT" : "JQUERY";
+        	console.log(result); 		//JVASCRIPT
+        	
+        </script>
+        </head>
+        <body>
+        </body>
+        </html>
+        ```
+        
+    - **문자 결합 연산자**
+        - **블록 문자열 백틱( ` ) : 여러 줄의 문자열 생성 가능**
+        
+        ```html
+        <!DOCTYPE html>
+        <html>
+        <head>
+        <meta charset="UTF-8">
+        <title>문자결합 연산자 +</title>
+        <script>
+        
+        	//1) 문자열 + 문자열 = 문자열
+        	let data1 = "문자열 ";
+        	let data2 = "결합연산자";
+        	document.write(data1 + data2 , "<br><hr>");
+        	
+        	//2) 문자열 + 숫자 = 문자열
+        	let data3 = 10000000;
+        	let data4 = "원";
+        	document.write(data3 + data4 , "<br><hr>");
+        
+        	//3) 숫자 + 숫자 = 숫자
+        	let data5 = 3;
+        	let data6 = 12;
+        	document.write(data5 + data6 , "<br><hr>");
+        	
+        	
+        	//예제 1)
+        	let data7 = "<form>";
+        		data7 += "<p>텍스트 : <input type='text'></p>";
+        		data7 += "<p>체크박스 : <input type='checkbox'></p>";
+        		data7 += "<p>라디오 : <input type='radio'></p>";
+        		data7 += "<p>텍스트 에어리어 : <br><textarea cols='10' rows='10'></textarea></p>";
+        		data7 += "</form>";
+        	document.write(data7 , "<br><hr>");
+        	
+        	//예제 2)
+        	let data8 = "<table border='1'>";
+        		data8 += "<tr>";
+        		data8 += "<td>1</td>";
+        		data8 += "<td>2</td>";
+        		data8 += "<td>3</td>";
+        		data8 += "</tr>";
+        		data8 += "<tr>";
+        		data8 += "<td>4</td>";
+        		data8 += "<td>5</td>";
+        		data8 += "<td>6</td>";
+        		data8 += "</tr>";
+        		data8 += "</table>";
+        	document.write(data8 , "<br><hr>");
+        	
+        	// 참고) 블록 문자열 백틱(`)  : 여러줄의 문자열을 생성할 수 있다.
+        	let reference1 = `<form>
+        		<p>텍스트 : <input type='text'></p>
+        		<p>체크박스 : <input type='checkbox'></p>
+        		<p>라디오 : <input type='radio'></p>
+        		<p>텍스트 에어리어 : <br><textarea cols='10' rows='10'></textarea></p>
+        		</form>`
+        	document.write(reference1 , "<br><hr>");
+        	
+        	let reference2 = `
+        		<table border='1'>
+        			<tr>
+        				<td>1</td>
+        				<td>2</td>
+        				<td>3</td>
+        			</tr>
+        			<tr>
+        				<td>4</td>
+        				<td>5</td>
+        				<td>6</td>
+        			</tr>
+        		</table>`
+        	document.write(reference2 , "<br><hr>");
+        	
+        </script>
+        </head>
+        <body>
+        </body>
+        </html>
+        ```
+        
+- **입력 함수**
+    - **confirm**
+        - **[형식]**
+            
+            **confirm("안내 메세지");**
+            
+        - **확인버튼**을 클릭하면 **true가 반환**된다.
+        - **취소버튼**을 클릭하면 **false가 반환**된다.
+        
+        ```html
+        <!DOCTYPE html>
+        <html>
+        <head>
+        <meta charset="UTF-8">
+        <title>confirm</title>
+        <script>
+        	
+        	let result = confirm("정말로 탈퇴하시겠습니까?");
+        	
+        	document.write(result);
+        	console.log(result);
+        </script>
+        </head>
+        <body>
+        ```
+        
+    - **prompt**
+        - **[형식]**
+            
+            **prompt("안내문자열" , "기본값");**
+            
+        - 기본값은 생략 가능하다.
+        - 기본 데이터 타입은 문자열이다.
+        - 숫자 타입의 데이터는 추가적으로 숫자(Number) 형태로 형변환을 해주어야 한다.
+        
+        ```html
+        <!DOCTYPE html>
+        <html>
+        <head>
+        <meta charset="UTF-8">
+        <title>prompt</title>
+        <script>
+        
+        	let getName = prompt("이름을 입력하세요 : " , "000");
+        	
+        	document.write(getName , typeof getName);
+        	console.log(getName , typeof getName, "<br>");	// web에서 일어나는 건 모두 string
+        	
+        	let htmlGrade = prompt("html 점수");
+        	let cssGrade = prompt("css 점수");
+        	let jsGrade = prompt("js 점수");
+        	
+        	let totalGrade = Number(htmlGrade) + Number(cssGrade) + Number(jsGrade);
+        	document.write("총점 : " + totalGrade);
+        	
+        	// + 를 제외한 - / * 연산에서는 숫자로 취급되는 애매한 문법을 가지고 있음
+        	// 그러므로 아예 - / * 상관 없이 문자열 > 숫자 인 것은 Number(문자열)로 만들어 주기 
+        	
+        </script>
+        </head>
+        <body>
+        
+        </body>
+        </html>
+        ```
+        
+- **제어문**
+    - **if 문**
+        - 자바의 if문과 같다.
+    - **loop** : 자바의 loop와 같다.
+        - **while**
+        - **do-while**
+        - **for + 중첩 for문**
+        - **switch**
+        - **보조 제어문 break & continue**
+- **함수 ( == 메서드 )**
+    - 자바스크립트 함수의 역할 및 용도는 자바의 메서드와 같다.
+    - 주로 HTML의 Element와 연결하여 사용한다.
+    - **[ 형식 ]**
+        
+        **function 함수명(파라메타){
+                 return 리턴값;
+        }**
+        
+    
+    ```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="UTF-8">
+    <title>자바스크립트 함수</title>
+    <script>
+    
+    	// 함수 정의 (function define)
+    	// void testMethod(){}   // java 스타일
+    	function testfunction1() {
+    		alert("함수1이 호출되었습니다.");
+    		return;   // 반환데이터가 없을 경우 return키워드는 생략 가능
+    	}
+    	
+    	function testFunction2(){
+    		alert("함수2가 호출되었습니다.")
+    	}
+    	
+    	// 함수 호출 (function call)
+    	// 객체.메서드명(); // 자바 스타일
+    	testfunction1();   // 함수명();
+    	
+    </script>
+    </head>
+    <body>
+    
+    	<h3>함수 호출 예시</h3>
+    
+    	<!-- 1) 이벤트(Event)와 연결해서 사용한다. -->
+    	<input type="button" value="버튼" onclick="testfunction1(); testFunction2();"/> <!-- 버튼이 클릭될 경우 실행 --> 
+    	<br>
+    	<input type="text" onkeydown="testfunction1(); testFunction2();"/>  			<!-- 키보드가 눌릴 경우 실행 -->
+    
+    	<hr>
+    	
+    	<!-- 2) HTML Element에서 자바스크립트 연결 속성(link)을 사용하여 자바스크립트 함수를 호출한다. -->
+    	<a href="javascript:testFunction2();"><img src="../images/pic_1.jpg" width="300" height="300"></a>
+    
+    </body>
+    </html>
+    ```
+    
+    - **변수의 생명주기**
+    
+    ```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset = "UTF-8">
+    <title>변수의 생명주기</title>
+    <script>
+    	let data = "전역데이터";	// 전역변수 : 함수 밖에 변수
+    	
+    	function func1(){
+    		let local1 = "지역데이터1";	// 지역변수 : 함수 안의 변수 
+    		console.log(data);
+    		console.log(local1);	
+    		// console.log(local2); // local2 is not defined
+    		console.log("");
+    	}
+    	
+    	function func2(){
+    		let local2 = "지역데이터2";	// 지역변수 : 함수 안의 변수 
+    		console.log(data);
+    		// console.log(local1);	// local1 is not defined
+    		console.log(local2); 
+    		console.log("");
+    	}
+    	
+    	
+    	console.log(data);
+    	//console.log(local1);	// local1 is not defined
+    	//console.log(local2);
+    	console.log("");
+    	
+    	func1();
+    	func2();
+    	
+    	let idx1 = 1;	// 전역변수
+    	function func3() {
+    		
+    		let idx2 = 1; // 지역변수
+    		console.log("idx1 : " + idx1); 
+    		console.log("idx2 : " + idx2);
+    		console.log("");
+    		
+    		idx1++; // 전역은 계속 숫자가 증가함
+    		idx2++; // 지역은 함수가 호출 될 때 증가하는데 위에서 다시 초기화 되므로 계속 1
+    	}
+    	
+    </script>
+    </head>
+    <body>
+    
+    	<h3>Test Element</h3>
+    	<input type="button" value="테스트" onclick="func3();" >
+    
+    </body>
+    </html>
+    ```
+    
