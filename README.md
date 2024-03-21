@@ -2341,3 +2341,424 @@
     </html>
     ```
     
+- **parameter (파라메타)**
+    - 자바와 같이 함수의 파라메타를 전달 받을 수 있다.
+    - 파라메타의 **데이터 형식은 선언하지 않고 파라메타 명만 선언**하여 사용한다.
+        
+        [예시]
+        
+        function test(int price) {}   (x)
+        
+        function test(var price) {}   (x)
+        
+        function test(let price) {}   (x)
+        
+        function test(price) {}   	(o)
+        
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>함수의 파라메타</title>
+<script>
+	
+	function func1(productNm) {
+		alert("상품명 : " +  productNm);
+	}
+	
+	function func2(productNm, price){
+		alert("상품명 : " + productNm + " / " +"가격 : " + price);
+	}
+	
+	function func3(productNm, price , qty){
+		alert("상품명 : " + productNm + " / " +"가격 : " + price +" / " + "수량 : " + qty);
+	}
+
+	
+</script>
+</head>
+<body>
+
+	<h3>test element</h3>
+	<input type="button" value="함수1" onclick="func1('스마트워치');"> <!-- 겉에가 ""이면 안에는 ''이어야 함 -->
+	<input type="button" value="함수2" onclick="func2('스마트워치' , 400000);">
+	<input type="button" value="함수3" onclick="func3('스마트워치', 400000, 3);">
+	
+</body>
+</html>
+```
+
+- **return**
+    - 자바와 같이 함수의 결과데이터를 return 키워드로 반환하고 함수를 종료할 수 있다.
+    - 리턴 타입을 명시하지 않고 return 키워드를 사용하여 값을 반환한 뒤에 함수를 종료한다.
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>함수의 리턴</title>
+<script>
+
+	function checkValidEmail(email){
+		
+		let isValid = false;
+		
+		for(let i = 0; i < email.length; i++){
+			if(email[i] == '@'){ // 자바 문자열에서는 어떻게 했더라? email.charAt[i]
+				isValid = true;
+			}
+		}
+		return isValid;
+	}
+	function testFunction(){
+		
+		let result1 = checkValidEmail("qwer1234@gmail.com");
+		let result2 = checkValidEmail("qwer1234");
+		
+		console.log("result1 : " + result1);
+		console.log("result2 : " + result2);
+		
+	}
+	
+	testFunction();
+</script>
+</head>
+<body>
+</body>
+</html>
+```
+
+- **돔(Document Object Model)**
+    
+    - **document.getElementById("아이디명");**
+        - HTML문서에 id와 일치한 엘리먼트를 선택한다.
+        - 내용 , 스타일 , 속성 모두에 변화를 줄 수 있다.
+        - 엘리먼트가 발견되지 않으면 null을 반환한다.
+        - 엘리먼트의 **값**에 접근할 경우 **셀렉터.value**로 접근한다.
+            
+            [예시]
+            getter = document.getElementById("totalPrice").value
+            
+            setter = document.getElementById("totalPrice").value = 90000;
+            
+        - 엘리먼트의 **속성**에 접근할 경우 **셀렉터.속성명**으로 접근한다.
+            
+            [예시]
+            getter = document.getElementById("mainImage").width;
+            setter = document.getElementById("mainImage").width = 700;
+            
+        - 엘리먼트의 **요소**에 접근 할 경우 **셀렉터.innerHTML**로 접근한다.
+            
+            [예시]
+            getter = document.getElementById("title").innerHTML;
+            setter = document.getElementById("title").innerHTML = "주문페이지";
+            
+        
+        ```html
+        <!DOCTYPE html>
+        <html>
+        <head>
+        <meta charset="UTF-8">
+        <title>getElementById 함수</title>
+        <script>
+        
+        	function confirmBranchNm(){
+        		
+        		// alert(document.getElementById("branchNm").value);
+        		let branchNm = document.getElementById("branchNm").value;
+        		
+        		if (branchNm == "서울" || branchNm == "경기" || branchNm =="인천"){
+        			alert("확인 완료");
+        			// .value 사용예시
+        			document.getElementById("orderGoodsNm").value = "";
+        			
+        			// .attribute 사용예시
+        			document.getElementById("orderGoodsNm").disabled = false;
+        			document.getElementById("orderGoodsQty").disabled = false;
+        			
+        			// .innerHTML 사용예시
+        			document.getElementById("msg").innerHTML = "<span style='color:green;'>확인 되었습니다.</span>";
+        		}
+        		else {
+        			alert("확인 실패");
+        			
+        			// .value 사용예시
+        			document.getElementById("branchNm").value = "잘못된 지점명";
+        			document.getElementById("orderGoodsNm").value = "없음";
+        			// jQuery 버전 $("#orderGoodsNm").value = "없음";
+        			
+        			// .attribute 사용예시
+        			document.getElementById("orderGoodsNm").disabled = true;
+        			document.getElementById("orderGoodsQty").disabled = true;
+        			
+        			// .innerHTML 사용예시
+        			document.getElementById("msg").innerHTML = "<span style='color:red;'>확인에 실패했습니다.</span>";
+        		}
+        	}
+        </script>
+        </head>
+        <body>
+        	
+        	<fieldset>
+           		<legend>상품주문</legend>
+           		<p>
+        			지점명 : <input type="text" id="branchNm">
+        			<input type="button" value="확인" onclick="confirmBranchNm();"> <span id="msg"> </span>
+        		</p>
+        		<p>
+        			주문제품명 : <input type="text" id="orderGoodsNm">
+        			주문개수 : 
+        		    <select id="orderGoodsQty">
+        		        <option value="100">100개</option>
+        		        <option value="500">500개</option>
+        		        <option value="1000">1000개</option>
+        		   	</select>
+        		</p>
+            </fieldset>
+        
+        </body>
+        </html>
+        ```
+        
+    - **getElementsByName("name");**
+        - HTML문서에 name이 일치한 엘리먼트들을 선택한다.
+        - 데이터가 컬렉션 형태로 저장된다.
+        - 내용 , 스타일 , 속성 모두에 변화를 줄 수 있다.
+        - 엘리먼트의 **값**에 접근할 경우 **셀렉터.value**로 접근한다.
+            
+            [예시]
+            getter = document.getElementsByName("gender")[0].value
+            
+            setter = document.getElementsByName("gender")[0].value = 90000;
+            
+        - 엘리먼트의 **속성**에 접근할 경우 **셀렉터.속성명**으로 접근한다.
+            
+            [예시]
+            getter = document.getElementsByName("gender")[0].checked;
+            setter = document.getElementsByName("gender")[0].checked = true;
+            
+        
+        ```html
+        <!DOCTYPE >
+        <html>
+        <head>
+        <meta charset="UTF-8">
+        <title>getElementsByName 함수</title>
+        <script>
+            
+        	function test1(){
+        	 	
+        	 	// radio & checkbox는 "getElementsByName"
+        	 	let radioEx = document.getElementsByName("radioEx");
+        	 	console.log(radioEx);
+        	 	console.log("");
+        	 	
+        		//예시 1) radioEx 배열의 크기 가져오기
+        		console.log( "radioEx 배열 크기 : "+ radioEx.length);
+        		console.log("");
+        		
+        		//예시 2) radioEx의 값을 가져오기
+        		for (let i = 0; i < radioEx.length; i++){
+        			console.log("value : " + radioEx[i].value);
+        		}
+        		console.log("");
+        		
+        		//예시 3) radioEx의 체크된 값을 가져오기
+        	   for (let i = 0; i < radioEx.length; i++){
+        		   if (radioEx[i].checked == true){
+        			   console.log("(checked value) : " + radioEx[i].value);
+        		   }
+        	   }
+        	   console.log("");
+        	   
+        		//예시 4) radioEx의 특별한 엘리먼트만 체크하기 (강제로 선택)
+        		radioEx[2].checked = true;
+        		console.log("");
+        		
+        		//예시 5) radioEx에 특정 속성 적용하기
+        		for (let i = 0; i < radioEx.length; i++){
+        			radioEx[i].disabled = true;
+        		}
+        		      
+        	}
+        	
+        	function test2() {
+        		
+        		let checkboxEx = document.getElementsByName("checkboxEx");
+        		console.log(checkboxEx);
+        		console.log("");
+        		
+        		//예시 1) checkboxEx 배열의 크기 가져오기
+        		console.log("checkboxEx 배열 크기" + checkboxEx.length);
+        		console.log("");
+        		
+        		//예시 2) checkboxEx의 요소의 값을 가져오기
+        		for (let i = 0; i < checkboxEx.length; i++){
+        			console.log(checkboxEx[i].value);
+        		}
+        		console.log("");
+        		
+        		//예시 3) check이름을 가진 check중에서 체크된 것만 확인하기
+        		for (let i = 0; i < checkboxEx.length; i++){
+        			if (checkboxEx[i].checked){ // checkboxEx[i].checked == true 와 같은 의미
+        				console.log("(checked)" + checkboxEx[i].value);
+        			}
+        		}
+        		console.log("");
+        		
+        		//예시 4) checkboxEx의 특별한 엘리먼트만 체크하기
+        		for (let i = 0; i < checkboxEx.length; i++){
+        			if (checkboxEx[i].checked){ 
+        				checkboxEx[i].checked = false;
+        			}
+        		}
+        		checkboxEx[0].checked = true;
+        		checkboxEx[2].checked = true;
+        		console.log("");
+        		
+        		//예시 5) checkboxEx에 특정속성 적용하기
+        		for (let i = 0; i < checkboxEx.length; i++){
+        			checkboxEx[i].disabled = true;
+         		}
+        	}
+        
+        	
+        </script>
+        </head>
+        <body>
+        
+        	<h4>name을 주로 사용하는 타입 radio</h4> 
+        	<input type="radio" name="radioEx" value="html"/> html
+        	<input type="radio" name="radioEx" value="css"/> css
+        	<input type="radio" name="radioEx" value="javascript"/> javascript
+        	<input type="button" value="확인" onclick="test1();"><br>
+        
+        	<hr>
+        
+        	<h4>name을 주로 사용하는 타입 checkbox</h4> 
+        	<input type="checkbox" name="checkboxEx" value="html"/> html
+        	<input type="checkbox" name="checkboxEx" value="css"/> css
+        	<input type="checkbox" name="checkboxEx" value="javascript"/> javascript
+        	<input type="button" value="확인" onclick="test2();"/><br>
+        
+           
+        </body>
+        </html>
+        ```
+        
+    - **속성(attribute)**
+        - **셀렉터.속성명** 형태로 html 엘리먼트의 속성값에 접근이 가능하다.
+        
+        ```html
+        <!DOCTYPE html>
+        <html>
+        <meta charset="UTF-8">
+        <title>attribute</title>
+        <head>
+        <script>
+        
+        	/*
+        		 [ 예시 ]
+        		 
+        		document.getElementById("target")			    > id가 target인 엘리먼트에 접근
+        		document.getElementById("target").src		  > id가 target인 엘리먼트의 src 속성에 접근
+        		document.getElementById("target").width		> id가 target인 엘리먼트의 width 속성에 접근
+        		document.getElementById("target").height	> id가 target인 엘리먼트의 height 속성에 접근
+        	*/
+        	let imageIdx = 1;
+        	function changeImg(direct) {
+        		
+        		if (direct == "next") {
+        			if (imageIdx == 9){
+        				return;
+        			}
+        			imageIdx++;
+        		}
+        		else if (direct == "before") {
+        			if (imageIdx == 1){
+        				return;
+        			}
+        			imageIdx--;
+        		}
+        		
+        		document.getElementById("photo").src = "../../images/pic_" + imageIdx + ".jpg";
+        		
+        	}
+        
+        	function changeImgSize(method){
+        		let width = document.getElementById("photo").width;
+        		let height = document.getElementById("photo").height;
+        		
+        		if (method == "extend"){
+        			height += 30;
+        			width += 30;
+        		}
+        		else if (method == "reduce"){
+        			height -= 30;
+        			width -= 30;
+        		}
+        		document.getElementById("photo").width = width;
+        		document.getElementById("photo").height = height;
+        	}
+        	
+        	function changeColor(color){
+        		
+        		document.getElementById("target").style = "background-color:" + color;
+        	}
+        	
+        	let colors = ["pink", "navy", "white", "gray", "purple"];
+        	let i = 0;
+        	function changeColor2 (){
+        		document.getElementById("target").style =  "background-color:" + colors[i];
+        		i++;
+        		if (i == colors.length){
+        			i = 0;
+        		}
+        	}
+        	
+        </script>
+        </head>
+        <body id="target">
+        	
+        	<div>
+        		<img src="../../images/pic_1.jpg" width="200" height="200" id="photo" alt="">
+        	</div>
+        	
+        	<hr>
+        	
+        	<p>
+        		이미지 변경 : 
+        		<button onclick="changeImg('before');">이전</button>
+        		<button onclick="changeImg('next');">다음</button>
+        	</p>
+        
+        	<hr>
+        
+        	<p>
+        		이미지 크기 변경 :
+        		<button onclick="changeImgSize('extend');">확대</button>
+        		<button onclick="changeImgSize('reduce')">축소</button>
+        	</p>
+        	
+        	<hr>
+        	<p>
+        		배경색 변경1 :
+        	    <input type="radio" name="color" onclick="changeColor('blue');">파랑색
+        	    <input type="radio" name="color" onclick="changeColor('green');" >녹색
+        	    <input type="radio" name="color" onclick="changeColor('purple');">자주색
+        	    <input type="radio" name="color" onclick="changeColor('yellow');">노란색
+        	    <input type="radio" name="color" onclick="changeColor('orange');">주황색
+            </p>
+            <hr>
+            <p>
+        	    배경색 변경2 :
+        	    <input type="button" value="변경" onclick="changeColor2();" >
+            </p>
+        
+        </body>
+        </html>
+        
+        ```
