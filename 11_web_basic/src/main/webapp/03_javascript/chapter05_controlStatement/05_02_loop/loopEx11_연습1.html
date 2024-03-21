@@ -4,6 +4,8 @@
 	앞에서 착각하고 잘못 푼 방식이 이번 문제의 풀이였던 것 같다.
 	숫자 2부터 입력한 수까지지만 for문의 j는 반드시 1부터 시작해야 된다는 점!
 	네트워크가 잘 안되서 그런가 출력이 안되는건가 잘 모르겠다.
+	보니까 네트워크가 문제가 아닌 무한 루프를 돌고 있는 코드 오류로 생긴 문제였다.
+	내가 항상 자주하는 오류는 이중 for문에서 j++을 i++로 적는 것이다. 
  -->
 <html>
 <head>
@@ -25,15 +27,15 @@
 	
 	for(let i = 2; i <= primeNumber; i++){
 		count = 0;
-		for (let j = 1; j <= i ; i++){
-			if(i / j == 0) count++;
+		for (let j = 1; j <= i ; j++){ // j++을 또 i++로 쓰는 실수!
+			if(i % j == 0) count++;
 		}
 		if(count == 2){ 
 			document.write(i + " ");
 			totalCount++;
 		}
 	}
-	 
+	 document.write("<br>");
 	 document.write("2부터 " + primeNumber +"까지 소수의 개수 : " + totalCount);
 </script>
 </head>

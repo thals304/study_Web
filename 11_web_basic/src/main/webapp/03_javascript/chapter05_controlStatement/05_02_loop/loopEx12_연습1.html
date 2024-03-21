@@ -3,7 +3,11 @@
 	today 소감문
 	이런 문제는 자바에서 푼 적은 없지만 소수 문제의 응용이었고
 	이 문제를 보자마자 break를 사용하라는 느낌이 확 왔었던 것 같다.
-	
+	근데 이 문제도 웹페이지에서 안돌아가는거 보니 무한 반복문이 이루어지고 있는 것 같아
+	코드를 수정해야 될 것 같다.
+	보니까 count 값이 리셋 되지 않고 누적이 되서 count가 2가 될 수 없으니 페이지가
+	안돌아 간 것 같다. 저번부터 계속 생긴 쉬운 문제에서 이런 자잘한 실수를 하는 걸 지금부터 다시
+	바로 잡아야될 것 같다.
  -->
 <html>
 <head>
@@ -20,15 +24,15 @@
 	 
 	let primeNumber = prompt("숫자");
 	primeNumber = Number(primeNumber);
-	let count = 0;
 	
 	while(true){
+		let count = 0;
 		for(let i = 1; i <= primeNumber ; i++){
-			if (primeNumber / i == 0) count++;
+			if (primeNumber % i == 0) count++;
 		}
 		
 		if(count == 2){
-			document.write( "처음 만난 소수 : " + primeNumber);
+			console.log( "처음 만난 소수 : " + primeNumber);
 			break;
 		}
 		else primeNumber++;
