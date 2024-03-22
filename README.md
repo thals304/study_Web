@@ -2762,3 +2762,237 @@
         </html>
         
         ```
+
+	- **이벤트 (event)**
+	    - HTML 요소에 대하여 발생한 사건 및 동작을 이벤트(event)라고 한다.
+	    - 프로그램의 흐름을 이벤트 중심으로 제어하는 방식을 이벤트 드리븐 (event driven)이라고 한다.
+	        
+	        [ 예시 ]
+	        **onchange**            : 엘리먼트의 상태가 변경되었을 때 발생하는 이벤트
+	        
+	        **onmouseenter**    : 엘리먼트안으로 마우스 포인트가 옮겨왔을 때 발생하는 이벤트
+       
+	        **onmouseleave**    : 엘리먼트밖으로 아무스 포인트가 옮겨갔을 때 발생하는 이벤트
+	        
+	        **onkeydown**       : 엘리먼트에서 키보드의 키가 눌렀을 때 발생하는 이벤트
+       
+	        **onkeyup**         : 엘리먼트에서 키보드의 키가 올라올 때 발생하는 이벤트
+	        
+	        **onmousedown**     : 엘리먼트에서 마우스 포인트가 눌렀을 때 발생하는 이벤트
+       
+	        **onmouseup**       : 엘리먼트에서 마우스 포인트가 올라올 때 발생하는 이벤트
+	        
+	        **onfocus**         : 엘리먼트가 포커스를 획득했을 때 발생하는 이벤트
+       
+	        **onblur**          : 엘리먼트가 포커스를 잃었을 때 발생하는 이벤트
+	        
+	        **onclick**         : 엘리먼트를 클릭했을 때 발생하는 이벤트
+       
+	        **onscroll**        : 스크롤바가 스크롤될 때 발생하는 이벤트
+       
+	        **onsubmit**        : 폼의 입력값이 서버로 제출될 때 발생하는 이벤트
+       
+	        **onload**          : 웹페이지가 전부 로딩된 후에 발생하는 이벤트
+	        
+	    
+	    ```html
+	    <html>
+	    <head>
+	    </head>
+	    <meta charset="UTF-8">
+	    <title>이벤트</title>
+	    <script>
+	    
+	         function kDown(){
+	    		 document.getElementById("target").src = "../../images/pic_1.jpg";
+	    	 }
+	    	 
+	    	 function kUp(){
+	    		 document.getElementById("target").src = "../../images/pic_2.jpg";
+	    	 }
+	    	 
+	    	 function mDown(){
+	    		 document.getElementById("target").src = "../../images/pic_3.jpg";
+	    	 }
+	    	 
+	    	 function mUp(){
+	    		 document.getElementById("target").src = "../../images/pic_4.jpg";
+	    	 }
+	    	 
+	    	 function doFocus(){
+	    		 document.getElementById("target").src = "../../images/pic_5.jpg";
+	    	 }
+	    	 
+	    	 function doBlur(){
+	    		 document.getElementById("target").src = "../../images/pic_6.jpg";
+	    	 }
+	    	 
+	    	 function mEnter(){
+	    		 document.getElementById("target").src = "../../images/pic_7.jpg";
+	    	 }
+	    	 
+	    	 function mLeave(){
+	    		 document.getElementById("target").src = "../../images/pic_8.jpg";
+	    	 }
+	    	 let toggle = true;
+	    	 function doChange(){
+	    		 
+	    		 if (toggle){
+	    			document.getElementById("target").src = "../../images/pome.png";
+	    			toggle = false; 
+	    		 }
+	    		 else {
+	    			 toggle = true;
+	    		 }
+	    	 }
+	    	 
+	    </script>
+	    <body>
+	    
+	       	<img src="../../images/poodle.png" id="target" height="300" width="300" alt="이미지">
+	        <hr>
+	        
+	        키보드 다운 & 업 : <input type="text" onkeydown="kDown();" onkeyup="kUp();" >
+	        <hr>
+	        
+	        마우스 다운 & 업 : <input type="button" value="버튼" onmousedown="mDown();" onmouseup="mUp();">
+	    	<hr>
+	        
+	        포커스 획득 & 잃음 : <input type="text" onfocus="doFocus();" onblur="doBlur();">    
+	        <hr>
+	    
+	        마우스 진입 & 아웃 : <img src="../../images/pic_1.jpg" width="50" height="50" onmouseenter="mEnter();" onmouseleave="mLeave();">
+	        <hr>
+	        
+	        변화 : <input type="radio" name="brand1" onchange="doChange();"> apple   
+	        	  <input type="radio" name="brand1" onchange="doChange();"> samsung   
+	        	  <input type="radio" name="brand1" onchange="doChange();"> lg  &emsp;&emsp;
+	        	   
+	       		   <input type="checkbox" name="brand2" onchange="doChange();"> apple   
+	        	   <input type="checkbox" name="brand2" onchange="doChange();"> samsung   
+	        	   <input type="checkbox" name="brand2" onchange="doChange();"> lg  &emsp;&emsp;
+	        	   
+	        	   <select onchange="doChange();">
+	        	   		<option>apple</option>
+	        	   		<option>samsung</option>
+	        	   		<option>lg</option>
+	        	   </select>
+	        	   
+	    </body>
+	    ```
+	    
+	- **노드 추가 & 삭제**
+	    - 여러 함수를 통해 JavaScript에서 DOM 노드를 유연하게 추가하거나 삭제할 수 있다.
+	    - 이를 통해 사용자와의 상호작용에 따라 페이지의 내용을 동적으로 변경할 수 있다.
+	        
+	        **[ 함수 예시 ]**
+	        **createElement**    : html element를 생성한다.
+	        
+	        **createTextNode**   : text노드를 생성한다.
+	        
+	        **appendChild**      : 현재 노드에 자녀 노드를 추가한다.
+	        
+	        **removeChild** : 현재 노드에 자녀 노드를 삭제한다.
+	        
+	        **parentNode** : 현재노드의 부모노드를 반환한다.
+	        
+	        **childNodes** : 한 노드의 모든 자식에 접근 할 수 있다. 배열이 반환된다.
+	        
+	        **firstChild** : 배열의 첫번째 자식 노드가 반환된다. childNodes[0]과 같다.
+	        
+	        **lastChild** : 배열의 마지막 자식 노드가 반환된다. childNodes[childNodes.length -1]과 같다.
+	        
+	    - **새로운 노드를 추가 하는 방법**
+	        - 원하는 노드를 생성한다.
+	        - 새로운 노드의 속성값을 부여한다.
+	        - 노드가 html에 문서에 추가되기 위해서 연결할 부모노드를 찾아서 연결한다.
+	    
+	    ```html
+	    <!DOCTYPE html>
+	    <html>
+	    <head>
+	    <meta charset="UTF-8">
+	    <title>새로운 노드 추가 및 삭제</title>
+	    <script>
+	    
+	    	let imageIdx = 1;
+	    	function addElement() {
+	    		
+	    		// [필수] createElement("태그명") 메서드를 이용하여 새로운 태그를 생성한다.
+	    		let addImg = document.createElement("img"); //<img>
+	    		
+	    		// [옵션] 태그에 속성을 부여한다.
+	    		addImg.src = "../../images/pic_" + imageIdx + ".jpg"; // <img src="../../images/pic_1.jpg">
+	    		addImg.width = "100"; // <img src="../../images/pic_1.jpg" width="100">
+	    		addImg.height = "100"; // <img src="../../images/pic_1.jpg" width="100" height="100">
+	    		
+	    		// [필수] 부모의 노드를 찾아서 appendChild(노드) 메서드를 이용하여 새로운 노드를 연결한다.
+	    		document.getElementById("target1").appendChild(addImg);
+	    		
+	    		imageIdx++;
+	    		
+	    		if(imageIdx == 10){
+	    			imageIdx = 1;
+	    		}
+	    	}
+	    	
+	    	function removeElement() {
+	    		
+	    		// 삭제하고 싶은 노드의 부모를 선택한다.
+	    		let pNode = document.getElementById("target1");
+	    		// 마지막 노드 삭제 예시
+	    		// firstChild , lastChild, childNodes[n]
+	    		pNode.removeChild(pNode.lastChild);
+	    		
+	    		imageIdx --;
+	    		if(imageIdx == 1){
+	    			alert("없는 사진")
+	    		}
+	    	}
+	    	
+	    	
+	    	function addText() {
+	    		
+	    		// [필수] createTextNode("텍스트") 메서드를 이용하여 새로운 텍스트를 생성한다.
+	    		let addText = document.createTextNode("동적으로 텍스트가 추가됩니다."); // 텍스트 생성
+	    		let addP = document.createElement("p");	// p 태그 생성 
+	    		
+	    		// [옵션] 노드에 속성을 부여한다.
+	    		addP.style="color : red";
+	    		addP.appendChild(addText);
+	    		
+	    		// [필수] 부모의 노드를 찾아서 appendChild(노드) 메서드를 이용하여 새로운 노드를 연결한다.
+	    		document.getElementById("target2").appendChild(addP);
+	    		
+	    	}
+	    	
+	    	
+	    	function removeText() {
+	    		
+	    		// 삭제하고 싶은 노드의 부모를 선택한다.
+	    		let pNode = document.getElementById("target2");
+	    		
+	    		// 전체 노드 삭제 예시
+	    		for (let i = pNode.childNodes.length - 1; i >= 0; i--){ // 자식 노드 전체 삭제
+	    			pNode.removeChild(pNode.childNodes[i]);
+	    		}
+	    	}
+	    	
+	    </script>
+	    </head>
+	    <body>
+	    
+	    	<h2>첫번째 단락</h2>
+	    	<div id="target1"></div>
+	    	
+	    	<h2>두번째 단락</h2>
+	    	<div id="target2"></div>
+	    	
+	    	<button onclick="addElement();">엘리먼트 추가</button>
+	    	<button onclick="removeElement();">엘리먼트 삭제</button>
+	    	<button onclick="addText();">텍스트 추가</button>
+	    	<button onclick="removeText();">텍스트 삭제</button>
+	    	
+	    </body>
+	    </html>
+	    ```
