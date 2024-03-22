@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!-- 24.03.21 time 22:20 - 22:29
+	today 소감문
+	일단 중간 점검으로 오류가 발생했었는데 상세 조회를 선택하게 되면 
+	disabled = false로 풀리게 해야하는데 반대로 생각하고 true를 쓰고 있던 것이었다.
+	그리고 다른 코드를 쓰지 않고 상세 조회에서 일반 조회로 다시 바꾸면 원래대로 돌아올 줄 알았다.
+	근데 그게 아니라 else에 if와 반대되게 disabled = true로 다 써줘야했었다.
+ -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>연습예제</title>
+<script>
+	function changeSearchMethod(){
+		let search = document.getElementsByName("search");
+		
+		if (search[1].checked){
+			document.getElementById("category").disabled = false;
+			document.getElementById("keyword").disabled = false;
+			document.getElementById("today").disabled = false;
+			document.getElementById("week1").disabled = false;
+			document.getElementById("month1").disabled = false;
+		}
+		else {
+			document.getElementById("category").disabled = true;
+			document.getElementById("keyword").disabled = true;
+			document.getElementById("today").disabled = true;
+			document.getElementById("week1").disabled = true;
+			document.getElementById("month1").disabled = true;
+		}
+		
+	}
+</script>
+</head>
+<body>
+
+	<!-- 
+	
+		1) 상세조회의 라디오가 선택되었을때 셀렉트박스 및 버튼 사용가능
+		2) 다시 기본 조회를 보였을때 셀렉트 박스 및 버튼 사용 불가
+		3) 1~2번이 모두 반복적으로 가능하도록
+		
+		스크립트를 작성해보시오.
+	
+	 -->
+	
+	
+	<p>
+		<input type="radio" name="search" value="base" checked > 기본 조회	
+		<input type="radio" name="search" value="detail"> 상세 조회
+		<input type="button" value="정답" onclick="changeSearchMethod();">
+	</p>
+	<div>
+	<p>
+		<select id="category" disabled>
+			<option>사용자 이름</option>
+			<option>사용자 ID</option>
+			<option>제품명</option>
+		</select>
+		<input type="text" id="keyword"  disabled>&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="button" id="today" value="당일" disabled>
+		<input type="button" id="week1" value="1주" disabled>
+		<input type="button" id="month1" value="1달" disabled>
+	</p>
+	</div>
+
+</body>
+</html>

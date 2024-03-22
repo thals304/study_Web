@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--24.03.22 time 14:31-14:38
+	today 소감문
+	정답예시에서는 토글을 if문에 넣었는데 토글이 없어도 괜찮을 줄 알았는데
+	토글이 없으면 뒤에 기타, 가성비가 좋다 도 없어지는 문제가 발생한다.
+ -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>연습예제</title>
+<script>
+	function makeReasonBuy(reason){
+		
+		if(reason == 'etc'){
+			let input = document.createElement("input");
+			input.type ="text";
+			input.size ="100";
+			input.placeholder = "이유를 적어주세요." 
+			document.getElementById("target").appendChild(input);
+		}
+		else if (reason != 'etc'){
+			let pNode = document.getElementById("target");
+			pNode.removeChild(pNode.lastChild);
+		}
+		
+	}
+</script>
+</head>
+<body>
+
+	<!-- 
+		
+		radio에서 '기타'가 선택될 경우 
+		<input type="text" size="100" placeholder="이유를 적어주세요">
+		엘리먼트가 추가되도록 스크립트를 작성해 보시오.
+		
+		기타 이외의 다른 요소가 선택되면 
+		기존의 <input type="text" size="100" placeholder="이유를 적어주세요">
+		엘리먼트를 삭제하도록 스크립트를 작성해 보시오.
+	
+	 -->
+
+	<fieldset>
+		<p id="target">
+			<label for="browser">구매 이유 : </label>
+			<input type="radio" name="reasonBuy" onclick="makeReasonBuy('quality');"> 품질이 좋다
+			<input type="radio" name="reasonBuy" onclick="makeReasonBuy('costEffect');"> 가성비가 좋다
+			<input type="radio" name="reasonBuy" onclick="makeReasonBuy('etc');"> 기타&emsp;&emsp;&emsp;
+		</p>
+	</fieldset>
+	
+</body>
+</html>

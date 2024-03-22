@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--24.03.22 time 11:53-12:16
+	today 소감문
+	와 진짜 어렵다....
+	정답예시를 보고 나서 더 혼동이 왔던 것 같다.
+	핸드폰 결제일 때, 카드 결제일 때를 나누는 것은 이제 잘하지만
+	id가 target인 부분을 innerHTML을 통해 수정해줘야 하는 것도 알았는데
+	변수를 만들어서 아예 거기에 내가 원하는 select나 input을 넣고 
+	맨 마지막에 innerHTML에 변수를 대입하는 방식이 너무 새롭게 느껴졌던 것 같다.
+	
+ -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>연습예제</title>
+<script>
+	function setPayMethod(){
+		let payMethod = document.getElementsByName("payMethod");
+		let setview = "";
+		
+		if (payMethod[0].checked){
+			//  input type="text"를 어떻게 집어넣지? 
+			setView = `
+				카드 번호 : 
+				<input type='text'>
+				<input type='text'>
+				<input type='text'>
+				<input type='text'>
+			`
+			
+		}
+		else if (payMethod[1].checked){
+			
+			setView = `
+				핸드폰 번호 : 
+				<select>
+					<option value = '010'>010</option>
+					<option value ='017'>017</option>
+					<option value ='018'>018</option>
+					<option value= '019'>019</option>
+				</select>
+				<input type='text' size='10'>
+				<input type='text' size='10'>
+			`
+		}
+		document.getElementById("target").innerHTML = setView;
+	}
+</script>
+</head>
+<body>
+
+	<!-- 
+	
+		1) 신용카드 선택시
+		
+			카드 번호 : [   ] [   ] [   ] [   ]        < 표시
+		
+		2) 핸드폰 번호 선택시
+		
+			핸드폰 번호 :  [010] - [   ] - [   ] 		< 표시 (010부분 : 셀렉트태그)
+		
+		3) 1~2번이 모두 반복적으로 가능하도록
+		
+		스크립트를 작성해보시오.
+	
+	 -->
+	
+	<p>
+		<input type="radio" name="payMethod" value="card" checked > 신용카드	
+		<input type="radio" name="payMethod" value="phone"> 휴대폰 결제
+		<input type="button" value="정답" onclick="setPayMethod();">
+	</p>
+	<div>
+	<p id="target">
+		<select id="hp1" >
+			<option value="010">010</option>
+			<option value="017">017</option>
+			<option value="018">018</option>
+			<option value="019">019</option>
+		</select> - 
+		<input type="text" size="10"> - 
+		<input type="text" size="10">
+	</p>
+	</div>
+
+</body>
+</html>

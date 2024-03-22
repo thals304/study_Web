@@ -1,5 +1,13 @@
 <!DOCTYPE html>
-<!--24.03.21 time 14:28-
+<!--24.03.21 time 14:28-14:40
+	today 소감문
+	자바보다 문법이 쉽다고 느꼈는데 돔은 진짜 뭘 어떻게 해야 될 지 모르겠다.
+	select도 radio, checkbox 처럼 배열이라고 생각하고 getElementsByName을 사용할 줄 알았는데
+	그렇게 했더니 오류만 뜨는 것이다.
+	그리고 innerHTML에서 <span></span> 형태로 쓸 줄 알았는데 그냥 글자만 바꿔주면 되는거라
+	span이 필요 없었던 것 같다. 
+	솔직히 오늘 돔 예제는 잘 안풀릴 거 같아 분하겠지만 이런 실수들이 나중의 나의 단단한 실력이 될 것이라 믿는다
+	
  -->
 <html>
 <head>
@@ -9,8 +17,7 @@
 	function answer(){
 		let grade = document.getElementById("grade").value;
 		
-		
-		document.getElementById("choicGradeLabel").innerHTML = "선택된 학년";
+		document.getElementById("choiceGradeLabel").innerHTML = "선택된 학년";
 		document.getElementById("choiceGrade").value = grade;
 		document.getElementById("choiceGrade").disabled = true;
 				 

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--24.03.22 time 12:19-12:24
+	today 소감문
+	앞에 어려운걸 하고 새롭게 배운 것을 다음 문제에서 내 스스로 생각해
+	이용할 수 있다는 점이 재밌는거 같긴하다.
+	틀리더라도 배우려고 노력하자!
+ -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>연습예제</title>
+<script>
+	function answer(){
+		let subjects = document.getElementsByName("subjects");
+		let setView = "선택된 과목 : ";
+		
+		for (let i = 0; i < subjects.length; i++){
+			if (subjects[i].checked){
+				setView += subjects[i].value + " ";
+			}
+		}
+		document.getElementById("result").innerHTML = setView;
+	}
+</script>
+</head>
+<body>
+
+	<!-- 
+		
+			버튼을 클릭할때 checkbox에서 선택한 데이터들을
+			
+			result위치에 텍스트로 출력되도록 스크립트를 작성해보시오.
+	
+			예시) 선택된 과목 : html javascript
+	
+	 -->
+
+    <p>	
+		과목 : 
+		<input type="checkbox" name="subjects" value="html" > html
+		<input type="checkbox" name="subjects" value="css"> css
+		<input type="checkbox" name="subjects" value="javascript" > javascript
+	</p>
+	<p>
+		<input type="button" value="버튼" onclick="answer();">
+	</p>
+	<span id="result"></span>
+	
+	
+</body>
+</html>

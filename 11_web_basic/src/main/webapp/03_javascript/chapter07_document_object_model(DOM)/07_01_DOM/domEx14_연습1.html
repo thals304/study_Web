@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--24.03.22 time 12:26-12:36 12:50-13:00
+	today 소감문
+	내가 푼 방식이 연결성을 잘 표현했다고 생각하지는 않는데
+	풀긴 풀었던 것 같다. 
+	그래서 정답예시를 보고 연결성을 어떻게 표현했는지 연구를 해봐야될 것 같다.
+	정답예시를 봤는데 innerHTML의 역할을 단순히 문자열을 넣고 싶을 때만 쓰는 줄 알았는데
+	이 문제를 통해서 <>35000<> 35000을 innerHTML로 가져올 수 있다는 사실에
+	다시 한 번 HTML의 사용에 대해 고민하고 정리해봐야겠다고 느꼈다.
+ -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>연습예제</title>
+<script>
+	function answer(){
+		let products = document.getElementsByName("products");
+		
+		let totalPrice = 0;
+		// 체크한 것과 상품 이름 가격의 연결성을 어떻게 하지?
+		// 가격들이 문자열로 출력이 됨 3500028000 // Number(문자열) 로 했는데도 문자열로 출력됨 -> setView를 0으로 초기화함
+		if (products[0].checked){
+			totalPrice += Number(document.getElementById("keyboardPrice").innerHTML);
+		}
+		if (products[1].checked){
+			totalPrice += Number(document.getElementById("mousePrice").innerHTML);
+		}
+		if (products[2].checked){
+			totalPrice += Number(document.getElementById("padPrice").innerHTML);
+		}
+		document.getElementById("totalPrice").innerHTML = totalPrice;
+	}
+</script>
+</head>
+<body>
+
+	<!-- 
+		
+			버튼을 클릭할때 checkbox에서 선택한 데이터들의 합을
+			
+			totalPrice 위치에 텍스트로 출력되도록 스크립트를 작성해보시오.
+	
+	 -->
+
+    <table border="1">
+    	<colgroup>
+    		<col width="30"/>
+    		<col width="150"/>
+    		<col width="100"/>
+    	</colgroup>
+    	<tr height="40">
+    		<th></th>
+    		<th>상품</th>
+    		<th>가격</th>
+    	</tr>
+    	<tr height="40" align="center">
+    		<td><input type="checkbox" name="products"></td>
+    		<td>기계식 키보드</td>
+    		<td><span id="keyboardPrice">35000</span>원</td>
+    	</tr>
+    	<tr height="40" align="center">
+    		<td><input type="checkbox" name="products"></td>
+    		<td>무소음 마우스</td>
+    		<td><span id="mousePrice">28000</span>원</td>
+    	</tr>
+    	<tr height="40" align="center">
+    		<td><input type="checkbox" name="products"></td>
+    		<td>장패드</td>
+    		<td><span id="padPrice">10000</span>원</td>
+    	</tr>
+	</table>
+	<p>
+		<input type="button" value="정답" onclick="answer();">
+	</p>
+	최종 구매 가격 : <span id="totalPrice">0</span>원
+</body>
+</html>

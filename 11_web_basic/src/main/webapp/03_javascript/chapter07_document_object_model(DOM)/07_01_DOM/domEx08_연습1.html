@@ -1,8 +1,38 @@
 <!DOCTYPE html>
+<!--24.03.21 time 21:37-21:45
+	today 소감문
+	대박 이번 문제는 내가 정확히 이해하고 푼 느낌이라 더 기분 좋게 푼 것 같다.
+	근데 아직 헷갈리는 점이 변수에 그냥 getElementById()를 넣을지 .value까지 넣어야 하는지이다.
+	느낌상 기본으로 정해두고 밑에서 속성을 붙이면 응용을 하고 싶거나
+	radio, checkbox는 배열 취급을 하기 때문에 getElementsByName()까지 넣고
+	나머지는 value까지 넣어야 될 것 같다
+ -->
 <html>
 <head>
 <meta charset="UTF-8">
 <title>연습예제</title>
+<script>
+	function answer(){
+		let searchType = document.getElementById("searchType").value;
+		
+		if (searchType == "all"){
+			document.getElementById("searchWord").placeholder ="";
+		}
+		else if (searchType == "goodsId"){
+			document.getElementById("searchWord").placeholder = "상품번호를 입력하세요."; 
+		}
+		else if (searchType == "goodsTitle"){
+			document.getElementById("searchWord").placeholder = "상품이름을 입력하세요."; 
+		}
+		else if (searchType == "goodsWriter"){
+			document.getElementById("searchWord").placeholder = "저자를 입력하세요."; 
+		}
+		else if (searchType == "goodsPublisher"){
+			document.getElementById("searchWord").placeholder = "출판사를 입력하세요."; 
+		}
+		
+	}
+</script>
 </head>
 <body>
 	
