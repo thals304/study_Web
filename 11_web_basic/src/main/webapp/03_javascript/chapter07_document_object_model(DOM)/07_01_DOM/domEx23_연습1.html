@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--24.03.22 time 16:48-16:59
+	today 소감문
+	이번 문제는 간단하다고 생각했는데 합계로 안나오고 onchange를 할 때마다 체크된 상품의
+	가격만 총가격으로 나와서 당황했던 것 같다. 왜냐하면 Ex14에서는 문제가 없었기 때문이다.
+	코드를 다시 쭉 살펴보다가 let totalPrice = 0;이 내 눈에 보였던 것 같다.
+	왜냐하면 지역변수로 있게되면 onchange로 파메타가 함수로 넘어올 때마다 totalPrice가 0으로
+	다시 초기화 되기 때문이다. 이 점을 파악하고 나서 바로 전역변수로 함수 밖에 옮겨줬다.
+	이벤트가 1개였을 때는 문제가 없었지만 checkbox로 같은 이벤트가 여러 개 사용하게 되소 파라메타를 사용하게 된다면
+	함수 안에서 사용하는 지역변수들의 사용에 대해 다시 한 번 생각해보고 코드를 짜야 될 것 같다. 
+ -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>연습예제</title>
+<script>
+	let totalPrice = 0;
+	function productsPrice(productNm){
+		// onchange=productsPrice('파라메타')할 때마다 지역변수 totalPrice가 다시 0으로 초기화 되서 합계로 안나오는거 같다. 
+		if (productNm == 'keyboard') totalPrice += Number(document.getElementById("keyboardPrice").innerHTML);
+		
+		if (productNm == 'mouse') totalPrice += Number(document.getElementById("mousePrice").innerHTML);
+		
+		if (productNm == 'pad') totalPrice += Number(document.getElementById("padPrice").innerHTML);
+		
+		document.getElementById("totalPrice").innerHTML = totalPrice;
+	}
+
+</script>
+</head>
+<body>
+
+	<!-- 
+		
+		체크박스를 클릭할때마다 checkbox에서 선택한 데이터들의 합을
+			
+		totalPrice 위치에 텍스트로 출력되도록 스크립트를 작성해보시오.
+	
+	 -->
+
+    <table border="1">
+    	<colgroup>
+    		<col width="30"/>
+    		<col width="150"/>
+    		<col width="100"/>
+    	</colgroup>
+    	<tr height="40">
+    		<th>항목</th>
+    		<th>상품</th>
+    		<th>가격</th>
+    	</tr>
+    	<tr height="40" align="center">
+    		<td><input type="checkbox" name="products" onchange="productsPrice('keyboard');"></td>
+    		<td>기계식 키보드</td>
+    		<td><span id="keyboardPrice">35000</span>원</td>
+    	</tr>
+    	<tr height="40" align="center">
+    		<td><input type="checkbox" name="products" onchange="productsPrice('mouse');" ></td>
+    		<td>무소음 마우스</td>
+    		<td><span id="mousePrice">28000</span>원</td>
+    	</tr>
+    	<tr height="40" align="center">
+    		<td><input type="checkbox" name="products" onchange="productsPrice('pad');"></td>
+    		<td>장패드</td>
+    		<td><span id="padPrice">10000</span>원</td>
+    	</tr>
+	</table>
+	
+	<p>최종 구매 가격 : <span id="totalPrice">0</span>원</p>
+</body>
+</html>

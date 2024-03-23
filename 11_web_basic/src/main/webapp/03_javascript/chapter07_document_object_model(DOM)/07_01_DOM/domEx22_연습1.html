@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--24.03.22 time 16:27-16:34
+	today 소감문
+	기타가 아닐 때는 text를 아예 안보이도록 하는 것에 고민을 한 결과 빈 문자열로 두게 했는데
+	정답예시에서는 그냥 기타일 때만 if문으로 나타내고 아닐 때는 else로도 표현을 안해줘서
+	나만 너무 조건에 집착하다보니 코드가 길어지는 건가 싶었고 내가 한 고민들이 다른 사람들은
+	안하는구나라고 생각했다.
+ -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>연습예제</title>
+<script>
+	function detailInfo(reason){
+		let setView = "";
+		if (reason == '기타'){
+			setView = "<input type='text' size='50' placeholder='이유를 적어주세요.'>";
+		}
+		else if (reason != '기타'){
+			setView ="";
+		}
+		document.getElementById("etcDetail").innerHTML = setView;
+	}
+</script>
+</head>
+<body>
+
+	<!-- 
+		
+		1) radio에서 '기타'가 선택될 경우
+		<input type="text" size="50" placeholder="이유를 적어주세요.">
+		요소가 "etcDetail"에 추가되도록 스크립트를 작성해 보시오.
+	
+	
+		2) radio에서 '기타'이 외의 다른 항목이 선택될 경우
+		"etcDetail"의 내용을 지우는 스크립트를 작성해 보시오.
+	
+	 -->
+
+	<fieldset>
+		<p id="target">
+			구매 이유 : 
+			<input type="radio" name="reasonBuy" onchange="detailInfo('품질');"> 품질이 좋다
+			<input type="radio" name="reasonBuy" onchange="detailInfo('가성비');"> 가성비가 좋다
+			<input type="radio" name="reasonBuy" onchange="detailInfo('기타');"> 기타&emsp;&emsp;&emsp;
+			<span id="etcDetail"></span>
+		</p>
+	</fieldset>
+</body>
+</html>
