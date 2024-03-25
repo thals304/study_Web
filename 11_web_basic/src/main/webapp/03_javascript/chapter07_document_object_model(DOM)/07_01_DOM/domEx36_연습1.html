@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--24.03.24 time 21:33-21:50
+	today 소감문
+	추가, 삭제 하는 틀은 어느정도 이해가 된 것 같다.
+	하지만 정답으로 완성하는 디테일적인 부분 ex) 파일 1개는 무조건 남겨두도록 return;하기
+	을 조금씩 놓치고 있는 것 같아서 계속 해보고 이해하고 해보고 이해하는 연습을 많이 해야될 것 같다.  
+ -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>연습예제</title>
+<script>
+	let fileCnt = 1;
+	function appendFile(){
+		fileCnt++;
+		
+		let addFile = document.createElement("input");
+		let addP = document.createElement("p");
+		
+		addFile.type = "file";
+		addFile.name = "file" + fileIdx;
+		
+		addP.appendChild(addFile);
+		document.getElementById("fileList").appendChild(addP);
+		
+	}
+	function removeFile(){
+		if(fileCnt == 1){ // 파일추가 무조건 1개는 남겨두도록 한 것
+			alert("더이상 파일 삭제 불가능");
+			return; 
+		}
+		
+		let nodeP = document.getElementById("fileList");
+		
+		nodeP.removeChild(nodeP.lastChild); // childnodes[인덱스]로 하는 것 보다 lastChild가 더 나은거 같음
+		
+		fileCnt--;
+		
+	}
+</script>
+</head>
+<body>
+
+	<!-- 
+	
+		1) 추가하기 버튼을 클릭할 경우 
+		
+			<p><input type="file" name="file2(3,4,5,6,7,8)"></p>
+		
+			요소가 추가되도록 스크립트를 작성해 보시오.
+	
+	
+	
+		2) 삭제하기 버튼을 클릭할 경우
+		
+			마지막 file 요소가 삭제되도록 스크립트를 작성해 보시오.
+			단, 처음 파일 <input type="file" name="file1">는 삭제가 되어서는 안 된다.
+			
+	-->
+	
+	<form method="post" enctype="multipart/form-data">
+		<div id="fileList">
+			<input type="file" name="file1">
+		</div>
+		<p>
+			<input type="button" value="추가하기" onclick="appendFile()">
+			<input type="button" value="삭제하기" onclick="removeFile()">
+		</p>
+	</form>
+	
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<!--24.03.24 time 22:08-22:31
+	today 소감문
+	이번 문제도 앞에 36, 37과 유사한 문제라 어떻게 풀어야지 라는 틀을 
+	머릿속에 잡고 문제를 풀었던 것 같다. 근데 select가 문제였다.
+	select에는 안에 option이 있다는 것을 알고 있어서
+	select 안에 option을 appendChild로 넣어줬는데
+	"사용자 지정"이라는 걸 어떻게 넣지?가 문제였던 것 같다.
+	그래서 처음에는 option.value = "사용자 지정";이라고 했는데
+	출력이 안되는 것이다. 결론은 안에 createTextNode로 option의 appendChild로
+	넣어줘야 했던 것이었다. 새롭게 알게 된 사실이라 신기했던 것 같다.
+	그러면 radio, checkbox는 어떻게 하지? 라는 궁금증이 생겼던 것 같다.  
+ -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>연습예제</title>
+<script>
+	let cnt = 1;
+	function appendElement(){
+		cnt++;
+		
+		let addP = document.createElement("p");
+		// select 추가 > option 추가 > text 추가 
+		// Q. radio & checkbox는 ? 여러 개를 어떻게 표현하지? name만 같다면 괜찮은 건가?
+		// radio : input 추가 - input.type = "radio" - input.name= "" - input.value= "" > text 추가
+		// radio : input 추가 - input.type = "checkbox" - input.name= "" - input.name= "" > text 추가
+		
+		let addSelect = document.createElement("select");
+		let addOption = document.createElement("option");
+		let addOptionText = document.createTextNode("사용자 지정");
+		
+		addOption.appendChild(addOptionText);
+		addSelect.appendChild(addOption);
+		addP.appendChild(addSelect);
+		
+		let addText1 = document.createElement("input");
+		addText1.type = "text";
+		addText1.value = "TCP";
+		addText1.disabled = true;
+		addP.appendChild(addText1);
+		
+		let addText2 = document.createElement("input");
+		addText2.type = "text";
+		addText2.placeholder = "포트번호 입력";
+		addP.appendChild(addText2);
+		
+		let addText3 = document.createElement("input");
+		addText3.type = "text";
+		addText3.placeholder = "설명";
+		addP.appendChild(addText3);
+		
+		let addButton = document.createElement("input");
+		addButton.type = "button";
+		addButton.value = "삭제";
+		addP.appendChild(addButton);
+		
+		document.getElementById("elementList").appendChild(addP);
+	}
+	function removeElement(){
+		if (cnt == 1)return;
+		
+		let pNode = document.getElementById("elementList");
+		
+		pNode.removeChild(pNode.lastChild);
+		
+		cnt--; 
+	}
+</script>
+</head>
+<body>
+
+	<!-- 
+	
+		1) 추가하기 버튼을 클릭할 경우 
+		
+			<p>
+				<select>
+					<option>사용자지정</option>
+				</select>
+				<input type="text" value="TCP" disabled>
+				<input type="text" placeholder="포트번호 입력">
+				<input type="text" placeholder="설명">
+				<input type="button" value="삭제">
+			</p>
+		
+			요소가 추가되도록 스크립트를 작성해 보시오.
+	
+	
+	
+		2) 삭제하기 버튼을 클릭할 경우
+		
+			마지막 요소가 삭제되도록 스크립트를 작성해 보시오.
+			
+			단, 처음 파일 
+				<p>
+					<select>
+						<option>사용자지정</option>
+					</select>
+					<input type="text" value="TCP" disabled>
+					<input type="text" placeholder="포트번호 입력">
+					<input type="text" placeholder="설명">
+					<input type="button" value="삭제">
+				</p>
+			는 삭제가 되어서는 안 된다.
+	-->
+	
+	<form>
+		<div id="elementList">
+			<p>
+				<select>
+					<option>사용자지정</option>
+				</select>
+				<input type="text" value="TCP" disabled>
+				<input type="text" placeholder="포트번호 입력">
+				<input type="text" placeholder="설명">
+				<input type="button" value="삭제">
+			</p>
+		</div>
+		<p>
+			<input type="button" value="추가하기" onclick="appendElement();">
+			<input type="button" value="삭제하기" onclick="removeElement();">
+		</p>
+	</form>
+	
+</body>
+</html>

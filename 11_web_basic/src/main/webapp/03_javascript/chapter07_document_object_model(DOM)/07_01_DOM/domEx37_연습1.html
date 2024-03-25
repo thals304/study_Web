@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!-- 24.03.24 time 21:53-22:04
+	today 소감문
+	일단 앞에 예제랑 같은데 버튼 2개도 p로 묶어 같이 추가되고 같이 삭제 되도록
+	만들면 되는거라 많은 어려움은 없었다. 
+	근데 나는 지금 js만 짜고 있는데 만약 밑에 html까지 같이 짜라고 한다면
+	과연 내가 쉬운 예제 전체를 완성할 수 있을까? 라는 걱정이 된다.
+	그래서 시간이 나면 문제 푸는 것에 집중하는 것도 좋지만 밑에 html의 구조가 어떻게 
+	되어 있는지 보면서 같이 공부하는 것도 좋을 것 같다.
+-->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>연습예제</title>
+<script>
+	let fileCnt = 1;
+	function appendFile(){
+		fileCnt ++;
+		let addP = document.createElement("p");
+		
+		let addFile = document.createElement("input");
+		addFile.type ="file";
+		addFile.name ="file" + fileCnt;
+		
+		let addButton1 = document.createElement("input");
+		addButton1.type = "button";
+		addButton1.value = "수정" 
+		
+		let addButton2 = document.createElement("input");
+		addButton2.type = "button";
+		addButton2.value = "수정" 
+		
+		// <p>에다가 file & button 1/2 추가를 ','를 사용해 한번에 할 수 있나? no 
+		addP.appendChild(addFile); 
+		addP.appendChild(addButton1); 
+		addP.appendChild(addButton2); 
+		
+		document.getElementById("fileList").appendChild(addP);
+	}
+	
+	function removeFile(){
+		if (fileCnt == 1) return;
+		
+		let pNode = document.getElementById("fileList");
+		
+		// lastnode로 지우면 마지막 <p></p>가 삭제되나? yes
+		pNode.removeChild(pNode.lastChild);
+		
+		fileCnt--;
+	}
+</script>
+</head>
+<body>
+
+	<!-- 
+	
+		1) 추가하기 버튼을 클릭할 경우 
+		
+			<p>
+				<input type="file" name="file2(3,4,5,6,7,8)">
+				<input type="button" value="수정">
+				<input type="button" value="삭제">
+			</p>
+		
+			요소가 추가되도록 스크립트를 작성해 보시오.
+	
+	
+	
+		2) 삭제하기 버튼을 클릭할 경우
+		
+			마지막 file 요소가 삭제되도록 스크립트를 작성해 보시오.
+			
+			단, 처음 파일 
+				<p>
+					<input type="file" name="file2(3,4,5,6,7,8)">
+					<input type="button" value="수정"><input type="button" value="삭제">
+				</p>
+			는 삭제가 되어서는 안 된다.
+	-->
+	
+	<form method="post" enctype="multipart/form-data">
+		<div id="fileList">
+			<p>
+				<input type="file" name="file1">
+				<input type="button" value="수정"><input type="button" value="삭제">
+			</p>
+		</div>
+		<p>
+			<input type="button" value="추가하기" onclick="appendFile();">
+			<input type="button" value="삭제하기" onclick="removeFile();">
+		</p>
+	</form>
+	
+</body>
+</html>

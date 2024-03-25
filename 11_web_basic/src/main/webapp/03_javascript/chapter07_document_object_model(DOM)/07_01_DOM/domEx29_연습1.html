@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--24.03.23 time 21:35-21:49
+	today 소감문
+	select는 진짜 나에게 쫌 어려운 존재라고 생각한다.
+	일단 radio, checkbox는 getElementsByName으로 받아 와서 배열로 받아들이므로
+	각 요소들을 인덱스로 표현이 가능한데
+	select는 getElementById.value 로 받아 와서 배열 취급 없이 value 로만
+	구분을 하다보니 이렇게 썼을때는 차이가 명확해 보이지만 정작 내가 문제를 풀 때는 
+	정리가 안되서 그런가 자꾸만 헷갈려 하는 것 같다. 하지만 이렇게 소감문을 통해 
+	계속 반복하면서 정리하다보면 내꺼로 만들 수 있지 않을까 싶다. 
+ -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>연습예제</title>
+<script>
+	function changeImg(){
+		let selectImg = document.getElementById("selectImg").value;
+		let number = 0;
+		
+		if (selectImg == '1') number = 1;
+		else if (selectImg == '2') number = 2;
+		else if (selectImg == '3') number = 3;
+		else if (selectImg == '4') number = 4;
+		else if (selectImg == '5') number = 5;
+		else if (selectImg == '6') number = 6;
+		else if (selectImg == '7') number = 7;
+		else if (selectImg == '8') number = 8;
+		else if (selectImg == '9') number = 9;
+		// 조건식 안쓰고 그냥 밑에 number 자리 대신 selectImg 써도 가능(더 간단)
+		document.getElementById("targetImg").src = "../../images/pic_" + number +".jpg";
+		
+	}
+</script>
+</head>
+<body>
+	
+	<!-- 
+	
+		셀렉트에 따라서 다른 이미지를 화면에 출력하시오.
+		
+		예시)
+		
+		이미지 경로 >../../images/이미지명
+		
+		그림1       > pic_1.jpg
+		그림2       > pic_2.jpg
+		그림3       > pic_3.jpg
+		
+		....
+	
+	 -->
+	
+	<div>
+		<img src="../../images/pic_1.jpg" id="targetImg" width="200" height="200">
+	</div>
+	
+	이미지 : <select id="selectImg" onchange="changeImg();">
+				<option value="1">그림 1</option>
+				<option value="2">그림 2</option>
+				<option value="3">그림 3</option>
+				<option value="4">그림 4</option>
+				<option value="5">그림 5</option>
+				<option value="6">그림 6</option>
+				<option value="7">그림 7</option>
+				<option value="8">그림 8</option>
+				<option value="9">그림 9</option>
+			</select>
+	
+</body>
+</html>
