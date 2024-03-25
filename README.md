@@ -2996,3 +2996,184 @@
 	    </body>
 	    </html>
 	    ```
+
+  - **name 셀렉터**
+    - **form태그의 name속성**으로 엘리먼트를 선택할때 document.name을 이용한 선택자를 이용하여 엘리먼트를 선택할 수 있다.
+    - **[ 형식 ]**
+        
+        **document.[form tag의 name명].[name명]** 
+        
+    
+    ```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="UTF-8">
+    <title>name 셀렉터</title>
+    <script>
+    
+    	function printDataInConsole() {
+    	    console.log("학번 : " + document.join.studentNum.value);
+    	    console.log("이름 : " + document.join.name.value);
+    	    // radio & checkbox는 같은 것끼리 name이 같아야함
+    	    // radio
+    	    console.log("학년 : " + document.join.grade.value);
+    	    // select
+    	    console.log("선택과목 : " + document.join.subject.value);
+    	    // checkbox (여러 개가 체크될 수 있으므로)
+    	    let webLanguage = document.join.webLanguage;
+    	    for (let i = 0; i < webLanguage.length; i++){
+    			if (webLanguage[i].checked){
+    				console.log("희망과목 : " + webLanguage[i].value);
+    			}
+    		}
+    	}
+    	
+    </script>
+    </head>
+    <body>
+     	<form name="join"> <!--반드시 form에 name 써줘야함-->
+     		<fieldset>
+     			<legend>회원가입</legend>
+    	         <p>학번 : <input type="text" name="studentNum"></p>
+    	         <p>이름 : <input type="text" name="name"></p>
+    	         <p>
+    	         	학년 :
+    		        <input type="radio" name="grade" value="1" checked>1학년&nbsp;
+    		        <input type="radio" name="grade" value="2">2학년&nbsp;
+    		        <input type="radio" name="grade" value="3">3학년&nbsp;
+    		        <input type="radio" name="grade" value="4">4학년
+    	         </p>
+    	         <p>
+    				선택과목 : 
+    		        <select name="subject">
+    		             <option value="JAVA">JAVA</option>
+    		             <option value="JSP">JSP</option>
+    		             <option value="XML">XML</option>
+    	        	 </select>
+    	         </p>
+    	         <p>
+    	         	희망 과목 : 
+    		         	<input type="checkbox" name="webLanguage" value="html"/> html
+    					<input type="checkbox" name="webLanguage" value="css"/> css
+    					<input type="checkbox" name="webLanguage" value="javascript"/> javascript
+    	         </p>
+    	         <p>
+    	         	<input type="button" onclick="printDataInConsole();" value="확인">
+    	         </p>
+        	</fieldset>
+        </form>
+    </body>
+    </html>
+    ```
+    
+  - **onsubmit 이벤트 & 폼 데이터 유효성(validation) 체크**
+      - 데이터가 서버로 전송될때 발생하는 이벤트
+      - 함수의 **return 값이 false일 경우** 폼데이터를 **서버로 전송하지 않고**
+      **return 값이 true일 경우**에만 폼데이터를 **서버로 전송**한다.
+    
+    ```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="UTF-8">
+    <title>폼 검증</title>
+    <script>
+    	function formValidationCheck(){
+    		let id = document.f.id;
+    		if (id.value == ""){
+    			alert("아이디를 입력하세요.");
+    			id.focus(); // 선택자.focus; > 선택된 엘리먼트에 onfocus 이벤트 적용
+    			return false;
+    		}
+    		
+    		let pwd = document.f.pwd;
+    		if(pwd.value.length < 10){
+    			alert("비밀번호는 10자 이상으로 작성하세요.");
+    			pwd.focus();
+    			return false;
+    		}
+    		// radio 에서 아무것도 체크 안했을 때
+    		let gedner = document.f.gender;
+    		if (gender.value == ""){  
+    			alert("성별을 선택하세요.");
+    			gender[0].checked = true;
+    			gender[0].focus();
+    			return false;
+    		}
+    		
+    		// checkbox에서 아무것도 선택 안했을 때
+    		let hobbies = document.f.hobbies;
+    		let isChecked = false;
+    		for (let i = 0; i < hobbies.length; i++){
+    			if (hobbies[i].checked){
+    				isChecked = true;
+    			}
+    		}
+    		
+    		if (!isChecked){
+    			alert("취미는 1개 이상 선택하세요.");
+    			hobbies[0].checked = true;
+    			hobbies[0].focus();
+    			return false;
+    		}
+    		
+    		// select
+    		let travel = document.f.travel;
+    		if (travel.value == "없음"){
+    			alert("여행지를 선택하세요.");
+    			travel.focus();
+    			
+    			return false;
+    		}
+    		
+    		let memo = document.f.memo;
+    		if (memo.value.length < 30){
+    			alert("최소 30자 이상 작성해주세요.");
+    			memo.focus();
+    			return false;
+    		}
+    		return true;
+    		
+    	}
+    </script>
+    </head>
+    <body>
+    
+    	<form name="f" onsubmit="return formValidationCheck();">
+    		<fieldset>
+    			<legend>회원가입 폼</legend>
+    			<p>아이디 : <input type="text" name="id"/></p>
+    			<p>비밀번호 : <input type="password" name="pwd"/></p>
+    			<p>
+    				성별 : <input type="radio" name="gender" value="1"/>남자
+    			   		   <input type="radio" name="gender" value="2"/>여자
+    			</p>
+    			<p>
+    				취미 : <input type="checkbox" name="hobbies" value="운동"/>운동
+    					   <input type="checkbox" name="hobbies" value="잠자기"/>잠자기
+    					   <input type="checkbox" name="hobbies" value="공부하기"/>공부하기
+    			</p>
+    			<p>가고 싶은 여행지는
+    				<select name="travel">
+    					<option>없음</option>
+    					<option>괌</option>
+    					<option>다낭</option>
+    					<option>나트랑</option>
+    					<option>코타키나발루</option>
+    					<option>대만</option>
+    					<option>푸꾸옥</option>
+    				</select>
+    			</p>
+    			<p>메모<br/>
+    				<textarea rows="10" cols="50" name="memo"></textarea>
+    			</p>
+    			<p>
+    				<input type="submit" value="확인" />
+    			</p>
+    		</fieldset>
+    	</form>
+    </body>
+    </html>
+    
+    ```
