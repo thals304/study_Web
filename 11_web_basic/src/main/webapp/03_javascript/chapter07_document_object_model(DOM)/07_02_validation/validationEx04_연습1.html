@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<!--24.03.25 time 17:16-17:26
+	today 소감문
+	if문 안에 .value가 select는 없음이고 다른 text는 아무것도 없을 때 
+	return false를 해주면 되는거라 간단하게 풀었던 것 같다.
+ -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>연습문제</title>
+<script>
+	function checkValidation(){
+		let method = document.pay.method;
+		if(method.value == ""){
+			alert("결제방법을 선택해주세요.");
+			method.focus();
+			return false;
+		}
+		
+		let creditNm = document.pay.creditNm;
+		if (creditNm.value == "없음"){
+			alert("카드를 선택해주세요.");
+			creditNm.focus();
+			return false;
+		}
+		
+		let month = document.pay.month;
+		if(month.value == "없음"){
+			alert("할부기간을 선택해주세요.");
+			month.focus();
+			return false;
+		}
+		
+		let phoneNm1 = document.pay.phoneNm1;
+		if (phoneNm1.value == ""){
+			alert("휴대폰 번호를 입력해주세요.");
+			phoneNm1.focus();
+			return false;
+		}
+		
+		let phoneNm2 = document.pay.phoneNm2;
+		if (phoneNm2.value == ""){
+			alert("휴대폰 번호를 입력해주세요.");
+			phoneNm2.focus();
+			return false;
+		}
+		
+		let phoneNm3 = document.pay.phoneNm3;
+		if (phoneNm3.value == ""){
+			alert("휴대폰 번호를 입력해주세요.");
+			phoneNm3.focus();
+			return false;
+		}
+		return true;
+	}
+</script>
+</head>
+<body>
+
+	<!-- 
+	
+		# 입력하지 않은 필드의 값을 검증하여 
+		
+			1) alert으로 안내
+			2) focus로 이동
+			
+			하는 스크립트를 작성해 보시오. 
+		
+	-->
+
+	<form name="pay" onsubmit=" return checkValidation();">
+		<fieldset>
+			<p>
+				<strong>결제방법 : </strong>
+				<input type="radio" value="신용카드" name="method">신용카드 &emsp; 
+				<input type="radio" value="제휴 신용카드" name="method">제휴 신용카드 &emsp;
+				<input type="radio" value="실시간 계좌이체" name="method">실시간 계좌이체 &emsp;
+				<input type="radio" value="무통장 입금" name="method">무통장 입금&emsp;
+			</p>
+			<p>
+				<strong>카드선택 : </strong>
+				<select name="creditNm">
+					<option>없음</option>
+					<option>삼성</option>
+					<option>하나SK</option>
+					<option>현대</option>
+					<option>KB</option>
+					<option>신한</option>
+					<option>롯데</option>
+					<option>BC</option>
+					<option> 시티</option>
+					<option>NH농협</option>
+				</select>
+			</p>
+			<p>
+				<strong>할부기간 : </strong>
+				<select name="month">
+					<option>없음</option>
+					<option>일시불</option>
+					<option>2개월</option>
+					<option>3개월</option>
+					<option>4개월</option>
+					<option>5개월</option>
+					<option>6개월</option>
+				</select>
+			</p>	
+			<p>
+				<strong>휴대폰 번호 : </strong>
+				<input type="text" size="5" name="phoneNm1"/> -
+				<input type="text" size="5" name="phoneNm2"/> -
+				<input type="text" size="5" name="phoneNm3"/>
+			</p>
+			<p>
+				<input type="submit" value="확인" />
+			</p>
+		</fieldset>
+	</form>
+</body>
+</html>

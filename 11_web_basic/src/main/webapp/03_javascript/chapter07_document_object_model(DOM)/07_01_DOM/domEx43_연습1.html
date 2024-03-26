@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--24.03.25 time 17:01-17:06
+	today 소감문
+	이번 문제는 전보다 적어줘야 할 부분이 적어서 더 빨리 풀 수 있었던 것 같다.
+	근데 자꾸만.value까지 쓰는 걸 까먹는 것 같다. 어쩌면 .value를 쓰는게 .innerHTML이랑
+	비교를 하면서 이 문제에서 제일 디테일하고 중요하다고 볼 수 있는데 반성해야 될 것 같다.
+ -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>연습문제</title>
+<script>
+	function checkData(){
+		console.log("결제방법 : " + document.pay.method.value);
+		console.log("카드선택 : " + document.pay.creditNm.value);
+		console.log("할부기간 : " + document.pay.month.value);
+		console.log("휴대폰 번호1 : " + document.pay.phoneNum1.value);
+		console.log("휴대폰 번호2 : " + document.pay.phoneNum2.value);
+		console.log("휴대폰 번호3 : " + document.pay.phoneNum3.value);
+		console.log("");
+	}
+</script>
+</head>
+<body>
+
+	<!-- 확인버튼을 눌렀을때 폼 안의 데이터의 값들을 console.log에 출력하시오. -->
+
+	<form name="pay">
+		<fieldset>
+			<p>
+				<strong>결제방법 : </strong>
+				<input type="radio" checked name="method">신용카드 &emsp; 
+				<input type="radio" name="method">제휴 신용카드 &emsp;
+				<input type="radio" name="method">실시간 계좌이체 &emsp;
+				<input type="radio" name="method">무통장 입금&emsp;
+			</p>
+			<p>
+				<input type="radio" name="method">휴대폰 결제 &emsp;
+				<input type="radio" name="method"> 카카오페이(간편결제) &emsp;
+				<input type="radio" name="method"> 페이나우(간편결제) &emsp;
+				<input type="radio" name="method">페이코(간편결제) &emsp;
+				<input type="radio" value="직접입금" name="method">직접입금 &emsp;
+			</p>
+			<p>
+				<strong>카드선택 : </strong>
+				<select name="creditNm">
+					<option selected>삼성</option>
+					<option>하나SK</option>
+					<option>현대</option>
+					<option>KB</option>
+					<option>신한</option>
+					<option>롯데</option>
+					<option>BC</option>
+					<option>시티</option>
+					<option>NH농협</option>
+				</select>
+			</p>
+			<p>
+				<strong>할부기간 : </strong>
+				<select name="month">
+					<option selected>일시불</option>
+					<option>2개월</option>
+					<option>3개월</option>
+					<option>4개월</option>
+					<option>5개월</option>
+					<option>6개월</option>
+				</select>
+			</p>	
+			<p>
+				<strong>휴대폰 번호 : </strong>
+				<input type="text" size="5" name="phoneNum1"/>-
+				<input type="text" size="5" name="phoneNum2"/>-
+				<input type="text" size="5" name="phoneNum3"/>
+			</p>
+			<p>
+				<input type="button" value="확인" onclick="checkData();">
+			</p>
+		</fieldset>
+	</form>
+</body>
+</html>

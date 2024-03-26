@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<!--24.03.26 time 11:49-12:04
+	today 소감문
+	이번에도 내용만 많을 뿐이지 방식은 같았던 것 같다.
+ -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>연습예시</title>
+<script>
+	function checkValidation(){
+		
+		let method = document.delivery.method;
+		if(method.value == ""){
+			alert("배송방법을 선택하세요.");
+			method.focus();
+			return false;
+		}
+		
+		let where = document.delivery.where;
+		if (where.value == ""){
+			alert("배송지를 선택하세요.");
+			where.focus();
+			return false;
+		}
+		
+		let receiver = document.delivery.receiver;
+		if (receiver.value == ""){
+			alert("받으실 분을 입력하세요.");
+			receiver.focus();
+			return false;
+		}
+		
+		let cellPhone1 = document.delivery.cellPhone1;
+		if (cellPhone1.value == "없음"){
+			alert("휴대폰번호를 선택하세요.");
+			cellPhone1.focus();
+			return false;
+		}
+		
+		let cellPhone2 = document.delivery.cellPhone2;
+		if (cellPhone2.value == ""){
+			alert("휴대폰번호를 선택하세요.");
+			cellPhone2.focus();
+			return false;
+		}
+		
+		let cellPhone3 = document.delivery.cellPhone3;
+		if (cellPhone3.value == ""){
+			alert("휴대폰번호를 선택하세요.");
+			cellPhone3.focus();
+			return false;
+		}
+		
+		let phone1 = document.delivery.phone1;
+		if (phone1.value == "없음"){
+			alert("유선전화를 선택하세요.");
+			phone1.focus();
+			return false;
+		}
+		
+		let phone2 = document.delivery.phone2;
+		if (phone2.value == ""){
+			alert("유선전화를 선택하세요.");
+			phone2.focus();
+			return false;
+		}
+		
+		let phone3 = document.delivery.phone3;
+		if (phone3.value == ""){
+			alert("유선전화를 선택하세요.");
+			phone3.focus();
+			return false;
+		}
+		
+		let address1 = document.delivery.address1;
+		if (address1.value == ""){
+			alert("주소를 입력하세요.");
+			address1.focus();
+			return false;
+		}
+		
+		let address2 = document.delivery.address2;
+		if (address2.value == ""){
+			alert("지번주소를 입력하세요.");
+			address2.focus();
+			return false;
+		}
+		
+		let address3 = document.delivery.address3;
+		if (address3.value == ""){
+			alert("도로명주소를 입력하세요.");
+			address3.focus();
+			return false;
+		}
+		
+		let address4 = document.delivery.address4;
+		if (address4.value == ""){
+			alert("나머지주소를 입력하세요.");
+			address4.focus();
+			return false;
+		}
+		
+		let deliveryMsg = document.delivery.deliveryMsg;
+		if (deliveryMsg.value == ""){
+			alert("배송 메시지 수신 동의를 선택해주세요");
+			deliveryMsg.focus();
+			return false;
+		}
+		
+		let deliveryMemo = document.delivery.deliveryMemo;
+		if (deliveryMemo.value == ""){
+			alert("택배 기사님께 전달할 메시지를 남겨주세요");
+			deliveryMemo.focus();
+			return false;
+		}
+		return true;
+	}
+</script>
+</head>
+<body>
+
+	<!-- 
+	
+		# 입력하지 않은 필드의 값을 검증하여 
+		
+			1) alert으로 안내
+			2) focus로 이동
+			
+			하는 스크립트를 작성해 보시오. 
+		
+	-->
+
+	<form name="delivery" onsubmit="return checkValidation();">
+		<fieldset>
+			<legend>배송지 정보</legend>
+			<p>
+				배송방법 :
+			    <input type="radio" value="일반택배" name="method">일반택배 &emsp; 
+				<input type="radio" value="편의점택배" name="method">편의점택배 &emsp;  
+				<input type="radio" value="해외배송" name="method">해외배송&emsp; 
+			</p>
+			<p>
+				배송지 선택 :
+				<input type="radio" value="기본배송지" name="where">기본배송지 &emsp; 
+				<input type="radio" value="새로입력" name="where" >새로입력 &emsp; 
+				<input type="radio" value="최근배송지" name="where">최근배송지 &emsp; 
+			</p>
+			<p>
+				받으실 분 :
+				<input type="text" size="40" name="receiver" />
+			</p>
+			<p>
+				휴대폰번호 :
+				<select name="cellPhone1">
+						<option>없음</option>
+						<option>010</option>
+						<option>011</option>
+						<option>016</option>
+				</select> 
+				 - <input type="text" size="10"  name="cellPhone2"> 
+				 - <input type="text" size="10" name="cellPhone3">
+			</p>
+			<p>
+				유선전화 :
+				<select name="phone1">
+					<option>없음</option>
+					<option>02</option>
+					<option>031</option>
+					<option>032</option>
+					<option>070</option>
+				</select> - 
+				<input type="text" size="10" name="phone2" > - 
+				<input type="text" size="10" name="phone3">
+			</p>
+			<p>
+				주소 :
+				<input type="text" size="5" name="address1"> <a href="#">우편번호검색</a><br>
+			</p>
+			<p>
+				지번 주소 : <input type="text" size="50" name="address2"/><br><br> 
+				도로명 주소 : <input type="text" size="50" name="address3"/><br><br> 
+				나머지 주소 : <input type="text" size="50" name="address4" /> 
+			</p> 
+			<p>
+				배송 메시지 :
+				<input type="radio" value="y" name="deliveryMsg">예 &emsp; 
+				<input type="radio" value="n" name="deliveryMsg">아니요<br>
+				<input type="text" size="50" placeholder="택배 기사님께 전달할 메시지를 남겨주세요." name="deliveryMemo" />
+			</p>
+			<p>
+				<input type="submit" value="확인" />
+			</p>
+		</fieldset>
+	</form>	
+					
+</body>
+</html>

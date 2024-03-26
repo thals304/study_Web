@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--24.03.25 time 12:38-12:48
+	today 소감문
+	name 셀레트를 사용하면서 확실히 getElementById 등을 변수에 저장하고 
+	다시 출력하게 어디에 집어넣고 하는 등의 일을 안해도 되서 편해졌다.
+	하지만 name을 각각의 엘리먼트에 넣어줘야 하므로서 name을 잘 지어야 한다는
+	책임감이 생긴 것 같다. 그래야 제 3자가 내 코드를 봤을 때도 이해를 잘 할 수 있을것이기 
+	때문이다. 
+	그리고 select, radio는 체크나 셀렉이 1개씩만 되므로 document.f.변수명.value로
+	바로 출력이 가능한데 checkbox는 for & if문을 사용해서 checked 된 모든 값을 출력해줘야 한다는 점
+	까먹지 말아야겠다.
+ -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>연습예제</title>
+<script>
+	function checkData(){
+		console.log ("이름 : " + document.f.name.value);
+		console.log ("아이디 : " + document.f.id.value);
+		console.log ("비밀번호 : " + document.f.pw.value);
+		console.log ("나이 : " + document.f.age.value);
+		
+		
+	    console.log ("성별 : " + document.f.gender.value);
+		
+		let hobby = document.f.hobby;
+		for (let i = 0; i < hobby.length; i++){
+			if (hobby[i].checked){
+				console.log ("취미 : " + hobby[i].value);	
+			}
+		}
+		
+		console.log ("가고 싶은 여행지는 : " + document.f.travel.value);
+		
+		console.log("메모 : " + document.f.memo.value);
+	}
+</script>
+</head>
+<body>
+
+	<!-- 확인버튼을 눌렀을때 폼 안의 데이터의 값들을 console.log에 출력하시오. -->
+
+	<form name="f">
+		<fieldset>
+			<legend>회원가입 폼</legend>
+			<p>이름 : <input type="text" name ="name"/></p>
+			<p>아이디 : <input type="text" name="id"/></p>
+			<p>비밀번호 : <input type="password" name="pw"/></p>
+			<p>나이 : <input type="text" name="age"/></p>
+			<p>
+				성별 : <input type="radio" name="gender" value="1"/>남자
+			   		   <input type="radio" name="gender" value="2"/>여자
+			</p>
+			<p>
+				취미 : <input type="checkbox" name="hobby" value="운동"/>운동
+					   <input type="checkbox"  name="hobby" value="잠자기"/>잠자기
+					   <input type="checkbox" name="hobby" value="공부하기"/>공부하기
+			</p>
+			<p>가고 싶은 여행지는
+				<select name="travel">
+					<option>괌</option>
+					<option>다낭</option>
+					<option>나트랑</option>
+					<option>코타키나발루</option>
+					<option>대만</option>
+					<option>푸꾸옥</option>
+				</select>
+			</p>
+			<p>메모<br/>
+				<textarea rows="10" cols="50" name="memo"></textarea>
+			</p>
+			<p>
+				<input type="button" value="확인" onclick="checkData();" />
+			</p>
+		</fieldset>
+	</form>
+</body>
+</html>
+

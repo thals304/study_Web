@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<!--24.03.25 time 17:28-17:40
+	tdoay 소감문
+	정답예시와 같게 코드를 잘 짰는데 실행하는 과정에서 중간에 alert가 뜨고 나서 
+	갑자기 적어두었던 내용들이 없어지고 제일 처음인 이름을 입력하는 부분으로 이동한다.
+	마치 입력한 부분까지 서버에 정보가 전달된 것 처럼. 
+ -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>연습예제</title>
+<script>
+	function checkValidation(){
+		
+		let name = document.register.name;
+		if (name.value == ""){
+			alert("이름을 입력하세요.");
+			name.focus();
+			return false;
+		}
+		
+		let id = document.register.id;
+		if (id.value == ""){
+			alert("아이디를 입력하세요.");
+			id.focus();
+			return false;
+		}
+		
+		let pwd = document.register.pwd;
+		if (pwd.value == ""){
+			alert("비밀번호를 입력하세요.");
+			pwd.focus();
+			return false;
+		}
+		
+		let gender = document.register.gender;
+		if (gender.value == ""){
+			alert("성별을 선택하세요.");
+			gender.focus();
+			return false;
+		}
+		
+		let living = document.register.living;
+		if (living.value == "지역"){
+			alert("지역을 선택하세요.");
+			living.focus();
+			return false;
+		}
+		
+		let email1 = document.register.email1;
+		if (email1.value == ""){
+			alert("이메일을 입력하세요.");
+			email1.focus();
+			return false;
+		}
+		
+		let email2 = document.register.email1;
+		if (email2.value == ""){
+			alert("이메일을 입력하세요.");
+			email2.focus();
+			return false;
+		}
+		
+		let emailMsg = document.register.emailMsg;
+		if (emailMsg.value == ""){
+			alert("이메일 수신여부를 선택하세요.");
+			emailMsg.focus();
+			return false;
+		}
+		
+		let job = document.register.job;
+		if (job.value == "직업"){
+			alert("직업을 선택하세요.");
+			job.focus();
+			return false;
+		}
+		
+		let memo = document.register.memo;
+		if (memo.value == ""){
+			alert("자기소개를 입력하세요.");
+			memo.focus();
+			return false;
+		}
+		return true;
+	}
+</script>
+<body>
+	
+	<!-- 
+	
+		# 입력하지 않은 필드의 값을 검증하여 
+		
+			1) alert으로 안내
+			2) focus로 이동
+			
+			하는 스크립트를 작성해 보시오. 
+		
+	-->
+
+    <form name="register" onsubmit="return checkValidation();">
+		<fieldset>
+			<legend>회원 가입 화면</legend>
+			<p>이름 : <input type="text" name="name"></p>
+            <p>아이디 : <input type="text" name="id">
+            	( 아이디는 12자 이내로 입력하세요 <input type="button" value="아이디중복확인"> )
+          	</p>
+            <p>비밀번호 : <input type="password" name="pwd"></p>
+            <p>성별 :
+            	<input type="radio" value="male" name="gender">남
+            	<input type="radio" value="female" name="gender">여
+            </p>
+    		<p>사는 지역 : 
+				<select name="living">
+					<option>지역</option>
+					<option>서울특별시</option>
+					<option>경기도</option>
+					<option>강원도</option>
+					<option>충청북도</option>
+					<option>충청남도</option>
+					<option>경상북도</option>
+					<option>경상남도</option>
+					<option>전라북도</option>
+					<option>전라남도</option>
+				</select>
+			</p>
+   			<p>
+				이메일주소 : <input type="text" size="15"name="email1" > @ <input type="text" size="15" name="email2" >
+				(이메일수신허용
+				<input type="radio" name="emailMsg">허용
+				<input type="radio" name="emailMsg">거부)
+			</p>
+			<p>직업
+				<select name="job">
+					<option>직업</option>
+					<option>학생</option>
+					<option>회사원</option>
+					<option>자영업</option>
+				</select>
+			</p>  
+			<p>자기소개<br>
+				<textarea rows="5" cols="50" name="memo"></textarea>
+			</p>
+			<p>
+				<input type="submit" value="확인" />
+			</p>
+		</fieldset>
+	</form>
+</body>
+</html>
