@@ -26,7 +26,7 @@ INSERT INTO SELECT_EX VALUES ('P10001' , '게이밍마우스패드' , 24850 , '2
 						     ('P10014' , '멀티탭 USB' , 10600 , '2021-12-20'),
 						     ('P10015' , '연장케이블 USB' , 4950 , '2021-12-20');
 						   
-# 예시 1) 전체 컬럼 조회 : SELECT * FROTM 테이블 명;
+# 예시 1) 전체 컬럼 조회 : SELECT * FROM 테이블 명;
 # 형식 1
 SELECT * FROM SELECT_EX;
 
@@ -144,26 +144,39 @@ FROM 	SELECT_EX;
 */
 
 # 예시 14) 상품코드가 'P10001' , 'P10003' , 'P10005'인 상품의 전체컬럼 조회
-
+SELECT  * 
+FROM 	select_ex 
+WHERE	PRODUCT_CD = 'P10001' 
+OR      PRODUCT_CD = 'P10003' 
+OR 		PRODUCT_CD = 'P10005';
 		
 # 예시 15) 상품가격이 20000 ~ 50000인 상품의 전체컬럼 조회
-
+SELECT   *
+FROM	 select_ex 
+WHERE 	 PRICE >= 20000
+AND  	 PRICE <= 50000;
 		
 # 예시 16) 상품가격이 20000 ~ 50000이 아닌 상품의 전체컬럼 조회
+SELECT  *
+FROM 	select_ex
+WHERE	NOT ( PRICE >= 20000  AND PRICE <= 50000 );
 		
-		
-# 예시 17) 상품가격이 20000 ~ 50000이면서 2021년도 등록상품의 전체컬럼 조회		
-
+# 예시 17) 상품가격이 5000 ~ 50000이면서 2021년도 등록상품의 전체컬럼 조회		
+SELECT  *
+FROM 	select_ex 
+WHERE 	( PRICE >= 5000 AND PRICE <= 50000 )
+AND 	( REG_DT >= '2021-01-01' AND REG_DT <= '2021-12-31'); 
 		
 # 예시 18) 상품 등록날짜가 2020년도 1~3월 , 2021년도 1~3월 등록상품의 전체컬럼 조회
-
-
-
+SELECT  *
+FROM 	select_ex 
+WHERE	(REG_DT >= '2020-01-01' AND REG_DT <= '2020-03-31')
+OR 		(REG_DT >= '2021-01-01' AND REG_DT <= '2021-03-31');
 
 
 /*		
 	
-    # between 
+    # between -> AND 대체제
     
 		- 2개의 범위 사이의 값을 조회할 때 사용한다. ( 시작값과 종료값 포함 ) 
         
@@ -172,7 +185,7 @@ FROM 	SELECT_EX;
 			컬럼 BETWEEN 시작값 AND 종료값  
         
     
-    # in 
+    # in  -> OR 대체제
 	
 		- 특정 값이 있으면 포함된 값을 조회한다.
 		
@@ -183,27 +196,57 @@ FROM 	SELECT_EX;
 */
 		
 # 예시 19) 상품가격이 20000 ~ 50000인 상품의 전체컬럼 조회
-
+# 예시 15와 비교
+SELECT   *
+FROM	 select_ex 
+WHERE 	 PRICE >= 20000
+AND  	 PRICE <= 50000;
+# BETWEEN A AND B
+SELECT *
+FROM select_ex 
+WHERE PRICE BETWEEN 20000 AND 50000; 
 
 		
 # 예시 20) 상품가격이 20000 ~ 50000이 아닌 상품의 전체컬럼 조회
-
-
+# 예시 16과 비교
+SELECT  *
+FROM 	select_ex
+WHERE	NOT ( PRICE >= 20000  AND PRICE <= 50000 );
+# NOT BETWEEN A AND B
+SELECT  *
+FROM 	select_ex
+WHERE	PRICE NOT BETWEEN  20000  AND 50000;
 		
 # 예시 21) 2021년에 등록된 상품의 전체컬럼 조회		
-
+SELECT  *
+FROM 	select_ex 
+WHERE 	REG_DT BETWEEN '2021-01-01' AND '2021-12-31';
 
 		
 # 예시 22) 2021년에 등록되지 않은 상품의 전체컬럼 조회		
-
+SELECT  *
+FROM 	select_ex 
+WHERE   REG_DT NOT BETWEEN '2021-01-01' AND '2021-12-31';
 	
 		
 # 예시 23) 상품코드가 'P10001' , 'P10003' , 'P10005'인 상품의 전체컬럼 조회
-
+# 예시 14와 비교
+SELECT  * 
+FROM 	select_ex 
+WHERE	PRODUCT_CD = 'P10001' 
+OR      PRODUCT_CD = 'P10003' 
+OR 		PRODUCT_CD = 'P10005';
+# IN (값1,값2,,,);
+SELECT  *
+FROM 	select_ex 
+WHERE 	PRODUCT_CD IN ('P10001', 'P10003', 'P10005');
 	
 		
 # 예시 24) 상품코드가 'P10001' , 'P10003' , 'P10005'이 아닌 상품의 전체컬럼 조회
-			
+# NOT IN (값1,값2,,,);
+SELECT  *
+FROM 	select_ex 
+WHERE 	PRODUCT_CD NOT IN ('P10001', 'P10003', 'P10005');
 		
 /*
 
@@ -212,27 +255,36 @@ FROM 	SELECT_EX;
 		- 패턴 매칭기법으로 패턴에 매칭된 데이터만 조회한다. 
 		- 데이터 매칭 와일드카드로 %를 사용한다.
         - 데이터 자리수 매칭 와일드 카드로 _를 사용한다.
+       	  %단어 : ~ 단어 
+          %단어% : ~ 단어 ~
+          단어% : 단어 ~
     
     
 */
 				
 # 예시 25) 상품명에 'USB'단어가 들어있는 상품의 전체 컬럼 검색
-	
+SELECT *
+FROM select_ex 
+WHERE PRODUCT_NM LIKE '%USB%';
 
 		
 # 예시 26) 상품명이 'USB'로 시작하는 상품의 전체 컬럼 검색
-
+SELECT *
+FROM select_ex 
+WHERE PRODUCT_NM LIKE 'USB%';
 
 		
 # 예시 27) 상품명이 'GB'로 끝나는 상품의 전체 컬럼 검색
-
+SELECT *
+FROM select_ex 
+WHERE PRODUCT_NM LIKE '%GB';
  
 
 /*
 
 	# 테이블 조회 정렬 ORDER BY 
 
-		- 오름차순 정렬 ASC와 내림차순 정렬 DESC 2가지가 있다.
+		- 오름차순(작 -> 큰) 정렬 ASC와 내림차순(큰 -> 작) 정렬 DESC 2가지가 있다.
         - 조건식이 있을 경우 WHERE절 밑에 작성한다.
 		- DESC를 명시하지 않으면 기본 값으로 ASC로 작동한다.
 		- 여러가지의 컬럼을 정렬 할 수 있다.
@@ -242,27 +294,38 @@ FROM 	SELECT_EX;
 
 		
 # 예시 28) 상품의 전체 컬럼 검색 (가격이 낮은 순서대로 정렬)
+# 집어 넣은 순서대로 나옴
+SELECT   *
+FROM 	 select_ex
+ORDER BY PRICE ASC;
+# ORDER BY PRICE; 와 같음
 
-   
 		
 # 예시 29) 상품의 전체 컬럼 검색 (가격이 높은 순서대로 정렬)
+SELECT   *
+FROM 	 select_ex
+ORDER BY PRICE DESC; 
 
 
-		
-# 예시 30) 상품의 전체 컬럼 검색 (최근에 등록된 상품순서 , 가격이 낮은순서대로 정렬)
-
+# 예시 30) 상품의 전체 컬럼 검색 (최근에 등록된 상품순서 = DESC  , 가격이 낮은순서대로 정렬)
+SELECT   *
+FROM 	 select_ex 
+ORDER BY REG_DT DESC , PRICE ASC;
 
 		
 # 예시 31) 2021년도에 등록된 상품의 전체 컬럼 검색 (가격이 높은 순서대로 정렬)
+SELECT   *
+FROM 	 select_ex
+WHERE 	 REG_DT BETWEEN '2021-01-01' AND '2021-12-31'
+ORDER BY PRICE DESC;
 
- 
 /*
  
 	# LIMIT : 특정 개수만큼 레코드 조회하기
     
     [ 형식 ]
-	LIMIT x 	: x row만 조회
-	LIMIT x,y   : x번째 부터 y row만 조회
+	LIMIT x 	: x row(개수)만 조회
+	LIMIT x,y   : x번째 부터 y row(개수)만 조회
     
     Ex)
 		LIMIT 3      : 3row만 조회
@@ -274,9 +337,19 @@ FROM 	SELECT_EX;
  
 		
 # 예시 32) 가격이 가장 높은 3개의 상품의 전체 컬럼 조회
-   
+SELECT *
+FROM select_ex 
+ORDER BY PRICE DESC
+LIMIT 3;
 		
 # 예시 33) 가장 최신에 등록된 3개의 상품의 전체 컬럼 조회
-		
- 
+SELECT *
+FROM SELECT_EX
+ORDER BY REG_DT DESC 
+LIMIT 3;
+
 # 예시 34) 최신에 등록된 3개의 상품의 전체 컬럼 조회 (5번째 레코드 이후부터 조회)
+SELECT *
+FROM SELECT_EX 
+ORDER BY REG_DT DESC
+LIMIT 5,3;
