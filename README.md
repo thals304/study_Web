@@ -17,7 +17,7 @@
     
 - **웹 관련 언어 ( html, css, js + jquery)**
     
-    RDB ( 관계형 데이터베이스 > MySQL )
+    **RDB ( 관계형 데이터베이스 > MySQL )**
     
 - 백엔드 관련 ( JSP 발전 과정 )
     
