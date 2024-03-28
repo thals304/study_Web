@@ -3,6 +3,11 @@
 # 14번을 NOT IN으로 풀었는데 답이 제대로 나오지 않았다. 근데 정답예시에는 NOT IN으로 푼 거 같아
 # 왜 나는 제대로 정답이 나오지 않는건지 미스테리 한 것 같다. 그리고 18번부터는 INSERT, DELETE를 배워야 풀 수
 # 있을 거 같아 아직 남겨둔 문제다.
+/*
+ * 24.03.08 TIME 14:12-14:18
+ * TODAY 소감문
+ * 이제 느낌을 잡은 것 같아서 더 재밌는 것 같다. 근데 자꾸만 UPDATE 다음에 FROM을 잊어버리는 것 같다.
+ * */
 USE DML_PRACTICE;
 
 CREATE TABLE EMP(
@@ -120,21 +125,25 @@ FROM 	 EMP
 ORDER BY SALARY DESC , NAME ASC;
 
 # 18) 부서번호가 10인 직원의 급여를 + 1000으로 수정하시오.
-
+UPDATE EMP SET SALARY = SALARY + 1000 WHERE DEPT_NO = 10;
         
 # 19) 이름이 'SMITH'인 직원의 입사일자를 '1980-12-18'일로 수정하시오.
-
+UPDATE EMP SET HIRE_DATE = '1980-12-18' WHERE NAME = 'SMITH';
 
 # 20) 직책이 'PRESIDENT'인 직원의 커미션을 3000으로 수정하시오.
-
+UPDATE EMP SET COMM = 3000 WHERE JOB = 'PRESIDENT';
 
 # 21) '1981'년에 입사한 직원의 급여를 기존급여에 +10으로 수정하시오.
-
+UPDATE EMP SET SALARY = SALARY + 10 WHERE HIRE_DATE BETWEEN '1981-01-01' AND '1981-12-31';
 
 # 22) 이름이 'WARD'인 사원을 테이블에서 삭제하시오.
-
+DELETE FROM EMP WHERE NAME = 'WARD';
 		
 # 23) 부서번호가 30인 직원을 테이블에서 삭제하시오.  
-
+DELETE FROM EMP WHERE DEPT_NO = 30;
    
-# 24) 사원번호 7900 , 7902 , 7934를 테이블에서 삭제하시오.  
+# 24) 사원번호 7900 , 7902 , 7934를 테이블에서 삭제하시오. 
+DELETE FROM EMP WHERE EMP_NO IN (7900 , 7901, 7934);
+
+COMMIT;
+SELECT * FROM EMP;

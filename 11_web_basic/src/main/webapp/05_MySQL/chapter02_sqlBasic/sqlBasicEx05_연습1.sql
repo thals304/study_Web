@@ -1,7 +1,12 @@
-# 24.03.27 TIME 14:18-14:35
+# 24.03.27 TIME 14:18-14:35  
 # TODAY 소감문
 # 예제가 엄청 많은데 AND , OR의 구분을 잘해야 될 것 같고 , 아직 ㄱ ~ ㄴ 순으로 나오게 하는 것 해결 못했고
 # 17부터는 더 공부하고 풀어야 할 예제 인 것 같다.
+/*  24.03.28 TIME 14:03-14:10
+ * 	TODAY 소감문
+ *  주어진 문장을 INSERT와 UPDATE 중 어떤 것으로 풀어야 하나 고민이 있었는데
+ *  INSERT는 완전히 새로운 값을 집어 넣는 것이고 UPDATE는 기존에 있던 값을 바꾸는 것이라는 점 
+ * */
 CREATE DATABASE DML_PRACTICE;
 USE DML_PRACTICE;       
 
@@ -126,30 +131,30 @@ SELECT   *
 FROM     CAR
 ORDER BY PRICE ASC , CAR_NM ASC; 
 
-# 17) 아반떼 차량의 렌트가격을 40000원 으로 지정하기. 
-
-
+# 17) 아반떼 차량의 렌트가격을 40000원 으로 지정하기.  -> 지정하기면 UPDATE인건가
+UPDATE CAR SET PRICE = 40000 WHERE CAR_NM = '아반떼';
 
 # 18) 카니발 차량의 렌트가격을 현재 가격에서 -20000원 할인하기. 
-
+UPDATE CAR SET PRICE = PRICE - 20000 WHERE CAR_NM = '카니발';
 
 # 19) 현대브랜드 차량의 렌트가격을 현재 가격에서  -3000원 할인하기.
-
+UPDATE CAR SET PRICE = PRICE - 3000 WHERE BRAND_NM = '현대';
 
 # 20) 대형 차량의 가격을 현재 가격에서 + 10000원 증가하기
-
+UPDATE CAR SET PRICE = PRICE + 1000 WHERE CATEGORY = '대형';
 
 # 21) 코란도 차량의 등록날짜를 현재시간으로 변경하기
-
+UPDATE CAR SET REG_DT = NOW() WHERE CAR_NM = '코란도';
 
 # 22) 아반떼 차량을 삭제하기
-
+DELETE FROM CAR WHERE CAR_NM = '아반떼';
 
 # 23) K3,K5,K7,K9차량을 삭제하기
-
+DELETE FROM CAR WHERE CAR_NM IN ('K3' , 'K5' , 'K7' , 'K9');
 
 # 24) 현대브랜드 차량을 삭제하기
-
+DELETE FROM CAR WHERE BRAND_NM = '현대';
 
 # 25) 2021년도에 등록된 차량을 삭제하기
+DELETE FROM CAR WHERE REG_DT BETWEEN '2021-01-01' AND '2021-12-31';
 
