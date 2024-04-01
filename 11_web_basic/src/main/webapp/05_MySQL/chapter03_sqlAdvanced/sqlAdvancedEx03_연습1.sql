@@ -1,7 +1,9 @@
 /*
- * 24.03.29 TIME 13:42- 13:52 14:03-14:15
+ * 24.03.29 TIME 13:42- 13:52 14:03-14:15 22:26-22:36
  * TODAY 소감문
- * 
+ * 중간 중간 애매하게 정답을 맞춘 것도 있어서 연습을 위해서는 정답예시와
+ * 반드시 내 정답을 비교하는 시간이 필요하다고 생각해서 문제를 다 풀고
+ * 정답예시와 비교하면서 배우려고 많이 노력했다.
  * */
 USE SQL_ADVANCED_PRACTICE;       
 
@@ -68,10 +70,10 @@ SELECT BRAND_NM, COUNT(*)
 FROM   CAR_TB 
 WHERE  BRAND_NM = '기아';
 		
-# 2) 기아브랜드 차량중 소형차량의 개수를 조회하기
+# 2) 기아브랜드 차량중 소형차량의 개수를 조회하기 > 굳이 그룹화 할 필요가 없이 WHERE로만 가능
 SELECT   CATEGORY , COUNT(*)
 FROM     CAR_TB 
-WHERE    BRAND_NM = '기아'
+WHERE    BRAND_NM = '기아' AND CATEGORY = '소형'
 GROUP BY CATEGORY;
 		
 # 3) 기아 , 쌍용브랜드 차량의 개수를 조회하기
@@ -88,18 +90,15 @@ GROUP BY PRICE
 ORDER BY PRICE ASC;
 
 		
-# 5) 대형 차량의 평균금액을 조회하기 -> 금액을 다 더해서 평균을 알아서 구해주는 건가? 답 확인해볼 필요 있음
+# 5) 대형 차량의 평균금액을 조회하기 -> 금액을 다 더해서 평균을 알아서 구해주는 건가? O
 SELECT   CATEGORY, AVG(PRICE)
 FROM     CAR_TB
 WHERE    CATEGORY = '대형'
 GROUP BY CATEGORY;
 		
-# 6) 제일비싼 렌트 가격을 조회하기 -> 답은 맞는데 가장 효율적인 방법일까?
-SELECT   PRICE
-FROM     CAR_TB 
-GROUP BY PRICE
-ORDER BY PRICE DESC
-LIMIT 1;
+# 6) 제일비싼 렌트 가격을 조회하기 -> 답은 맞는데 가장 효율적인 방법일까? NO MAX(PRICE)사용해야함
+SELECT   MAX(PRICE)
+FROM     CAR_TB ;
 		
 # 7) 가장 많이 등록된 브랜드이름과 등록횟수를 조회하기
 SELECT BRAND_NM , COUNT(*) AS COUNT
@@ -113,12 +112,10 @@ SELECT BRAND_NM , COUNT(*)
 FROM   CAR_TB 
 GROUP BY BRAND_NM;
 		
-# 9) 브랜드로 그룹화하여 각각 최소렌트금액을 조회하기 -> 정답 확인해 보기
-SELECT BRAND_NM, PRICE
+# 9) 브랜드로 그룹화하여 각각 최소렌트금액을 조회하기 -> 정답 확인해 보기 MIN(PRICE) 사용하면 ORDER BY LIMIT 사용 필요없음
+SELECT BRAND_NM, MIN(PRICE)
 FROM   CAR_TB 
-GROUP BY BRAND_NM
-ORDER BY PRICE ASC 
-LIMIT 1;
+GROUP BY BRAND_NM;
 		
 # 10) 브랜드로 그룹화하여 평균 렌트금액을 조회하기
 SELECT   BRAND_NM, AVG(PRICE)
@@ -130,10 +127,10 @@ SELECT   CATEGORY, AVG(PRICE)
 FROM     CAR_TB 
 GROUP BY CATEGORY;
 
-# 12) 등록연도별로 그룹화하여 등록된 차량의 수를 조회하기
-SELECT SUBSTRING(REG_DT, 1 , 4) , COUNT(*)
+# 12) 등록연도별로 그룹화하여 등록된 차량의 수를 조회하기 > AS로 표현해주는게 좋음
+SELECT SUBSTRING(REG_DT, 1 , 4) AS YEAR, COUNT(*)
 FROM CAR_TB 
-GROUP BY SUBSTRING(REG_DT, 1 , 4);
+GROUP BY YEAR;
 		
 # 13) (브랜드 -> 차량의 크기)로 그룹화하여 평균금액을 조회하기
 SELECT   BRAND_NM, CATEGORY , AVG(PRICE)
@@ -141,21 +138,43 @@ FROM     CAR_TB
 GROUP BY BRAND_NM , CATEGORY; 
 		
 # 14) (등록연도 -> 브랜드명 -> 차량의 크기)로 그룹화하여 평균렌트금액을 조회하되 평균 렌트금액 50000원 이상만 조회하기
-SELECT    SUBSTRING(REG_DT , 1 , 4), BRAND_NM , CATEGORY, AVG(PRICE) AS AVG_PRICE
+SELECT    SUBSTRING(REG_DT , 1 , 4) AS YEAR, BRAND_NM , CATEGORY, AVG(PRICE) AS AVG_PRICE
 FROM      CAR_TB 
-GROUP BY  SUBSTRING(REG_DT , 1 , 4), BRAND_NM , CATEGORY
+GROUP BY  YEAR, BRAND_NM , CATEGORY
 HAVING    AVG_PRICE >= 50000;
 		
-# 15) 2020년도 1사분기(1월~3월)과 2021년도 1사분기(1월~3월)에 등록된 차량의 개수 조회하기
+# 15) 2020년도 1사분기(1월~3월)과 2021년도 1사분기(1월~3월)에 등록된 차량의 개수 조회하기 -> 이게 효율적인 방법일까?
+SELECT   REG_DT , COUNT(*)
+FROM     CAR_TB 
+WHERE    REG_DT BETWEEN '2020-01-01' AND '2020-03-31'
+OR       REG_DT BETWEEN '2021-01-01' AND '2021-03-31'
+GROUP BY REG_DT
+ORDER BY REG_DT ASC;
 
-
-# 16) 브랜드로 그룹화하여 2020년도 1사분기(1월~3월)과 2021년도 1사분기(1월~3월)에 등록된 차량의 개수 조회하기
-
+# 16) 브랜드로 그룹화하여 2020년도 1사분기(1월~3월)과 2021년도 1사분기(1월~3월)에 등록된 차량의 개수 조회하기 -> 날짜는 그룹화가 안되어 있어서 표시는 못하네
+SELECT   BRAND_NM , COUNT(*)
+FROM     CAR_TB 
+WHERE    REG_DT BETWEEN '2020-01-01' AND '2020-03-31'
+OR       REG_DT BETWEEN '2021-01-01' AND '2021-03-31'
+GROUP BY BRAND_NM ;
 		
 # 17) 브랜드로 그룹화하여 2020년도 1사분기(1월~3월)과 2021년도 1사분기(1월~3월)에 등록된 차량의 평균 렌트 가격을 조회하기 (가격 내림차순)
-
+SELECT   BRAND_NM, AVG(PRICE) AS AVG_PRICE
+FROM     CAR_TB 
+WHERE    REG_DT BETWEEN '2020-01-01' AND '2020-03-31'
+OR       REG_DT BETWEEN '2021-01-01' AND '2021-03-31'
+GROUP BY BRAND_NM 
+ORDER BY AVG_PRICE DESC;
 		
 # 18) 브랜드별로 그룹화하여 렌트가격이 50000 ~ 100000사이의 차량의 개수를 조회하기(브랜드이름 오름차순)
-
+SELECT   BRAND_NM , COUNT(*)
+FROM     CAR_TB 
+WHERE    PRICE BETWEEN 50000 AND 100000
+GROUP BY BRAND_NM 
+ORDER BY BRAND_NM ASC;
 
 # 19) 차량 크기별로 그룹화하여 등록된 차량의 개수를 조회하여 차량의 수가 많은 순서대로 정렬하기 (개수 내림차순 )
+SELECT   CATEGORY, COUNT(*) AS COUNT
+FROM     CAR_TB 
+GROUP BY CATEGORY
+ORDER BY COUNT DESC;
