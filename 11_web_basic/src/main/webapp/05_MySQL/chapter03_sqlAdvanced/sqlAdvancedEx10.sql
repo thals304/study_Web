@@ -118,6 +118,7 @@ WHERE
                  FROM   CAR);
 
 # 예시 2) 렌트일이 5일이 넘어가는 차량정보 조회하기. (JOIN으로도 가능)
+# 조회되는 ROW가 1개 이상인 경우 =가 아닌 IN 사용
 SELECT CAR_CD
 FROM   RENT
 WHERE  RENT_PERIOD >= 5;
@@ -129,13 +130,35 @@ WHERE  CAR_CD IN (SELECT CAR_CD
                  WHERE  RENT_PERIOD >= 5);
                 
 # 예시 3) 기아 자동차의 평균 렌트일 조회하기.
-		
+SELECT ROUND(AVG(RENT_PERIOD)) AS AVG_RENT_PERIOD
+FROM   RENT
+WHERE  CAR_CD  IN (SELECT CAR_CD
+                 FROM   CAR 
+                 WHERE  BRAND_NM = '기아');
 
 # 예시 4) 20대의 평균 렌트일 조회하기.
-		
+SELECT ROUND(AVG(RENT_PERIOD))
+FROM   RENT 
+WHERE  MEMBER_ID IN (SELECT MEMBER_ID
+                     FROM   MEMBER                    
+                     WHERE  AGE BETWEEN 20 AND 29) ;
 
 # 예시 5) 가장 오랜 기간동안 렌트한 차량정보를 조회하기
-        
+# SUB QUERY 3번
+SELECT *
+FROM   CAR 
+WHERE  CAR_CD = (SELECT CAR_CD
+                  FROM   RENT 
+                  WHERE  RENT_PERIOD = (SELECT MAX(RENT_PERIOD)
+                                         FROM   RENT ) );
+
+# JOIN사용
+SELECT *
+FROM   CAR C
+JOIN   RENT R
+ON     C.CAR_CD = R.CAR_CD 
+WHERE  R.RENT_PERIOD = (SELECT MAX(RENT_PERIOD)
+                        FROM   RENT );
 
 #(참고)
 # 예시 6) 자동차테이블의 백업 테이블을 생성하고 데이터를 마이그레이션하기.(INSERT & SELECT)
@@ -153,25 +176,64 @@ INSERT INTO CAR_BAK (SELECT * FROM  CAR);
 SELECT * FROM CAR_BAK;
 
 # 예시 7) 한번도 렌트되지 않은 자동차 정보의 등록날자를 '0000-00-00'으로 수정하기
+# 한번도 RENT되지 않은 자동차? CAR_CD에 이름이 안올라가있는 친구 NOT IN
+UPDATE CAR_BAK 
+SET    REG_DT = '0000-00-00'
+WHERE  CAR_CD NOT IN (SELECT CAR_CD
+                      FROM   RENT ) ;
 
-
+SELECT * FROM CAR_BAK ;
 # 예시 8) 한번도 렌트되지 않은 자동차 정보를 삭제하기
+DELETE FROM CAR_BAK 
+WHERE CAR_CD NOT IN (SELECT CAR_CD
+                     FROM   RENT ) ;
 
+SELECT * FROM CAR_BAK ;
 
 # 예시 9) 가장 비싼 차량3개의 가격을 10% 할인하기    (참고) 테이블명의 중첩될 경우 AS로 테이블명 지정해야 사용 가능
+UPDATE CAR_BAK 
+SET    PRICE = PRICE * 0.9 
+WHERE  CAR_CD IN (SELECT TEMP.*
+                  FROM   (SELECT CAR_CD 
+                          FROM   CAR_BAK  
+                          ORDER BY PRICE DESC
+                          LIMIT 3) TEMP );
 
-
+SELECT * FROM CAR_BAK ;
 					
 # 2. 스칼라 서브쿼리
 # 예시 1) 'k5' 차량의 렌트가격에서 전체 차량의 평균 렌트가격을 뺀 가격을 조회하기
 
+SELECT PRICE - (SELECT ROUND(AVG(PRICE)) FROM CAR) AS DEVIATION
+FROM   CAR 
+WHERE  CAR_NM = 'k5';
+
+
 
 # 예시 2) 전체 차량의 렌트가격에서 전체 차량의 평균 렌트의 가격을 뺀 가격을 조회하기
-
+SELECT CAR_NM                               AS CAR_NM ,
+       PRICE                                AS PRICE ,
+       (SELECT AVG(PRICE) FROM CAR)         AS AVG ,
+       PRICE - (SELECT ROUND(AVG(PRICE)) FROM CAR) AS DEVIATION
+FROM   CAR;
 
 
 # 3. 인라인 뷰
 # 예시 1) 렌트카들의 평균 가격보다 높은 차량들의 정보를 조회하기.
-	
-
+# 굳이 SUBQUERY 2개 이상 쓰는데 거기에 SELECT AS명.* FROM (SUB QURY들) AS명; 으로 만들어줌 -> 특히 ORACLE
+SELECT T1.*
+FROM   (SELECT *
+        FROM   CAR 
+        WHERE  PRICE >= (SELECT ROUND(AVG(PRICE))
+                         FROM   CAR)) T1;
+                        
 # 예시 2) 렌트일이 5일이 넘어가는 차량정보 조회하기.
+SELECT C1.*
+FROM   (SELECT *
+        FROM   CAR 
+        WHERE  CAR_CD IN (SELECT CAR_CD
+                          FROM   RENT
+                          WHERE  RENT_PERIOD >= 5)) C1;
+
+                 
+
