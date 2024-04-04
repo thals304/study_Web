@@ -1679,7 +1679,7 @@
         </html>
         ```
 
-### Java Script(JS) + jQuery
+### Java Script(JS)
 
 - **자바 스크립트 생성 방법 (1) → 백앤드에서는 방법 (1) 사용!**
     - 자바 스크립트의 문법은 **<script> 태그** **사이**에서 작성한다.
@@ -4717,3 +4717,348 @@ ORDER BY
     
     ```
 
+### jQuery
+
+- **ready 함수**
+    - jQuery에서 사용하는 함수로 자바스크립트의 window.onload와 같은 기능을 한다.
+    - jQuery에서는 ready함수를 작성한 후 프로그래밍을 진행한다.
+    - 페이지의 DOM 요소들이 모두 로드가 된 후에 실행이 되는 함수이다.
+    - 스크립트가 먼저 실행된 후에 html 요소들이 화면에 출력된다.
+    - 스크립트의 실행보다 html이 화면에 보여지는 순서가 느리므로 특정 스크립트의 기능은 동작하지 않는다.
+    
+    ```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="UTF-8">
+    <title>ready 함수</title>
+    <script src="jquery-3.7.1.min.js"></script>
+    <script>
+    	
+    	// 방법 1) 
+    	jQuery(document).ready(function(){
+    		$("body").css("background" , "yellow");
+    	});
+    	
+    	// 방법 2)
+    	$(document).ready(function(){
+    		$("body").css("background" , "pink");
+    	});
+    	
+    	// 방법 3) 
+    	$().ready(function(){
+    		$("body").css("background" , "green");
+    	});
+    	
+    	// 방법 4) 
+    	$(function(){
+    		$("body").css("background" , "blue");
+    	});
+    	
+    </script>
+    </head>
+    <body>
+    	<div id="test">test page</div>
+    </body>
+    </html>
+    
+    ```
+    
+- **jQuery 선택자**
+    - jQuery에서 DOM 탐색은 CSS SELECTOR 를 사용하고 있다.
+    - jQuery에서는 원하는 HTML 의 DOM 요소를 찾기 위해서 $(Selector), jQuery(Selector)와 같은 표현식을 사용한다.
+    - **태그 선택자**
+        - 특정한 태그를 선택
+        - **[형식]**
+            
+            **$(”태그명”)**
+            
+    - **아이디 선택자**
+        - 특정id명을 가진 요소 선택
+        - **[형식]**
+            
+            **$(”#id명”)** 
+            
+    - **클래스 선택자**
+        - 특정class명을 가진 요소 선택
+        - **[형식]**
+            
+            **$(”.class명”)**
+            
+    
+    ```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="UTF-8">
+    <title>기본 선택자</title>
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script>
+    
+    	 $(function(){
+    		 $("p").css("color" , "red");
+    		 
+    		 $("#element1").css("color" , "yellow");
+    		 
+    		 $("#element2" , "#elements3").css("color" , "pink");
+    		 // $("#element2 , #elements3").css("color" , "pink"); 도 가능
+    		 
+    		 $(".elements").css("color" , "blue");
+    	 });
+    	 
+    </script>
+    </head>
+    <body>
+    
+    	<p>이것이 하나의 단락입니다.</p>
+    	<p>이것이 하나의 단락입니다.</p>
+    	<p>이것이 하나의 단락입니다.</p>
+    	
+    	<hr>
+    	
+    	<h1 id="element1">이것이 heading 1입니다.</h1>
+    	<h2 id="element2">이것이 heading 2입니다.</h2>
+    	<h3 id="element3">이것이 heading 3입니다.</h3>
+    	<h4 class="elements">이것이 heading 4입니다.</h4>
+    	<h5 class="elements">이것이 heading 5입니다.</h5>
+    	<h6 class="elements">이것이 heading 6입니다.</h6>
+    	
+    
+    	<hr>
+        
+    </body>
+    </html>
+    ```
+    
+    - **속성 선택자**
+        - 각각의 요소는 속성(attribute)를 가질 수 있으므로 속성 값을 이용하여 관련된 엘리먼트에 접근이 가능하다.
+        - **[예시]**
+            
+            **$("[속성]")** 		속성에 해당 되는 요소 선택				
+            
+            **$("[속성='값']")** 	속성과 같이 모두 일치하는 요소 선택		
+            
+            **$("[속성*='값']")** 	속성에 **값이 포함되어 있는 요소** 선택		
+            
+            **$("[속성$='값']")** 	속성에 **값으로 끝나는 요소** 선택
+            
+            **$("[속성^='값']")** 	속성에 **값의 단어로 시작되는 요소** 선택
+            
+            **$("[속성!='값']")** 	속성에 **값이 아닌 요소**만 찾기
+            
+    
+    ```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="UTF-8">
+    <title>속성 선택자</title>
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script>
+    	
+    	 $().ready(function(){
+    		$("[type='text']").css("background" , "red");
+    		$("[name ='pwd']").css("background" , " blue"); 
+    		$("[name ='skillSelect']").css("background" , " yellow"); 
+    		$("[rows ='10']").css("background" , "green"); 
+    		$("[href*='naver'").css("color" , "orange");
+    	 });
+    </script>
+    </head>
+    <body>
+    
+    	<form>
+    		<fieldset>
+    			<p>id : <input type="text" name="id"></p>
+    			<p>password : <input type="password" name="pwd"></p>
+    			<p>skill select : 
+    				<select name="skillSelect">
+    					<option>html</option>
+    					<option>css</option>
+    					<option>javascript</option>
+    				</select>
+    			</p>
+    			<p>content : <br>
+    				<textarea rows="10" cols="30" name="content"></textarea>
+    			</p>
+    			<p><a href="http://www.naver.com">link</a></p>
+    		</fieldset>
+    	</form>
+    
+    </body>
+    </html>
+    ```
+    
+    - **자식 선택자**
+        - 직계 자식만 선택
+        - **[형식]**
+            
+            **$(”부모요소1>자식요소2”)**
+            
+    - **후손 선택자**
+        - 선택자 하위 요소 포함
+        - **[형식]**
+            
+            **$(”요소1 요소2”)**
+            
+    
+    ```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="UTF-8">
+    <title>자식/자손 선택자</title>
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script>
+    	
+    	 $(function(){
+    		 
+    		 $("#header > h1").css("color" , "gold");
+    		 $("#section h1").css("color" , "silver");
+    		 
+    	 });
+    	 
+    </script>
+    </head>
+    <body>
+    
+    	<hr>
+        <div id="header">
+    		<h1>Header Basic</h1>				<!--header안에 있으므로 직계자식-->
+    		<div id="nav1">
+    			<h1>Navigation1</h1>			<!--header안에 있긴 하나, nav라는 부모가 있으므로 직계가 아님-->
+    		</div>
+    		<div id="nav2">
+    			<h1>Navigation2</h1>			<!--header안에 있긴 하나, nav라는 부모가 있으므로 직계가 아님-->
+    		</div>
+    		<div id="nav3">
+    			<h1>Navigation3</h1>			<!--header안에 있긴 하나, nav라는 부모가 있으므로 직계가 아님-->
+    		</div>
+    	</div>
+    	
+    	<hr>
+    	
+    	<div id="section">
+    		<h1 class="title">Selector</h1> 	<!-- section의 직계자식 -->
+    		<div id="nav4">	
+    			<h1>Navigation4</h1> 			<!-- section의 후손 -->
+    		</div>
+    		<div id="nav5">	
+    			<h1>Navigation5</h1> 			<!-- section의 후손 -->
+    		</div>
+    	</div>
+    	
+    </body>
+    </html>
+    ```
+    
+    - **필터 목록**
+        - 필터는 '여과하다' 의 뜻으로 원하는 요소를 다양한 방식으로 걸러내는 역할을 한다.
+        - 선택자와 필터를 조합하여 엘리먼트를 탐색할 수 있다.
+            
+            **$(:odd)**	 : 지정한 선택자의 홀수번째만 선택
+            
+            **$(:even)** : 지정한 선택자의 짝수번째만 선택
+            
+            **$(:eq(index))**    : 선택자의 index번째만 선택 (주의 : 0부터 index가 시작)
+            
+            **$(:gt(index))**    : 선택자의 index번째보다 뒤에 요소 선택
+            
+            **$(:lt(index))**    : 선택자의 index번째보다 앞의 요소 선택 
+            
+            **$(:first-child)**	 : 각각 첫번째 자식요소 선택	
+            
+            **$(:last-child)**	 : 각각 마지막 자식요소 선택	
+            
+            **$(:nth-child(n))** : n번째 요소 선택 (주의 : 1부터 index가 시작)
+            
+            **$(:not(selector))** : Selector 와 일치 되는 요소를 제외한 나머지 요소를 반환한다.
+            
+            **$(:focus)**		  : 현재 포커스가 위치한 요소를 반환한다. 
+            
+    
+    ```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="UTF-8">
+    <title>기본필터 목록</title>
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script>
+    
+    	$(function(){
+    		
+    		// equals // JS & jQuery 인덱스는 0부터 시작
+    		$("tr:eq(5)").css("background" , "gold");
+    		
+    		// greater than
+    		$("tr:gt(5)").css("background" , "silver");
+    		
+    		// less than
+    		$("tr:lt(5)").css("background" , "yellow");
+    		
+    		// 인덱스처럼 0부터 시작이 아닌 1부터 시작(count)
+    		$("tr:first-child").css("background" , "pink");
+    		$("tr:nth-child(3)").css("background" , "yellow");
+    		$("tr:nth-child(5)").css("background" , "orange");
+    		$("tr:nth-child(7)").css("background" , "red");
+    		$("tr:last-child").css("background" , "blue");
+    		
+    		
+    	});
+    	
+    </script>
+    </head>
+    <body>
+    
+    	<table border="1">
+    		<tbody align="center">
+    			<tr>
+    				<td>정가</td>
+    				<td>50,000원</td>
+    			</tr>
+    			<tr>
+    				<td>판매가</td>
+    				<td>45,000(10%할인)</td>
+    			</tr>
+    			<tr>
+    				<td>포인트적립</td>
+    				<td>3P 적립</td>
+    			</tr>
+    			<tr>
+    				<td>포인트 추가적립</td>
+    				<td>만원 이상 구매시 1,000P 추가 적립<br>5만원 이상 구매시 2,000P 추가 적립<br>편의점 배송 이용시 300P 추가 적립</td>
+    			</tr>
+    			<tr>
+    				<td>발행일</td>
+    				<td>2021-01-01</td>
+    			</tr>
+    			<tr>
+    				<td>페이지 수</td>
+    				<td>350쪽</td>
+    			</tr>
+    			<tr>
+    				<td>ISBN</td>
+    				<td>1234567-1234567</td>
+    			</tr>
+    			<tr>
+    				<td>배송료</td>
+    				<td>2,000원</td>
+    			</tr>
+    			<tr>
+    				<td>배송안내</td>
+    				<td>
+    					<strong>[당일배송]</strong> 당일배송 서비스 시작!<br> 
+    					<strong>[휴일배송]</strong>휴일에도 배송받는 Bookshop
+    				</td>
+    			</tr>
+    			<tr>
+    				<td>도착예정일</td>
+    				<td>지금 주문 시 내일 도착 예정</td>
+    			</tr>
+    		</tbody>
+    	</table>
+    	
+    </body>
+    </html>
+    ```
