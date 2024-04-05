@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!-- 24.04.05 time 14:20-14:29
+     today 소감문
+     change일 때를 잘 활용해서 만든 것 같다. 근데 정답예시처럼
+     변수에 어떤 조건일 때 값을 넣어두고 if문 밖에서
+     한 번에 적용 시켜주는 게 좀 더 눈에 보기 편한 코드라고 생각이 들고
+     다음에 이런 문제가 나온다면 정답예시처럼 좋은 방법으로 풀어봐야겠다.  
+-->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>연습예제</title>
+<script src="../js/jquery-3.7.1.min.js"></script>
+<script>
+	$().ready(function(){
+		
+		$("#searchType").change(function(){
+			
+			if ($("#searchType").val() == "all"){
+				$("#searchWord").text("");
+			}
+			else if ($("#searchType").val() == "goodsId"){
+				$("#searchWord").prop("placeholder" , "상품번호를 입력하세요." );
+			}
+			else if ($("#searchType").val() == "goodsTitle"){
+				$("#searchWord").prop("placeholder" , "상품이름을 입력하세요." );
+			}
+			else if ($("#searchType").val() == "goodsWrite"){
+				$("#searchWord").prop("placeholder" , "저자를 입력하세요." );
+			}
+			else if ($("#searchType").val() == "goodsPublisher"){
+				$("#searchWord").prop("placeholder" , "출판사를 입력하세요." );
+			}
+			
+		});
+	});
+</script>
+</head>
+<body>
+	
+	<!-- 
+		
+		셀렉트 태그에서 분류를 선택하고 분류에 해당하는 placeholder값을 변경하는 스크립트를 작성해보시오.
+		
+		1) 전체를 선택하면 빈 화면으로 표시
+		2) 상품번호를 선택하면 '상품번호를 입력하세요' 표시
+		3) 상품이름을 선택하면 '상품이름을 입력하세요' 표시
+		4) 저자를 선택하면     '저자를 입력하세요' 표시
+		5) 출판사를 선택하면   '출판사를 입력하세요' 표시
+		
+	 -->
+
+    <p>
+        <select id="searchType">
+			<option value="all">전체</option>
+			<option value="goodsId">상품번호</option>
+			<option value="goodsTitle">상품이름</option>
+			<option value="goodsWriter">저자</option>
+			<option value="goodsPublisher">출판사</option>
+		</select>
+		<input type="text" size="30" id="searchWord" />  
+ 	</p>
+</body>
+</html>
