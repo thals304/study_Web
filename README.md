@@ -5062,3 +5062,434 @@ ORDER BY
     </body>
     </html>
     ```
+
+  - **this**
+      - 셀렉터 자신을 선택
+  - **$(셀렉터).each(function(){});**
+      - 복수의 셀렉터의 반복문으로 사용한다.
+      - **[형식]**
+        
+          **$(체크박스 및 라디오 등).each(function(){ $(this) });**
+        
+
+  ```html
+  <!DOCTYPE html>
+  <html>
+  <head>
+  <meta charset="UTF-8">
+  <title>this</title>
+  <script src="../js/jquery-3.7.1.min.js"></script>
+  <script>
+	
+     	   $(function(){
+		   
+		$("#id , #pwd").focus(function(){ // focus event
+			$(this).css("background" , "gold");
+		}); 
+		
+		$("#id , #pwd").blur(function(){ // blur event
+			$(this).css("background" , "white");
+		}); 
+		
+		$("[name='skillCheckbox']").each(function(){
+			    console.log($(this).val());
+		});
+	   });
+	
+	 
+	
+  </script>
+  </head>
+  <body>
+
+	<p>id : <input type="text" id="id"></p>
+	
+	<p>password : <input type="password" id="pwd"></p>
+	
+	<p>skill checkbox :
+		<input type="checkbox" name="skillCheckbox" value="vHtml"> html
+		<input type="checkbox" name="skillCheckbox" value="vCss"> css
+		<input type="checkbox" name="skillCheckbox" value="vJavascript"> javascript
+	</p>
+	
+  </body>
+  </html>
+  ```
+
+- **DOM**
+    - **text ( )**
+        
+        **$(셀렉터).text()** 	    : 선택자의 text를 가져온다.
+        
+        **$(셀렉터).text(text값)** : 선택자의 text를 수정한다.
+        
+        - 선택된 개체의 text를(html을 제외한 순수한text) 가져온다.
+        - text() 메서드 형식으로 값을 가져오며 값을 설정할 경우는 text(value)형태로 사용한다.
+        - XML과 HTML 문서에서 둘 다 사용될 수 있다.
+        - 폼 태그의 value는 가져오지 못한다.
+    - **html ( )**
+        
+        **$(선택자).html()** 	      : 선택자의 html를 가져온다.
+        
+        **$(선택자).html(html값)** : 선택자의 html를 수정한다.
+        
+        - 선택된 개체의 html형식(html의 모든 내용 포함)을 가져온다.
+        - html() 메서드 형식으로 html값을 가져오며 값을 설정할 경우는 html(value)형태로 사용한다.
+        - XML과 HTML 문서에서 둘 다 사용될 수 있다.
+        - 폼 태그의 value는 가져오지 못한다.
+    
+    ```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="UTF-8">
+    <title>text() , html()</title>
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script>
+    	
+    	$().ready(function(){
+    		
+    		$("#button1").click(function(){
+    			console.log($("#price").text());
+    		});
+    		
+    		
+    		let qty = 1;
+    		$("#button2").click(function(){
+    			
+    			$("#price").text(30000 * qty);
+    			qty++;
+    			
+    		});
+    		
+    		$("#button3").click(function(){
+    			console.log($(""));
+    		});
+    		
+    		let toggle = true;
+    		$("#button4").click(function(){
+    		let method = ""
+    			
+    			if (toggle) {
+    				method = `<input type='text' size='10'>
+    			    <input type='text' size='10'>
+    			    <input type='text' size='10'>
+    			    <input type='text' size='10'>`
+    			    
+    				toggle = false;
+    			}
+    			else {
+    				method = `
+    				<select>
+    					<option>010</option>
+    					<option>011</option>
+    					<option>017</option>
+    				</select> - 
+    			    <input type='text' size='10'> - 
+    			    <input type='text' size='10'>`
+    			    
+    				toggle = true;
+    			}
+    			$("#method").html(method);
+    			
+    		});
+    		
+    		
+    	});
+    </script>
+    </head>
+    <body>
+    
+     	<p>가격 : <span id="price">30000</span>원</p>
+     	
+     	<div id="method"> 
+     		
+     	</div>
+     	
+     	<hr>
+       	
+       	<button id="button1">text getter</button>
+       	<button id="button2">text setter</button>
+       	<button id="button3">html getter</button>
+       	<button id="button4">html setter</button>
+       	
+    </body>
+    </html>
+    ```
+    
+    - **val ( )**
+        
+        **$(셀렉터).val()** 	   : 셀렉터의 값을 가져온다.
+        
+        **$(셀렉터).val(value)**   : 셀렉터의 값을 수정한다. 
+        
+        - form태그 엘리먼트의 값을 가져온다.
+        - form태그 이외의 값은 가져오지 못하므로 text() 및 html() 메서드와 용도를 구별하여 사용한다.
+    
+    ```html
+    <head>
+    <meta charset="UTF-8">
+    <title>val()</title>
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script>
+    
+        $().ready(function() {
+        	
+            $("#button1").click(function () {
+    			// before
+    			// document.getElementById("price").value;
+            	console.log( "가격 : " + $("#price").val());
+            	console.log( "부가세 : " + $("#addTax").val());
+            	console.log( "최종금액 : " + $("#totalPrice").val());
+            	console.log();
+            });
+            
+            $("#button2").click(function () {
+            	
+            	let price = $("#price").val();
+            	price = Number(price);
+            	$("#addTax").val(price * 0.1);
+            	$("#totalPrice").val(price + price * 0.1);
+            	 
+            });
+        
+        });
+    			
+    </script>
+    </head>
+    <body>
+    
+     	<p>가격 : <input type="text" id="price"></p>
+     	<p>부가세 : <input type="text" id="addTax"></p>
+     	<p>최종금액 : <input type="text" id="totalPrice"></p>
+     	
+     	<hr>
+     	
+       	<button id="button1">getter</button>
+       	<button id="button2">setter</button>
+       	
+    </body>
+    </html>
+    ```
+    
+    - **property**
+        
+        **$(셀렉터).prop(propertyName)** 		    : 해당 속성값을 가져온다.
+        
+        **$(셀렉터).prop(propertyName,value)** 	     : 해당 속성값을 수정한다.
+        
+        - jQuery 1.6버전 이전에는 attr() 함수를 이용하여 모든 태그의 속성을 제어하였는데 jQuery 1.6버전 이후부터는 prop()라는 함수가 추가되었다.
+        - 일반적인 태그속성의 값을 변경하고자 할때는 attr()함수를 사용하고 태그속성에 따라서 기능이 제어되는 속성에 대해서는 prop()함수를 사용한다.
+        - 백엔드 개발에서 attr()보다 대부분의 기능에서 prop()사용을 권장한다.
+    
+    ```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="UTF-8">
+    <title>prop</title>
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script>
+    
+    	$().ready(function(){
+    		
+    		$("#button1").click(function(){
+    			console.log( "src : "+ $("#imageTarget").prop("src"));
+    			console.log("");
+    		});
+    		
+    		
+    		$("#button2").click(function(){
+    			console.log( "src : "+ $("#imageTarget").prop("width"));
+    			console.log( "src : "+ $("#imageTarget").prop("height"));
+    			console.log("");
+    		});
+    		
+    		let idx = 1;
+    		$("#button3").click(function(){
+    			
+    			idx++;
+    			$("#imageTarget").prop("src" , "../images/pic_" + idx + ".jpg");
+    			
+    			if (idx == 9) idx = 0;
+    			
+    		});
+    		
+    		$("#button4").click(function(){
+    			let width = $("#imageTarget").prop("width");
+    			let height = $("#imageTarget").prop("height");
+    			
+    			width+= 30;
+    			height+= 30;
+    			
+    			$("#imageTarget").prop("width" , width);
+    			$("#imageTarget").prop("height" , height);
+    		});
+    		
+    	});
+    					
+    </script>
+    </head>
+    <body>
+        
+     	<img src="../images/pic_1.jpg" id="imageTarget" width="400" height="400">
+     	<hr>
+    	<button id="button1">속성 확인하기1</button>
+    	<button id="button2">속성 확인하기2</button>
+    	<button id="button3">속성 변경하기1</button>
+    	<button id="button4">속성 변경하기2</button>
+    	
+        
+    </body>
+    </html>
+    ```
+    
+    - **기본 이벤트**
+        - **[마우스 이벤트]**
+            
+            **$(셀렉터).click()** 	        : $(셀렉터)의 요소를 클릭할 때 발생하는 이벤트
+            
+            **$(셀렉터).dblclick()**          : $(셀렉터)의 요소를 더블 클릭할 때 발생하는 이벤트
+            
+            **$(셀렉터).mousedown()**  : $(셀렉터)에 마우스 버튼을 눌렀을 때 발생하는 이벤트
+            
+            **$(셀렉터).mouseup()**       : $(셀렉터)에 마우스 버튼을 떼었을 때 발생하는 이벤트
+            
+            **$(셀렉터).mouseenter()**    : $(셀렉터)에 마우스가 진입했을 때 발생하는 이벤트
+            
+            **$(셀렉터).mouseleave()**    : $(셀렉터)에 마우스가 벗어났을 때 발생하는 이벤트
+            
+            **$(셀렉터).hover()**              : (mouseenter,mouseleave)를 동시에 수행하는 이벤트
+            
+        - **[키보드 이벤트]**
+            
+            **$(셀렉터).keydown()**    : 해당 영역에서 키보드를 눌렀을 때에 발생하는 이벤트
+            
+            **$(셀렉터).keypress()**     : 해당 영역에서 키보드를 누르고 있을 때에 발생하는 이벤트
+            
+            **$(셀렉터).keyup()**         : 해당 영역에서 키보드를 눌렀다가 떼었을 때에 발생하는 이벤트
+            
+        - **[폼 이벤트]**
+            
+            **$(셀렉터).focus()**       : 엘리먼트가 포커스를 획득했을 때 발생하는 이벤트
+            
+            **$(셀렉터).blur()**         : 엘리먼트가 포커스를 잃었을 때 발생하는 이벤트
+            
+            **$(셀렉터).change()**	   : 폼 필드에서 요소값이 변경되었을 때 발생하는 이벤트
+            
+            **$(셀렉터).select()** 	   : 텍스트 상자/영역 등에서 영역을 선택할 때 발생하는 이벤트
+            
+            **$(셀렉터).submit()**     : 폼 전송시 발생하는 이벤트
+            
+    
+    ```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="UTF-8">
+    <title>기본 이벤트</title>
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script>
+    
+    	$().ready(function(){
+    		
+    		$("#btnClick").click(function(){
+    			$("#target").prop("src" , "../images/pome.png");
+    		});
+    		
+    		$("#btnDblClick").dblclick(function(){
+    			$("#target").prop("src" , "../images/programmer.png");
+    		});
+    		
+    		$("#focusBlur").focus(function(){
+    			$("#target").prop("src" , "../images/programmer.png")
+    		});
+    		
+    		$("#focusBlur").blur(function(){
+    			$("#target").prop("src" , "../images/pome.png")
+    		});
+    		
+    		$("#keyboardDownUp").keydown(function(){
+    			$("#target").prop("src" , "../images/pic_3.jpg");
+    		});
+    		
+    		$("#keyboardDownUp").keyup(function(){
+    			$("#target").prop("src" , "../images/pic_4.jpg");
+    		});
+    		
+    		$("#mouseDownUp").mousedown(function(){
+    			$("#target").prop("src" , "../images/pic_5.jpg");
+    		});
+    		
+    		$("#mouseDownUp").mouseup(function(){
+    			$("#target").prop("src" , "../images/pic_6.jpg");
+    		});
+    		
+    		$("#mouseEnterLeave").mouseenter(function(){
+    			$("#target").prop("src" , "../images/pic_7.jpg");
+    		});
+    		
+    		$("#mouseEnterLeave").mouseleave(function(){
+    			$("#target").prop("src" , "../images/pic_8.jpg");
+    		});
+    		
+    		let toggle = true;
+    		$("[name='c'] , [name='r'] , #s").change(function(){
+    			
+    			if (toggle) {
+    				$("#target").prop("src" , "../images/americano.jpg");
+    				toggle = false;
+    			}
+    			else {
+    				$("#target").prop("src","../images/coffee.gif");
+    				toggle = true;
+    			}
+    			
+    		});
+    		
+    	});
+    		
+    </script>
+    </head>
+    <body>
+    
+    	<h1>TARGET</h1>
+    	<img src="../images/poodle.png" id="target" height="300" width="300" alt="샘플 이미지">
+        <hr>
+        
+        click : <input type="button" id="btnClick" value="click">
+        <hr> 
+        
+        double click : <input type="button" id="btnDblClick" value="click">
+        <hr>
+        
+        focus , blur : <input type="text" id="focusBlur">
+        <hr>
+        
+        key down , key up : <input type="text" id="keyboardDownUp">
+        <hr>
+        
+        mouse down , mouse up : <input type="button" value="눌러보세요!" id="mouseDownUp">
+        <hr>
+        
+        mouse enter , mouse leave : <img src="../images/pic_1.jpg" width="50" height="50" id="mouseEnterLeave" >
+        <hr>
+        
+       change :  <input type="checkbox" name="c" >
+       			 <input type="checkbox" name="c" >
+       			 <input type="checkbox" name="c" ><br>
+       			
+       change :  <input type="radio" name="r" >
+       			 <input type="radio" name="r" >
+       			 <input type="radio" name="r" ><br>
+       			 
+       change : <select id="s">
+       			 	<option>s1</option>
+       			 	<option>s2</option>
+       			 	<option>s3</option>
+       			 </select><br>
+        <hr>
+        
+    </body>
+    </html>
+    ```
