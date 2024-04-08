@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--24.04.05 time 20:59-21:10
+    today 소감문
+    이 문제가 mouseenter일 때 라는 것은 잘 봤는데
+    이미지에 mouseenter일 때 radio도 바꾸는 걸 어떻게 해야하는지를
+    가장 많이 고민했다. each , this , radio 다 사용해보려고 했는데 쉽지 않았던 것 같다.
+    결국 정답예시를 봤는데 :eq(index)가 가능했던 것이었다.
+    
+ -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>연습예제</title>
+<script src="../js/jquery-3.7.1.min.js"></script>
+<script>
+	$().ready(function(){
+		
+		$("#brandImg1").mouseenter(function(){
+			
+			$("[name= 'brand']:eq(0)").prop("checked" , true);		
+			$("#showMsg").text("apple이 선택되었습니다.");
+		
+		});
+		
+		$("#brandImg2").mouseenter(function(){
+			
+			$("[name= 'brand']:eq(1)").prop("checked" , true);
+		    $("#showMsg").text("microsoft가 선택되었습니다.");
+			
+		});
+	});
+</script>
+</head>
+<body>
+
+	<!-- 
+		
+		1. apple이미지에 마우스커서가 진입하면 
+		  1) apple라디오가 선택되고
+		  2) "apple이 선택되었습니다." 메세지를 화면에 출력하는 스크립트를 작성해보시오.
+		  
+		2. microsoft이미지에 마우스커서가 진입하면 
+		  1) microsoft라디오가 선택되고
+		  2) "microsoft이 선택되었습니다." 메세지를 화면에 출력하는 스크립트를 작성해보시오.
+		    
+	 -->
+
+	<img src="../images/pic_1.jpg" id="brandImg1"  width="200" height="200"> &emsp;
+	<img src="../images/pic_3.jpg" id="brandImg2"  width="200" height="200">
+	
+	<hr>
+	<input type="radio" name="brand"> apple &emsp;
+	<input type="radio" name="brand"> microsoft &emsp;&emsp;&emsp;
+	<span id="showMsg">apple이 선택되었습니다.</span>
+
+</body>
+</html>

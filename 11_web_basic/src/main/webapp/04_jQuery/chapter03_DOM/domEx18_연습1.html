@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--24.04.05 time 21:16-21:29
+	today 소감문
+	얘도 문제는 쉬웠는데 내가 입력한 값이 바로 출력하는데 change가 아닌
+	keyup이라는 것을 새롭게 알게 된 것 같다.
+ -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>연습예제</title>
+<script src="../js/jquery-3.7.1.min.js"></script>
+<script>
+	$().ready(function(){
+		
+		$("#search").keyup(function(){
+			
+			let message = $("#search").val();
+			$("#displaySearchWord").text("입력된 검색어 : " + message);
+			
+		});
+	});
+</script>
+</head>
+<body>
+
+	<!-- 
+		
+		키보드에 글자가 입력될때마다 입력된 내용을 "displaySearchWord"에 출력하는 스크립트를 작성해보시오.
+	
+	 -->
+
+
+	<p>검색어 : <input type="text" id="search" ></p>
+	
+	<div id="displaySearchWord">
+		
+	</div>
+
+</body>
+</html>

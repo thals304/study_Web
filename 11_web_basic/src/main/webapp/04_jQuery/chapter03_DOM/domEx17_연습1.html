@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--24.04.05 time 21:13-21:21
+	today 소감문
+	이 문제를 보자마자 반가웠던게 이전 javascript에서 id=target 뒤에 뭔가
+	추가하게 되면 토글을 이용해서 원래 있던 정보들까지 삭제되지 않도록 보호해줬어야 했던게
+	인상깊었어서 이 문제도 그렇게 풀면 되겠다고 생각했었다.
+	근데 target은 이용을 전혀 안하고 radio만 사용하는 것을 보고
+	jQuery는 뭔가 다르긴 다르다고 깊게 느낀것 같다.
+ -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>연습예제</title>
+<script src="../js/jquery-3.7.1.min.js"></script>
+<script>
+	$().ready(function(){
+		
+		$("[name= 'reasonBuy']").change(function(){
+			let message = "";
+			let reasonBuy = $("[name= 'reasonBuy']:checked").val();
+			
+			if (reasonBuy == "etc"){
+				message ='<input type="text" size="50" name="etcReason" placeholder="이유를 적어주세요.">';
+			    
+			}
+			$("#etcDetail").html(message);
+		});
+	});
+</script>
+</head>
+<body>
+
+	<!-- 
+		
+		1) radio에서 '기타'가 선택될 경우
+		<input type="text" size="50" name="etcReason" placeholder="이유를 적어주세요.">
+		요소가 "etcDetail"에 추가되도록 스크립트를 작성해 보시오.
+	
+	
+		2) radio에서 '기타'이 외의 다른 항목이 선택될 경우
+		"etcDetail"의 내용을 지우는 스크립트를 작성해 보시오.
+	
+	 -->
+
+	<fieldset>
+		<p id="target">
+			<label for="browser">구매 이유 : </label>
+			<input type="radio" name="reasonBuy" value="quality"> 품질이 좋다
+			<input type="radio" name="reasonBuy" value="costEffect"> 가성비가 좋다
+			<input type="radio" name="reasonBuy" value="etc"> 기타&emsp;&emsp;&emsp;
+			<span id="etcDetail"></span>
+		</p>
+	</fieldset>
+</body>
+</html>

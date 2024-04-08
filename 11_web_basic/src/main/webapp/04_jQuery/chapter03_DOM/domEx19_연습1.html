@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--24.04.05 time 21:31-21:39
+	today 소감문
+	each의 사용에 대해서도 아직 잘 감을 못잡은 것 같다.
+	특히 체크박스나 라디오가 나오면 어디서 :checked를 쓸 수 있는지
+	그것부터가 어렵다.
+	코드는 상대적으로 간단해졌지만 앞에 내용이 완벽하지 않으니 뒤에서도 삐걱되는 것 같다.
+ -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>연습예제</title>
+<script src="../js/jquery-3.7.1.min.js"></script>
+<script>
+	$().ready(function(){
+		
+		$("[name= 'subjects']").change(function(){
+			
+			let subjects = "";
+			$("[name= 'subjects']:checked").each(function(){
+				
+				subjects += $(this).val() + " ";
+				
+			});
+			$("#result").text("선택된 과목 : " + subjects);
+		});
+	});
+</script>
+</head>
+<body>
+
+	<!-- 
+		
+		checkbox에서 선택한 데이터들을 result위치에 텍스트로 출력되도록 스크립트를 작성해보시오.
+
+		예시) 선택된 과목 : html javascript
+	
+	 -->
+
+    <p>	
+		과목 : 
+		<input type="checkbox" name="subjects" value="html" > html
+		<input type="checkbox" name="subjects" value="css"> css
+		<input type="checkbox" name="subjects" value="javascript" > javascript
+	</p>
+	<span id="result"></span>
+	
+	
+</body>
+</html>
