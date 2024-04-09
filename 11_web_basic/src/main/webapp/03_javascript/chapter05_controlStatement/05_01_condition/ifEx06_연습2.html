@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--24.04.08 time 18:53-18:59
+	today 소감문
+	아니 정답예시랑 내 식이 비슷한데 왜 정답을 맞춰도 땡이라고 나오지? 
+	보니까 else문에 {}를 안쓰고 바로 document를 사용했는데
+	그게 마지막으로 출렫된 것 같다.
+ -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>연습예시</title>
+<script>
+	
+	/*
+	 * # 구구단 게임[1단계]
+	 * 
+	 * 1. 구구단 문제를 출제하기 위해, 숫자 2개를 입력받는다.
+	 * 2. 입력받은 숫자를 토대로 구구단 문제를 출력한다.
+	 * 예)	3 x 7 = ?
+	 * 3. 문제에 해당하는 정답을 입력받는다.
+	 * 4. 정답을 비교 "정답!" 또는 "땡!"을 출력한다.
+	 */
+
+	 let x = prompt("숫자1 입력 : ");
+	 let y = prompt("숫자2 입력 : ");
+	 let total = Number(x) * Number(y);
+	 
+	 let answer = prompt(x + "x" + y + "= ?");
+	 answer = Number(answer);
+	 if(total = answer){
+		 document.write("정답!");
+	 }
+	 else {
+		 document.write("땡!");
+	}
+	
+</script>
+</head>
+<body>
+</body>
+</html>
