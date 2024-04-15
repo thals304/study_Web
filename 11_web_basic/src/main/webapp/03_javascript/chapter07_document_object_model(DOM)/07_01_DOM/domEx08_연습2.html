@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--24.04.15 time 16:08-16:13
+	today 소감문
+	앞에 7번 문제로 워밍업을 했더니 이 문제는 어려움 없이 풀 수 있었던 것 같다.
+-->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>연습예제</title>
+<script>
+	function answer(){
+		let searchType = document.getElementById("searchType").value;
+		let view = "";
+		
+		if (searchType == 'all') view = "";
+		else if (searchType == 'goodsId') view = "상품번호를 입력하세요";
+		else if (searchType == 'goodsTitle') view = "상품이름를 입력하세요";
+		else if (searchType == 'goodsWriter') view = "저자를 입력하세요";
+		else if (searchType == 'goodsPublisher') view = "출판사를 입력하세요";
+		
+		document.getElementById("searchWord").placeholder = view;
+	}
+</script>
+</head>
+<body>
+	
+	<!-- 
+		
+		셀렉트 태그에서 분류를 선택하고 분류에 해당하는 placeholder값을 변경하는 스크립트를 작성해보시오.
+		
+		1) 전체를 선택하면 빈 화면으로 표시
+		2) 상품번호를 선택하면 '상품번호를 입력하세요' 표시
+		3) 상품이름을 선택하면 '상품이름을 입력하세요' 표시
+		4) 저자를 선택하면     '저자를 입력하세요' 표시
+		5) 출판사를 선택하면   '출판사를 입력하세요' 표시
+		
+		
+	 -->
+
+    <p>
+        <select id="searchType">
+			<option value="all">전체</option>
+			<option value="goodsId">상품번호</option>
+			<option value="goodsTitle">상품이름</option>
+			<option value="goodsWriter">저자</option>
+			<option value="goodsPublisher">출판사</option>
+		</select>
+		<input type="text" size="30" id="searchWord" />  
+ 		<input type="button" value="정답" onclick="answer();">
+ 	</p>
+</body>
+</html>

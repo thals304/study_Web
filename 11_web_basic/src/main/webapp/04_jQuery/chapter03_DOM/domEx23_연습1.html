@@ -1,8 +1,54 @@
 <!DOCTYPE html>
+<!-- 24.04.15 time 17:15-17:35
+	today 소감문
+	확실히 너무 어려운 것 같다. 원래 나는 plus, minus, multi를 각각 클릭했을 때로
+	나눴는데 내 답이 출력이 잘 안되서 결국 포기하고 정답예시를 보고 이해하고 따라해봤다.
+	jQuery를 잘하고 싶은데 내 생각이 정답과 맞지 않아 아직은 쉽지 않게 느껴지는 것 같다.
+	그리고 정답예시와 똑같이 식을 썼는데 내 답은 제대로 결과가 안나와서 정답예시를 복붙해서 출력해서
+	실행했는데도 결과가 안나온다. 보니까 가장 중요한 jQuery를 사용할 때 써줘야 하는 ../js를 안해줘서 그런 것 같다.
+ -->
 <html>
 <head>
 <meta charset="UTF-8">
 <title>연습예제</title>
+<script src="../js/jquery-3.7.1.min.js"></script>
+<script>
+	$().ready( function() {
+		
+		$("#plus, #minus, #multi").click(function() {
+			
+			let calculate = $(this).val();
+			let num1 = Number($("#num1").val());
+			let num2 = Number($("#num2").val());
+			
+			let result = 0;
+			let operator = "";
+			
+			switch(calculate){
+			
+			case "합":
+				result = num1 + num2;
+				operator = "+";
+				break;
+				
+			case "차":
+				result = num1 - num2;
+				operator = "-";
+				break;
+				
+			case "곱":
+				result = num1 * num2;
+				operator = "*"
+				break;
+			}
+			
+			$("#result").val(result);
+			$("#op").text(operator);
+			
+		});
+		
+	});	
+</script>
 </head>
 <body>
 

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!--24.04.15 time 16:33-16:39 16:41-16:44
+	today 소감문
+	오랜만에 하는거라 기억이 안나서 개념을 보고 따라하면서 풀었다.
+	확실히 배운 내용들 거의 다 금방 까먹은거 같아서 프젝을 잘 할 수 있을지
+	걱정이 된다.
+ -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>연습예제</title>
+<script>
+	function formVAlidationCheck(){
+		
+		let text1 = document.f.text1;
+		if (text1.value == ""){
+			alert("작성자를 입력하세요.");
+			text1.focus();
+			return false;
+		}
+		
+		let text2 = document.f.text2;
+		if (tex2.value == ""){
+			alert("제목을 입력하세요.");
+			text2.focus();
+			return false;
+		}
+		
+		let text3 = document.f.text3;
+		if (text3.value == ""){
+			alert("이메일을 입력하세요.");
+			text3.focus();
+			return false;
+		}
+		
+		let text4 = document.f.text4;
+		if (text4 == ""){
+			alert("비밀번호를 입력하세요.");
+			text4.focus();
+			return false;
+		}
+		
+		let text5 = document.f.text5;
+		if (text5 == ""){
+			alert("글 내용을 입력해주세요.");
+			text5.focus();
+			return false;
+		}
+		
+		
+		return true;
+	}
+</script>
+</head>
+<body>
+
+	<!-- 
+	
+		# 입력하지 않은 필드의 값을 검증하여 
+		
+			1) alert으로 안내
+			2) focus로 이동
+			
+			하는 스크립트를 작성해 보시오. 
+		
+	-->
+
+	<form name="f" onsubmit="return formValidationCheck();"> 
+		<h2>게시글 쓰기</h2>
+		<br>
+		<table style="width: 700;" border="1">
+			<colgroup>
+				<col width="20%">
+				<col width="80%">
+			</colgroup>
+			<tr>
+				<td align="center"><span style="color: red">*</span> 작성자</td>
+				<td><input type="text" size="80" name="text1"/></td>
+			</tr>
+			<tr >
+				<td align="center"><span style="color: red">*</span> 제목</td>
+				<td><input type="text" size="80" name="text2"/></td>
+			</tr>
+			<tr>
+				<td align="center"><span style="color: red">*</span> 이메일</td>
+				<td><input type="email" size="80" name="text3"/></td>
+			</tr>
+			<tr>
+				<td align="center"><span style="color: red">*</span> 비밀번호</td>
+				<td><input type="password" size="80" name="text4"/></td>
+			</tr>
+			<tr>
+				<td align="center"><span style="color: red">*</span> 글내용</td>
+				<td><textarea  rows="10" cols="50" name="text5" ></textarea></td>
+			</tr>
+			<tr align="center">
+				<td colspan="2">
+					<input type="submit"  value="확인"/>
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

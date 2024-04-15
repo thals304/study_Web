@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--24.04.15 time 15:35-15:39
+	today 소감문
+	그 당시에 이 문제를 아마 잘못 풀었던 것 같은데
+	이번에는 왜이리 쉽게 풀었지? 이전보다 실력이 늘고 있는것이라 긍정적으로 
+	생각하면서 열심히 다른 복습들도 진행해야겠다.
+ -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>연습예시</title>
+<script>
+	
+
+	/*
+	 * # 최대값 구하기[2단계]
+	 * 
+	 * 1. 3회 반복을 하면서 정수를 입력받는다.
+	 * 2. 입력받은 3개의 숫자 중 가장 큰 값을 출력한다.
+	 * 
+	 */
+	let max = 0;
+	for (let i = 1; i <= 3; i++){
+		let num = prompt("정수 입력 : ");
+		num = Number(num);
+		if (max < num){
+			max = num;
+		}
+	}
+	
+	document.write("가장 큰 값 : " + max);
+</script>
+</head>
+<body>
+</body>
+</html>

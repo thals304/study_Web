@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+<!--24.04.15 time 15:28-15:31
+	today 소감문
+	전에 이 문제를 풀었을 때는 prompt를 변수에 넣을 수 있나? 라는
+	고민이 있던거 같은데 이번에도 있었다. 하지만 전과는 다른 점은 내 머리로 
+	생각해서 고민을 해결했다는 점이다.
+	근데 부모님과 함께 왔냐는 답변을 숫자로 바꾸는 디테일은 잘 못잡은 거 같아
+	반성해야겠다.
+ -->
 <html>
 <head>
 <meta charset="UTF-8">
@@ -17,7 +25,19 @@
 	
 	 let height = prompt("키를 입력하세요 : ");
 	 
-	 
+	 if (height >= 120){
+		 document.write("놀이기구 이용 가능");
+	 }
+	 else {
+		 let withParent = prompt("부모님과 함께 오셨나요?(yes:1, no:0)");
+		 withParent = Number(withParent);
+		 if (withParent == 1){
+			 document.write("놀이기구 이용 가능");
+		 }
+		 else {
+			 document.write("놀이기구 이용 불가능");
+		 }
+	 }
 	 
 		
 </script>
