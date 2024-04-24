@@ -5587,3 +5587,217 @@ ORDER BY
   </body>
   </html>
   ```
+
+- **AJAX (Asynchronous Javascript and xml)**
+    - **JSON (JavaScript Object Notation)**
+        - JavaScript에서 객체를 만들 때 사용하는 표현식
+        - 사람도 이해하기 쉽고 기계도 이해하기 쉽다.
+        - 서버와 클라이언트 간의 데이터 전송형태 및 데이터 export로 많이 사용하며 경량의 데이터 전송에서 주로 사용한다.
+        - AJAX로 전송가능한 데이터 형식이다.
+        - 사용 가능한 자료형은 숫자(number) , 문자열(string) , 불리언(boolean) , 객체(object) , 배열(array) , NULL이 있다.
+        - **[ 형식 ]**
+            
+            **{
+            "key1" : value1 ,
+            "key2" : value2 ,
+            "key3" : value3...
+            }**
+            
+            1) 중괄호로 오브젝트를 묶는다.
+            
+            2) 데이터는 key/value 쌍으로 생성한다. (key 문자열이기 때문에 ""를 붙여서 사용한다.)
+            
+            3) 복수의 데이터는 ‘,’로 분리한다.
+            
+            4) 배열은 대괄호를 사용한다. (예시 [1,2,3,4,5])
+            
+        - JSON.parse()메서드 	 : (파싱)	   문자열을 자바스크립트의 데이터로 변환한다.
+        - JSON.stringify()메서드 : (문자열화)  자바스크립트의 데이터를 문자열로 변환한다.
+    
+    ```html
+    @WebServlet("/ajaxEx01")
+    public class AjaxEx01 extends HttpServlet {
+    	
+    	private static final long serialVersionUID = 1L;
+           
+    	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    		RequestDispatcher dis = request.getRequestDispatcher("04_jQuery/chapter04_AJAX/ajaxEx01.jsp");
+    		dis.forward(request, response);
+    	}
+    
+    }
+    ```
+    
+    ```html
+    <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="UTF-8">
+    <title>JSON 기초</title>
+    <script src="04_jQuery/js/jquery-3.7.1.min.js"></script>
+    <script>
+    
+        $().ready(function(){
+    
+        	let product = {
+    			"productCd" : "0000-1362",
+    			"productNm" : "samsung TV" ,
+    			"stock"     : 777 ,
+    			"isSoldout" : false,
+    			"size"      : [30,50,70]
+    		}
+        	
+        	console.log(product);
+        	console.log("");
+        	
+        	let member = {
+    			"memberId" : "admin",
+    			"age"      : 20,
+    			"address"  : "서울 경기 인천",
+    			"contact"  : "010-1234-5678"
+        	}
+        	
+        	console.log(member);
+        	console.log("");
+        });
+    	
+    </script>
+    </head>
+    <body>
+    </body>
+    </html>
+    ```
+    
+    - **AJAX**
+        - 웹 페이지 전체를 다시 로딩하지 않고도 웹 페이지의 일부분만을 갱신하여 사용할 수 있다.
+        - 페이지의 전환 없이 서버와 브라우저가 비동기 방식으로 통신하여 데이터를 교환하고 그 결과를 웹 페이지의 일부분에만 표시할 수 있다.
+        - 서버에서 처리가 완료될때까지 기다리지 않고 페이지 이동 없이 다른 프로세스를 진행할 수 있다.
+        - 서버와 통신하기 위해 XMLHttpRequest 객체를 사용한다.
+        - 서버와 주고받을 수 있는 데이터 형식은 JSON , XML , HTML 등이 있다.
+        - **[ 형식 ]**
+            
+            **$.ajax({**
+            
+            **url : "",**
+            
+            **type : "",**
+            
+            **async : ,**
+            
+            **cache : "",**
+            
+            **contentType :**
+            
+            **data : "",**
+            
+            **dataType : "",**
+            
+            **success : function(data , status , xhr){
+            },**
+            
+            **error : function(xhr , status , errorThrown){
+            },
+            complete : function(xhr , status){
+            }**
+            
+            **});**
+            
+            **url** : 요청이 전송될 URL주소를 작성한다.
+            
+            **type** : 데이터 전송방식을 작성한다.
+            
+            **async**	   : true가 기본값이며 비동기식으로 동작한다. (데이터를 false로 설정하게 되면 동기방식으로 동작한다.)
+            
+            **cache**       : 요청 페이지의 브라우저 캐시 여부를 (false 또는 true) 통제한다.
+            
+            **contentType** : 서버로 전송할 데이터의 타입이다. ("application/x-www-form-urlencoded" [기본값] , "application/json")
+            
+            **data**        : 서버에 전송하고 싶은 데이터를 작성한다.
+            
+            **dataType**    : 서버에서 반환된 데이터를 어떤 형태(xml, json, html, script)로 해석할 것인지를 작성한다.
+            
+            **success**     : AJAX 통신에 성공했을 때 실행되는 콜백 함수이다.
+            
+            **error**       : AJAX 통신에 실패했을 때 실행되는 콜백 함수이다.
+            
+            **complete**   : AJAX 통신의 성공 및 실패와 상관없이 반드시 실행되는 콜백 함수이다.
+            
+    
+    ```html
+    @WebServlet("/ajaxEx02")
+    public class AjaxEx02 extends HttpServlet {
+    	
+    	private static final long serialVersionUID = 1L;
+    	
+    	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    		RequestDispatcher dis = request.getRequestDispatcher("04_jQuery/chapter04_AJAX/ajaxEx02.jsp");
+    		dis.forward(request, response);
+    	}
+    	
+    	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    		
+    			/*
+    			let sendData ={
+    				
+    				"testData1" : $("#testData1").val(),
+    				"testData2" : $("#testData2").val()
+    			}
+    			*/
+    			request.setCharacterEncoding("utf-8");
+    			String testData1 = request.getParameter("testData1");
+    			String testData2 = request.getParameter("testData2");
+    			
+    			System.out.println("tesetData1 : " + testData1);
+    			System.out.println("tesetData2 : " + testData2);
+    	}
+    
+    }
+    
+    ```
+    
+    ```html
+    <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="UTF-8">
+    <title>ajax 기초</title>
+    <script src="04_jQuery/js/jquery-3.7.1.min.js"></script>
+    <script>
+    
+    	$().ready(function(){
+    		$("#ajaxExBtn").click(function(){
+    			let sendData ={
+    				
+    				"testData1" : $("#testData1").val(),
+    				"testData2" : $("#testData2").val()
+    			}
+    			
+    			$.ajax({
+    				url     : "ajaxEx02",
+    				type    : "post",
+    				data    : sendData,
+    				success : function(){
+    					let checkCnt = $("#checkCnt").text();
+    					checkCnt++;
+    					$("#checkCnt").text(checkCnt);
+    				}
+    			});
+    			
+    		})
+    	});
+    	
+    </script>
+    </head>
+    <body>
+    
+    	<p><img src="04_jQuery/images/pic_9.jpg" width="200" height="200" /> </p>
+    	<h3>데이터 전송횟수 : <span id="checkCnt">1</span></h3>
+    	
+    	<p>테스트 데이터1 : <input type="text" id="testData1"/></p>
+    	<p>테스트 데이터2 : <input type="text" id="testData2"></p>
+    	<p><input type="button" id="ajaxExBtn" value="sendData"/></p>	
+    </body>
+    </html>
+    ```
