@@ -5589,6 +5589,7 @@ ORDER BY
   ```
 
 - **AJAX (Asynchronous Javascript and xml)**
+    
     - **JSON (JavaScript Object Notation)**
         - JavaScript에서 객체를 만들 때 사용하는 표현식
         - 사람도 이해하기 쉽고 기계도 이해하기 쉽다.
@@ -5660,6 +5661,32 @@ ORDER BY
         	
         	console.log(member);
         	console.log("");
+        	
+        	let orderList = {"orderList" : [
+    	    	{"orderCd" : "0x001", "orderer" : "user1", "qty" : 1}, 
+    	    	{"orderCd" : "0x002", "orderer" : "user2", "qty" : 2},
+    	    	{"orderCd" : "0x003", "orderer" : "user3", "qty" : 3}
+        	]}
+        	
+        	console.log(orderList);
+        	console.log("");
+        	
+        	// 문자열화 (JSON으로 전달할 때는 문자열로 만들어 보내줘야함)
+        	let strProduct = JSON.stringify(product);
+        	let strMember = JSON.stringify(member);
+        	let strOrderList = JSON.stringify(orderList);
+        	
+        	console.log(strProduct);
+        	console.log(strMember);
+        	console.log(strOrderList);
+        	console.log("");
+        	
+        	// 문자열을 다시 JSON으로 바꾸는 방법
+        	console.log(JSON.parse(strProduct));
+        	console.log(JSON.parse(strMember));
+        	console.log(JSON.parse(strOrderList));
+        	console.log("");
+        	
         });
     	
     </script>
@@ -5775,9 +5802,11 @@ ORDER BY
     			}
     			
     			$.ajax({
-    				url     : "ajaxEx02",
-    				type    : "post",
-    				data    : sendData,
+    			  url     : "ajaxEx02", // action
+    				type    : "post",     // method
+    				data    : sendData,   // name element
+    				// contentType : "application/x-www-form-urlencoded" , // 기본값
+    				// contentType : "application/json" , // JSON 
     				success : function(){
     					let checkCnt = $("#checkCnt").text();
     					checkCnt++;
@@ -5798,6 +5827,90 @@ ORDER BY
     	<p>테스트 데이터1 : <input type="text" id="testData1"/></p>
     	<p>테스트 데이터2 : <input type="text" id="testData2"></p>
     	<p><input type="button" id="ajaxExBtn" value="sendData"/></p>	
+    </body>
+    </html>
+    ```
+    
+    success : function(data, status, xhr){｝
+    
+    error : function(xhr, status, errorThrown){ ｝
+    
+    complete : function(xhr, status){ ｝
+    
+    ```html
+    @WebServlet("/ajaxEx03")
+    public class AjaxEx03 extends HttpServlet {
+    	
+    	private static final long serialVersionUID = 1L;
+        
+    	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    		RequestDispatcher dis = request.getRequestDispatcher("04_jQuery/chapter04_AJAX/ajaxEx03.jsp");
+    		dis.forward(request, response);
+    	}
+    	
+    	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    		
+    		// PrintWriter 객체를 사용하여 AJAX 성공 콜백함수에 데이터(data)를 반환한다.
+    		response.setContentType("text/html; charset=utf-8"); // 반환데이터의 한글화
+    		PrintWriter out = response.getWriter();
+    		//jsp에서는 String 타입만 반환 > spring에서 dto, map, list 학습
+    		out.print("반환데이터"); // ajax의 success: function(data){}로 반환된다.
+    		
+    	}
+    ```
+    
+    ```html
+    <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="UTF-8">
+    <title>receive 예시</title>
+    <script src="04_jQuery/js/jquery-3.7.1.min.js"></script>
+    <script>
+    
+    	$().ready(function(){
+    
+    		$("#ajaxExBtn").click(function(){
+    			$.ajax({
+    				url     : "ajaxEx03" , // action
+    				type    : "post" ,     // post
+    				success : function(data, status, xhr){  // 통신이 성공했을 경우 실행되는 콜백 함수
+    					console.log("통신 성공");
+    					console.log(data);   // 반환데이터
+    					console.log(status); // 상태 
+    					console.log(xhr);    // 메타 데이터
+    					console.log("");
+    				},
+    				error : function(xhr, status, errorThrown){  // 통신이 실패했을 경우 실행되는 콜백 함수
+    					console.log("통신 실패");
+    					console.log(xhr);    // 메타 데이터
+    					// console.log(xhr.reponseText);    
+    					console.log(status); // 상태 
+    					console.log(errorThrown);
+    					console.log("");
+    				},
+    				complete : function(xhr, status){  // 통신이 성공/실패 상관없이 반드시 실행되는 콜백 함수
+    					console.log("반드시 실행되는 함수");
+    					console.log(xhr);    // 메타 데이터
+    					console.log(status); // 상태 
+    					console.log("");
+    				}
+    				
+    			});
+    		});
+    		
+    	});
+    	
+    </script>
+    </head>
+    <body>
+    
+    	<p><img src="04_jQuery/images/pic_9.jpg" width="200" height="200"></p>
+    	<h3>데이터 수신 횟수 : <span id="checkCnt">1</span></h3>
+    	<p><span id="recvData"></span></p> 
+    	<p><input type="button" id="ajaxExBtn" value="recvData"></p>
+    	
     </body>
     </html>
     ```
