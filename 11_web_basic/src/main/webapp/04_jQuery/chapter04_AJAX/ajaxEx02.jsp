@@ -59,9 +59,11 @@
 			}
 			
 			$.ajax({
-				url     : "ajaxEx02",
-				type    : "post",
-				data    : sendData,
+				url     : "ajaxEx02", // action
+				type    : "post",     // method
+				data    : sendData,   // name element
+				// contentType : "application/x-www-form-urlencoded" , // 기본값
+				// contentType : "application/json" , // JSON 
 				success : function(){
 					let checkCnt = $("#checkCnt").text();
 					checkCnt++;

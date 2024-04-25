@@ -10,25 +10,31 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/ajaxEx03")
-public class AjaxEx03 extends HttpServlet {
+@WebServlet("/ajaxEx04")
+public class AjaxEx04 extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-    
+       
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dis = request.getRequestDispatcher("04_jQuery/chapter04_AJAX/ajaxEx03.jsp");
+		RequestDispatcher dis = request.getRequestDispatcher("04_jQuery/chapter04_AJAX/ajaxEx04.jsp");
 		dis.forward(request, response);
 	}
 	
+	// AJAX 처리 로직
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// PrintWriter 객체를 사용하여 AJAX 성공 콜백함수에 데이터(data)를 반환한다.
+		request.setCharacterEncoding("utf-8");
+		
+		// 3) 요청받은 데이터를 처리하여 결과를 서버에 반환한다.
+		String testData = request.getParameter("testData");
+		
+		// 비즈니스 로직 처리
+		String result = "(처리된 데이터)" + testData;
+		
 		response.setContentType("text/html; charset=utf-8"); // 반환데이터의 한글화
 		PrintWriter out = response.getWriter();
-		//jsp에서는 String 타입만 반환 > spring에서 dto, map, list 학습
-		out.print("반환데이터"); // ajax의 success: function(data){}로 반환된다.
+		out.print(result);
 		
 	}
-	
 	
 }

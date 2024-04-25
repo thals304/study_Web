@@ -58,6 +58,32 @@
     	
     	console.log(member);
     	console.log("");
+    	
+    	let orderList = {"orderList" : [
+	    	{"orderCd" : "0x001", "orderer" : "user1", "qty" : 1}, 
+	    	{"orderCd" : "0x002", "orderer" : "user2", "qty" : 2},
+	    	{"orderCd" : "0x003", "orderer" : "user3", "qty" : 3}
+    	]}
+    	
+    	console.log(orderList);
+    	console.log("");
+    	
+    	// 문자열화 (JSON으로 전달할 때는 문자열로 만들어 보내줘야함)
+    	let strProduct = JSON.stringify(product);
+    	let strMember = JSON.stringify(member);
+    	let strOrderList = JSON.stringify(orderList);
+    	
+    	console.log(strProduct);
+    	console.log(strMember);
+    	console.log(strOrderList);
+    	console.log("");
+    	
+    	// 문자열을 다시 JSON으로 바꾸는 방법
+    	console.log(JSON.parse(strProduct));
+    	console.log(JSON.parse(strMember));
+    	console.log(JSON.parse(strOrderList));
+    	console.log("");
+ 
     });
 	
 </script>
