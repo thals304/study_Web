@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!-- 24.04.25 time 14:08-14:12 
+<!-- 24.04.25 time 14:08-14:12 21:48-21:54
 	today 소감문
+	일단 .click에만 익숙해졌는지 .change를 사용하는 걸 까먹었던 것 같다.
+	그리고 html/text 중에 뭘 사용해야 되는지도 아직도 그 차이를 구분을 잘 못하겠다.
+	서블렛에 sql을 어떻게 나타내지? 싶었는데 그냥 String sql에 쿼리를 작성하고
+	sysout으로 출력하면 되는 것이었다. 
  -->
 <html>
 <head>
@@ -22,7 +26,7 @@
 				type    : "post" ,
 				data    : sendData ,
 				success : function(data) {
-
+					$("#msg").text(data + "개 저장되었습니다.");
 				}
 			});
 		});

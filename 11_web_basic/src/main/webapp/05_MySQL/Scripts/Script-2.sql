@@ -15,7 +15,7 @@ INSERT INTO SAMPLE2 VALUES(5, 'E');
 SELECT *
 FROM SAMPLE1 A 
      RIGHT OUTER JOIN SAMPLE2 B
-                   ON (A.COL1 = B.COL1 AND B.COL2 IS NOT NULL);    
+                   ON (A.COL1 = B.COL1 AND (B.COL2 IS NOT NULL));    
 # B.COL2 IS NOT NULL로 인해 밑에와 같은 답이 나올 줄 알았는데 그러면 ON B.COL2 IS NOT NULL의 역할이 뭐지?
                   
 SELECT *
