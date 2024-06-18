@@ -16,6 +16,38 @@
 				"closeIdleConnection": true,
 				"auth-model": "native"
 			}
+		},
+		"mysql8-1901019a164-618d872ae3f79de5": {
+			"provider": "mysql",
+			"driver": "mysql8",
+			"name": "muksullang.cnkkguoogxne.ap-northeast-2.rds.amazona",
+			"save-password": true,
+			"configuration": {
+				"host": "muksullang.cnkkguoogxne.ap-northeast-2.rds.amazonaws.com",
+				"port": "3306",
+				"url": "jdbc:mysql://muksullang.cnkkguoogxne.ap-northeast-2.rds.amazonaws.com:3306/",
+				"configurationType": "MANUAL",
+				"home": "C:\\Program Files\\MySQL\\MySQL Server 8.0",
+				"type": "dev",
+				"closeIdleConnection": true,
+				"auth-model": "native",
+				"handlers": {
+					"ssh_tunnel": {
+						"type": "TUNNEL",
+						"enabled": true,
+						"save-password": true,
+						"properties": {
+							"host": "15.165.183.137",
+							"port": 22,
+							"authType": "PUBLIC_KEY",
+							"keyPath": "C:\\Users\\somin\\Desktop\\muksullang.ppk",
+							"implementation": "sshj",
+							"localHost": "",
+							"remoteHost": ""
+						}
+					}
+				}
+			}
 		}
 	},
 	"connection-types": {
