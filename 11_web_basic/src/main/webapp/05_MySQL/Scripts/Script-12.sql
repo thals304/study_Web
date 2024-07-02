@@ -38,21 +38,21 @@ CREATE TABLE POST(
 # CONTENT는 not null로 해서 기본으로 게시물 하나당 1개 이상 내용 업데이트 
 CREATE TABLE CONTENT(
 	CONTENT_ID   BIGINT        PRIMARY KEY AUTO_INCREMENT,
-	CONTENT      VARCHAR(1000) NOT NULL, 
+	CONTENT      VARCHAR(10000) NOT NULL, 
 	POST_ID      BIGINT        NOT NULL,
 	FOREIGN KEY (POST_ID) REFERENCES POST(POST_ID) ON DELETE CASCADE	
 );
 
 # 누가 리뷰 달았는지 USER_ID , 어떤 게시물에 달았는지 POST_ID 컬럼 필요(post 테이블은 user 테이블과 연관성이 없기 때문)
 # CONTENT : 리뷰 내용
-# (보류)RATING : BEST OF 게시물에 대한 평가(리뷰와 같이 업로드) > 어떻게 구현하지? 별 클릭 개수로
+# RATING : BEST OF 게시물에 대한 평가(리뷰와 같이 업로드) > 어떻게 구현하지? 별 클릭 개수로
 # (보류)REPLY_LIKE : 다른 사람이 단 리뷰에 좋아요 누르기 (BIGINT가 맞나?)
-# RATING        INT           DEFAULT 0,
 # REPLY_LIKE    BIGINT        DEFAULT 0,
 CREATE TABLE REPLY(
     REPLY_ID      BIGINT        PRIMARY KEY AUTO_INCREMENT,
     POST_ID       BIGINT        NOT NULL,
     USER_ID       VARCHAR(100)  NOT NULL,
+    RATING        INT           DEFAULT 0,
     CONTENT       VARCHAR(300)  NOT NULL,
     UPLOAD_DT     TIMESTAMP     DEFAULT NOW(),
     FOREIGN KEY (POST_ID) REFERENCES POST(POST_ID) ON DELETE CASCADE,
