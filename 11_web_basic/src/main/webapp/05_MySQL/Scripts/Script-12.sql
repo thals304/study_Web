@@ -16,7 +16,7 @@ CREATE TABLE USER(
 	ROLE                    VARCHAR(50)  DEFAULT 'user'
 );
 
-# POST_NM은 BEST OF / RECOMMEND 게시물을 구분하기 위함
+# POST_NM은 BESTOF / RECOMMEND 게시물을 구분하기 위함
 # TITLE(가게 이름), SORT(식당, 카페, 바 중에 구분), LOCATION(위치)으로 BEST OF 게시물 검색 > TITLE은 RECOMMEND에서는 그냥 게시물 제목
 # BEST OF에서만 사용하는 컬럼은 DEFAULT NULL / BEST OF & RECOMMEND에서 공통으로 사용하는 컬럼은 NOT NULL
 # ADMIN이 게시물 업로드/수정/삭제 하는 건데 ADMIN_ID가 컬럼으로 필요(단, ADMIN이 삭제되도 게시물은 삭제 안되게 해야함)

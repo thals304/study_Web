@@ -1,0 +1,171 @@
+#CREATE DATABASE SPRING_JPA_EX;
+USE SPRING_JPA_EX;
+
+# 테이블 생성
+CREATE TABLE POST(
+	POST_ID 	BIGINT AUTO_INCREMENT PRIMARY KEY,
+	SUBJECT 	VARCHAR(255),
+	CONTENT 	VARCHAR(255),
+	ENROLL_DATE TIMESTAMP DEFAULT NOW(),
+	UPDATE_DATE TIMESTAMP DEFAULT NOW()
+);
+
+CREATE TABLE REPLY (
+	REPLY_ID    BIGINT AUTO_INCREMENT PRIMARY KEY,
+	POST_ID     BIGINT ,
+    CONTENT     VARCHAR(255),
+    ENROLL_DATE TIMESTAMP DEFAULT NOW(),
+	UPDATE_DATE TIMESTAMP DEFAULT NOW()
+);
+
+
+# 테스트 데이터
+INSERT INTO 
+		POST(SUBJECT, CONTENT)
+VALUES 
+		('게시글1 입니다.' , '본문1 입니다.'),
+		('게시글2 입니다.' , '본문2 입니다.'),
+		('게시글3 입니다.' , '본문3 입니다.');
+		
+
+INSERT INTO 
+		REPLY(POST_ID, CONTENT)
+VALUES 
+		(1, '댓글1 입니다.'),
+		(1, '댓글2 입니다.'),
+		(2, '댓글3 입니다.'),
+		(2, '댓글4 입니다.'),
+		(3, '댓글5 입니다.'),	
+		(3, '댓글6 입니다.'),	
+		(3, '댓글7 입니다.'),	
+		(3, '댓글8 입니다.'),	
+		(3, '댓글9 입니다.'),	
+		(3, '댓글10 입니다.');	
+	
+# 테이블 생성
+CREATE TABLE EMPLOYEE(
+	EMPLOYEE_ID  BIGINT AUTO_INCREMENT PRIMARY KEY,
+    NAME   		 VARCHAR(255)
+);
+
+CREATE TABLE SALARY(
+	SALARY_ID    BIGINT AUTO_INCREMENT PRIMARY KEY,
+	EMPLOYEE_ID  BIGINT,
+	SALARY       INT,
+	RECEIPT_DATE DATE
+);
+
+
+# 테스트 데이터
+INSERT INTO 
+		EMPLOYEE(NAME)
+VALUES 
+		('익명1'),
+		('익명2'),
+		('익명3');
+		
+INSERT INTO 
+		SALARY(EMPLOYEE_ID , SALARY , RECEIPT_DATE)
+VALUES 
+		(1, 3000000, '2024-01-25'),
+		(1, 3000000, '2024-02-25'),
+		(1, 3000000, '2024-03-25'),
+		(1, 3000000, '2024-04-25'),
+		(1, 3000000, '2024-05-25'),
+		(1, 3000000, '2024-06-25'),
+		(1, 3000000, '2024-07-25'),
+		(2, 5000000, '2024-01-25'),
+		(2, 5000000, '2024-02-25'),
+		(2, 5000000, '2024-03-25'),
+		(3, 7000000, '2024-01-25'),
+		(3, 8000000, '2024-02-25'),
+		(3, 9000000, '2024-03-25');
+
+# 테이블 생성
+CREATE TABLE APPLICANT(
+	APPLICANT_ID  BIGINT AUTO_INCREMENT PRIMARY KEY,
+    NAME   		  VARCHAR(255)
+);
+
+CREATE TABLE PROFILE(
+	PROFILE_ID    BIGINT AUTO_INCREMENT PRIMARY KEY,
+	APPLICANT_ID  BIGINT,
+	PROFILE       VARCHAR(255)
+);
+
+
+# 테스트 데이터
+INSERT INTO 
+		APPLICANT(NAME)
+VALUES 
+		('지원자1'),
+		('지원자2'),
+		('지원자3');
+		
+INSERT INTO 
+		PROFILE(APPLICANT_ID , PROFILE)
+VALUES 
+		(1, '지원자1 프로필입니다.'),
+		(2, '지원자2 프로필입니다.'),
+		(3, '지원자3 프로필입니다.');
+
+# 테이블 생성
+CREATE TABLE STUDENT (
+	STUDENT_ID  BIGINT AUTO_INCREMENT PRIMARY KEY,
+	NAME        VARCHAR(255)   
+);
+
+CREATE TABLE ENROLLMENT (  # JOIN 테이블
+	STUDENT_ID BIGINT, 
+	COURSE_ID  BIGINT
+);
+
+CREATE TABLE COURSE(
+	COURSE_ID  BIGINT AUTO_INCREMENT PRIMARY KEY,
+	NAME       VARCHAR(255)
+);
+
+
+# 테스트 데이터
+INSERT INTO 
+		STUDENT(NAME)
+VALUES 
+		('익명1'),
+		('익명2'),
+		('익명3'),
+		('익명4'),
+		('익명5'),
+		('익명6'),
+		('익명7'),
+		('익명8'),
+		('익명9'),
+		('익명10');
+				
+INSERT INTO 
+		COURSE(NAME)
+VALUES 
+		('C'),
+		('Python'),
+		('Java');
+
+INSERT INTO 
+		ENROLLMENT
+VALUES 
+		(1,1),
+		(1,2),
+		(1,3),
+		(2,1),
+		(2,2),
+		(3,3),
+		(4,1),
+		(4,2),
+		(4,3),
+		(5,1),
+		(6,1),
+		(6,2),
+		(7,1),
+		(7,2),
+		(7,3),
+		(8,1),
+		(9,2),
+		(10,3);
