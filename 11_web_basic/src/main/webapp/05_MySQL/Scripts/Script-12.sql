@@ -77,3 +77,4 @@ CREATE TABLE ADMIN(
 );
 
 INSERT INTO ADMIN(ADMIN_ID , ADMIN_PASSWD) VALUES ('sominKim' , '@muksullangSomin!');
+INSERT INTO ADMIN(ADMIN_ID , ADMIN_PASSWD) VALUES ('admin1004' , '@muksullangAdmin!');
